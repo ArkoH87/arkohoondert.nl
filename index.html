@@ -6,15 +6,23 @@
 <link rel="canonical" href="https://arkohoondert.nl/">
 <link rel="icon" href="favicon.svg" type="image/svg+xml">
 <meta name="theme-color" content="#1d1c4c">
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1">
+<meta name="author" content="Arko Hoondert">
+<meta name="geo.region" content="NL-ZE">
+<meta name="geo.placename" content="Wolphaartsdijk">
+<link rel="alternate" type="text/plain" title="Samenvatting voor taalmodellen" href="/llms.txt">
+<link rel="preload" href="fonts/instrument-sans-700.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="fonts/newsreader-300.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="arko-hoondert-polder.jpg" as="image" fetchpriority="high">
 <meta property="og:type" content="website">
 <meta property="og:locale" content="nl_NL">
 <meta property="og:url" content="https://arkohoondert.nl/">
-<meta property="og:title" content="Arko Hoondert · Financiële levensplanning">
+<meta property="og:title" content="Arko Hoondert · Financieel planner in Zeeland">
 <meta property="og:description" content="Het gesprek begint bij waar je voor leeft. Daarna rekenen we uit of het klopt, ook als het leven anders loopt.">
 <meta property="og:image" content="https://arkohoondert.nl/arko-hoondert-polder.jpg">
 <meta name="twitter:card" content="summary_large_image">
-<title>Arko Hoondert · Financiële levensplanning</title>
-<meta name="description" content="Financiële levensplanning in Zeeland en online, voor mensen rond en na hun veertigste die hun leven opnieuw inrichten. Het gesprek begint bij waar je voor leeft.">
+<title>Arko Hoondert · Financieel planner in Zeeland</title>
+<meta name="description" content="Financieel planner in Zeeland en online. Voor wie rond en na zijn veertigste wil weten: wanneer kan ik stoppen, wat doe ik met mijn bedrijf, wat laat ik na?">
 <style>
 /* Layout: één pagina, tien stops: gezicht, vraag, levens, poorten, verhaal, werkwijze, voor wie, aanbod, vragen, contact. Elk vlak opent met de uitdaging (sans 700, één woord op de lat)
    en antwoordt met de rust (Newsreader 300). Merkenfamilie, thema arko: navy, papier, mist, vonk als lat. */
@@ -136,7 +144,9 @@ body::before {
 /* 1 Opening */
 .opening { padding-block: clamp(56px, 8vw, 112px) clamp(64px, 9vw, 112px); }
 .opening-grid { display: grid; grid-template-columns: minmax(0, 7fr) minmax(0, 5fr); gap: clamp(40px, 6vw, 96px); align-items: center; }
-.opening h1 { font-size: clamp(46px, 7.4vw, 88px); line-height: 1.02; letter-spacing: -0.04em; margin-top: 22px; }
+.opening h1 { font-size: clamp(46px, 7.4vw, 88px); line-height: 1.02; letter-spacing: -0.04em; margin-top: 0; }
+.opening h1 .kicker { margin-bottom: 22px; line-height: 1.4; }
+.opening h1 .h1-tekst { display: block; }
 .opening .rust { font-size: clamp(22px, 2.6vw, 30px); line-height: 1.28; margin-top: 30px; max-width: 30ch; }
 .opening .acties { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 38px; }
 .opening .waar { margin-top: 20px; }
@@ -166,7 +176,7 @@ body::before {
 .gezicht figcaption { display: grid; gap: 2px; padding-top: 12px; border-top: 1px solid var(--navy); }
 .gezicht figcaption b { color: var(--navy); font-size: 16px; }
 .gezicht figcaption span { font-size: 14.5px; color: var(--navy-500); }
-@media (max-width: 880px) { .gezicht .foto { aspect-ratio: 4 / 3; } .opening .kicker { display: none; } .opening h1 { margin-top: 0; } }
+@media (max-width: 880px) { .gezicht .foto { aspect-ratio: 4 / 3; } .opening h1 .kicker { margin-bottom: 16px; } }
 .vraag-grid { display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); gap: clamp(36px, 6vw, 96px); margin-top: 48px; align-items: start; }
 @media (max-width: 880px) { .vraag-grid { grid-template-columns: minmax(0, 1fr); } }
 .cijfer { display: grid; gap: 18px; }
@@ -339,25 +349,221 @@ body::before {
  "@context": "https://schema.org",
  "@graph": [
   {
-   "@type": "ProfessionalService",
-   "@id": "https://www.arkohoondert.nl/#praktijk",
+   "@type": "WebSite",
+   "@id": "https://arkohoondert.nl/#website",
+   "url": "https://arkohoondert.nl/",
+   "name": "Arko Hoondert · Financiële levensplanning",
+   "inLanguage": "nl-NL",
+   "publisher": {
+    "@id": "https://arkohoondert.nl/#praktijk"
+   }
+  },
+  {
+   "@type": [
+    "ProfessionalService",
+    "FinancialService"
+   ],
+   "@id": "https://arkohoondert.nl/#praktijk",
    "name": "Arko Hoondert Financiële Levensplanning",
-   "url": "https://www.arkohoondert.nl/",
-   "description": "Financiële levensplanning in Zeeland en online, voor mensen rond en na hun veertigste die hun leven opnieuw inrichten.",
+   "url": "https://arkohoondert.nl/",
+   "logo": "https://arkohoondert.nl/favicon.svg",
+   "image": "https://arkohoondert.nl/arko-hoondert-polder.jpg",
+   "description": "Financiële levensplanning in Zeeland en online, voor mensen rond en na hun veertigste die hun leven opnieuw inrichten: stoppen of minder werken, de kinderen helpen, het bedrijf verkopen, nalaten. Het gesprek begint bij waar je voor leeft; daarna wordt doorgerekend of het klopt bij een lang, kort of rot leven.",
    "email": "arko@hoondert.me",
    "telephone": "+31651739714",
-   "address": {"@type": "PostalAddress", "streetAddress": "De Perponcherpolderweg 5", "postalCode": "4471 RX", "addressLocality": "Wolphaartsdijk", "addressRegion": "Zeeland", "addressCountry": "NL"},
-   "sameAs": ["https://www.linkedin.com/in/arkohoondert/"],
+   "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "De Perponcherpolderweg 5",
+    "postalCode": "4471 RX",
+    "addressLocality": "Wolphaartsdijk",
+    "addressRegion": "Zeeland",
+    "addressCountry": "NL"
+   },
+   "areaServed": [
+    {
+     "@type": "AdministrativeArea",
+     "name": "Zeeland"
+    },
+    {
+     "@type": "Country",
+     "name": "Nederland"
+    }
+   ],
+   "founder": {
+    "@id": "https://arkohoondert.nl/#arko"
+   },
+   "employee": {
+    "@id": "https://arkohoondert.nl/#arko"
+   },
+   "knowsAbout": [
+    "financiële levensplanning",
+    "financiële planning",
+    "pensioen en stoppen met werken",
+    "bedrijfsoverdracht",
+    "arbeidsongeschiktheid",
+    "nalaten en schenken",
+    "vermogensplanning",
+    "financiële planning voor ondernemers en dga's"
+   ],
+   "makesOffer": [
+    {
+     "@type": "Offer",
+     "itemOffered": {
+      "@type": "Service",
+      "name": "Financieel levensplan",
+      "description": "Intake, inventarisatie, visiegesprek, uitgebreid plan en naslagwerk, servicegesprek. Vaste prijs vooraf."
+     }
+    },
+    {
+     "@type": "Offer",
+     "itemOffered": {
+      "@type": "Service",
+      "name": "Abonnement vaste planner",
+      "description": "Vaste financieel planner voor personen, gezinnen en families, ook op moeilijke momenten."
+     }
+    },
+    {
+     "@type": "Offer",
+     "price": "0",
+     "priceCurrency": "EUR",
+     "itemOffered": {
+      "@type": "Service",
+      "name": "Kennismaking van twintig minuten"
+     }
+    }
+   ],
+   "sameAs": [
+    "https://www.linkedin.com/in/arkohoondert/"
+   ],
    "vatID": "NL004086452B40",
-   "identifier": {"@type": "PropertyValue", "propertyID": "KvK", "value": "85352012"}
+   "identifier": {
+    "@type": "PropertyValue",
+    "propertyID": "KvK",
+    "value": "85352012"
+   }
+  },
+  {
+   "@type": "Person",
+   "@id": "https://arkohoondert.nl/#arko",
+   "name": "Arko Hoondert",
+   "jobTitle": "Financieel planner",
+   "description": "Financieel planner in Zeeland, CFP in opleiding. Vijftien jaar fondsenwerving, onder meer als hoofd fondsenwerving en MT-lid bij KWF. Oprichter van PeerWorks. Adviseur grote giften en nalatenschappen bij Het Zeeuwse Landschap. Rugbycoach.",
+   "image": "https://arkohoondert.nl/arko-hoondert-polder.jpg",
+   "url": "https://arkohoondert.nl/",
+   "email": "arko@hoondert.me",
+   "telephone": "+31651739714",
+   "worksFor": {
+    "@id": "https://arkohoondert.nl/#praktijk"
+   },
+   "alumniOf": {
+    "@type": "CollegeOrUniversity",
+    "name": "Quantic School of Business and Technology"
+   },
+   "hasCredential": {
+    "@type": "EducationalOccupationalCredential",
+    "credentialCategory": "degree",
+    "name": "MBA"
+   },
+   "homeLocation": {
+    "@type": "Place",
+    "name": "Wolphaartsdijk, Zeeland"
+   },
+   "sameAs": [
+    "https://www.linkedin.com/in/arkohoondert/"
+   ]
   },
   {
    "@type": "FAQPage",
+   "@id": "https://arkohoondert.nl/#vragen",
    "mainEntity": [
-    {"@type": "Question", "name": "Wat is financiële levensplanning?", "acceptedAnswer": {"@type": "Answer", "text": "Een plan dat begint bij je leven en pas daarna bij je geld. We brengen in kaart wat je wilt, waar je nu staat en wat er gebeurt bij een lang, kort of rot leven. Inkomen, vermogen, wonen, werk, stoppen met werken en nalaten komen samen in één plan."}},
-    {"@type": "Question", "name": "Wat is het verschil met een financieel adviseur of mijn bank?", "acceptedAnswer": {"@type": "Answer", "text": "Een adviseur of bank helpt je meestal aan een product. Ik verkoop geen producten, bemiddel niet en ontvang geen provisie. Jij bent de enige die mij betaalt."}},
-    {"@type": "Question", "name": "Wat kost het?", "acceptedAnswer": {"@type": "Answer", "text": "De kennismaking kost niets. Voor een traject spreken we vooraf een vaste prijs af, inclusief btw, vastgelegd in de opdrachtbevestiging."}},
-    {"@type": "Question", "name": "Ben je CFP?", "acceptedAnswer": {"@type": "Answer", "text": "CFP is de hoogste certificering in het vak van financieel planner, maar niet verplicht. Ik volg de opleiding tot Certified Financial Planner en voer de titel pas na certificering."}}
+    {
+     "@type": "Question",
+     "name": "Wat is financiële levensplanning?",
+     "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "Een plan dat begint bij je leven en pas daarna bij je geld. We brengen in kaart wat je wilt, waar je nu staat en wat er gebeurt bij een lang, kort of rot leven. Inkomen, vermogen, wonen, werk, stoppen met werken en nalaten komen samen in één plan, voor privé en onderneming tegelijk."
+     }
+    },
+    {
+     "@type": "Question",
+     "name": "Wat is het verschil met een financieel adviseur of mijn bank?",
+     "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "Een adviseur of bank helpt je meestal aan een product: een hypotheek, een verzekering, een belegging. Ik verkoop geen producten, bemiddel niet en ontvang geen provisie. Jij bent de enige die mij betaalt. Daardoor kan ik naar het geheel kijken en zeggen wat ik zie."
+     }
+    },
+    {
+     "@type": "Question",
+     "name": "Adviseer je over verzekeringen, hypotheken of beleggingen?",
+     "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "Nee. Ik heb geen vergunning op grond van de Wet op het financieel toezicht en beveel geen producten van een bepaalde aanbieder aan. Ik laat zien welke keuzes er zijn en wat ze betekenen voor je plan. Komt een product aan de orde, dan verwijs ik naar een adviseur met vergunning."
+     }
+    },
+    {
+     "@type": "Question",
+     "name": "Ik ben ondernemer. Kijk je ook naar mijn bedrijf?",
+     "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "Ja. Bij ondernemers lopen privé en zaak door elkaar, dus ik kijk naar beide: je inkomen, het bedrijf als vermogen, een mogelijke verkoop en wat er gebeurt als jij uitvalt. Fiscale en juridische uitwerking doen je fiscalist, accountant of notaris."
+     }
+    },
+    {
+     "@type": "Question",
+     "name": "Wat kost het?",
+     "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "De kennismaking kost niets. Voor een traject spreken we vooraf een vaste prijs af, inclusief btw, vastgelegd in de opdrachtbevestiging. Wie daarna een vaste planner wil, kiest voor het abonnement."
+     }
+    },
+    {
+     "@type": "Question",
+     "name": "Hoe lang duurt een traject?",
+     "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "Een traject bestaat uit een intake, een inventarisatie en een visiegesprek. Daarna krijg je je plan en naslagwerk, en als je wilt volgt twee weken later een servicegesprek. De gesprekken duren zo lang als nodig: soms een uur, soms drie. Hoe snel ze elkaar opvolgen, hangt af van je agenda en van hoe snel de gegevens er zijn. De planning leggen we samen vast."
+     }
+    },
+    {
+     "@type": "Question",
+     "name": "Ben je CFP?",
+     "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "CFP is de hoogste certificering in mijn vak. Ze is niet verplicht om als financieel planner te werken, maar ik vind het belangrijk. Ik volg de opleiding tot Certified Financial Planner en voer de titel pas na certificering. Elk plan wordt voor oplevering gelezen door een tweede planner die wel gecertificeerd is."
+     }
+    },
+    {
+     "@type": "Question",
+     "name": "Werk je alleen in Zeeland?",
+     "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "Nee. Ik woon in Wolphaartsdijk en kom graag bij je thuis of ga met je naar buiten, in heel Zeeland: van Goes en Middelburg tot Zierikzee en Vlissingen. Binnen 30 kilometer reken ik geen reiskosten. Gesprekken kunnen ook via video, dus je kunt overal in Nederland met me werken."
+     }
+    },
+    {
+     "@type": "Question",
+     "name": "Kan ik samen met mijn partner komen?",
+     "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "Graag zelfs. Veel keuzes maak je samen, dus voer ik de gesprekken met jullie allebei en krijgen jullie allebei alle stukken. Lopen jullie belangen tijdens het traject uit elkaar, dan zeg ik dat en zetten we het werk stil tot jullie weten hoe verder."
+     }
+    },
+    {
+     "@type": "Question",
+     "name": "Je werkt ook bij Het Zeeuwse Landschap. Hoe zit dat met nalaten?",
+     "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "Naast mijn praktijk ben ik adviseur grote giften en nalatenschappen bij Het Zeeuwse Landschap. In je plan behandel ik schenken en nalaten neutraal. Ik stuur je nooit naar een organisatie en ontvang van niemand een vergoeding. Zie ik een belangenconflict, dan meld ik dat en verwijs ik door."
+     }
+    },
+    {
+     "@type": "Question",
+     "name": "Wat gebeurt er met mijn gegevens?",
+     "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "Ik behandel alles vertrouwelijk en verwerk niet meer dan nodig is. Een burgerservicenummer verwerk ik nooit. Gesprekken neem ik alleen op als je daar aan het begin mee instemt. Alles staat in mijn privacyverklaring onderaan deze pagina."
+     }
+    }
    ]
   }
  ]
@@ -397,8 +603,7 @@ body::before {
 <section class="opening" id="top" aria-labelledby="h1">
   <div class="wrap opening-grid">
     <div>
-      <p class="kicker">Arko Hoondert · financieel planner in Zeeland</p>
-      <h1 id="h1">Waar leef je eigenlijk <span class="lat">voor</span>?</h1>
+      <h1 id="h1"><span class="kicker">Arko Hoondert · financieel planner in Zeeland</span> <span class="h1-tekst">Waar leef je eigenlijk <span class="lat">voor</span>?</span></h1>
       <p class="rust">De meeste financiële gesprekken beginnen bij wat je hebt. Dit gesprek begint bij waar je voor leeft. Daarna rekenen we uit of het klopt, ook als het leven anders loopt.</p>
       <div class="acties">
         <a class="knop vol" href="#contact">Plan een kennismaking <span aria-hidden="true">→</span></a>
@@ -411,7 +616,7 @@ body::before {
       <p class="klein waar">Gesprekken in de buitenlucht, bij je thuis, in Wolphaartsdijk of online.</p>
     </div>
     <figure class="gezicht">
-      <img class="foto" src="arko-hoondert-polder.jpg" width="1800" height="1208" alt="Arko Hoondert in de polder bij Wolphaartsdijk, in avondlicht">
+      <img class="foto" src="arko-hoondert-polder.jpg" fetchpriority="high" decoding="async" width="1800" height="1208" alt="Arko Hoondert in de polder bij Wolphaartsdijk, in avondlicht">
       <figcaption><b>Arko Hoondert</b><span>Financieel planner, CFP in opleiding. Rugbycoach. Terug in Zeeland.</span></figcaption>
     </figure>
   </div>
@@ -719,6 +924,10 @@ body::before {
       <details>
         <summary>Ben je CFP?</summary>
         <div class="antwoord"><p>CFP is de hoogste certificering in mijn vak. Ze is niet verplicht om als financieel planner te werken, maar ik vind het belangrijk. Ik volg de opleiding tot Certified Financial Planner en voer de titel pas na certificering. Elk plan wordt voor oplevering gelezen door een tweede planner die wel gecertificeerd is.</p></div>
+      </details>
+      <details>
+        <summary>Werk je alleen in Zeeland?</summary>
+        <div class="antwoord"><p>Nee. Ik woon in Wolphaartsdijk en kom graag bij je thuis of ga met je naar buiten, in heel Zeeland: van Goes en Middelburg tot Zierikzee en Vlissingen. Binnen 30 kilometer reken ik geen reiskosten. Gesprekken kunnen ook via video, dus je kunt overal in Nederland met me werken.</p></div>
       </details>
       <details>
         <summary>Kan ik samen met mijn partner komen?</summary>

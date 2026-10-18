@@ -1,3 +1,34 @@
+# arkohoondert.nl: zoekmachines en AI-zoekdiensten zijn welkom.
+
 User-agent: *
 Allow: /
+
+# AI-zoekdiensten en taalmodellen, expliciet toegestaan
+User-agent: GPTBot
+Allow: /
+
+User-agent: OAI-SearchBot
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: Claude-SearchBot
+Allow: /
+
+User-agent: Claude-User
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
+User-agent: Applebot-Extended
+Allow: /
+
 Sitemap: https://arkohoondert.nl/sitemap.xml
