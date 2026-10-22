@@ -7,7 +7,7 @@ De website van Arko Hoondert, financieel planner in Zeeland. Eén statische pagi
 | Bestand | Wat |
 | --- | --- |
 | `index.html` | De hele site: tekst, opmaak en een klein script voor de cijferschaal |
-| `fonts/` | Instrument Sans en Newsreader, zelf gehost (geen Google Fonts) |
+| `fonts/` | Instrument Sans en Literata, zelf gehost (geen Google Fonts) |
 | `*.jpg` | Hoofdfoto (polder) en tweede foto (keukentafel) |
 | `*.pdf` | Algemene voorwaarden en privacyverklaring |
 | `llms.txt` | Feitelijke samenvatting voor AI-zoekdiensten en taalmodellen |
