@@ -324,8 +324,19 @@ body::before {
 .kanaal .waarde { font-size: clamp(20px, 2.4vw, 26px); font-weight: 600; color: var(--wit); word-break: break-word; user-select: all; }
 .kanaal .rij { display: flex; flex-wrap: wrap; align-items: center; gap: 12px 16px; }
 .status { font-size: 14px; color: var(--polder-200); }
-.stuur { display: grid; gap: 12px; align-content: start; }
-.stuur ol { margin: 0; padding-left: 20px; display: grid; gap: 8px; }
+.plan { background: var(--polder-800); border-radius: 8px; padding: clamp(24px, 3.2vw, 40px); display: grid; gap: 18px; align-content: start; }
+.plan h3 { margin: 0; font-size: clamp(24px, 2.6vw, 30px); }
+.plan .klein { color: var(--polder-200); margin: 0; }
+.plan p { margin: 0; }
+.afspraak { margin: 0; display: grid; }
+.afspraak > div { display: grid; grid-template-columns: 96px minmax(0, 1fr); gap: 12px; padding-block: 12px; border-top: 1px solid rgba(201, 200, 218, 0.25); }
+.afspraak > div:last-child { border-bottom: 1px solid rgba(201, 200, 218, 0.25); }
+.afspraak dt { font-size: 12px; font-weight: 600; letter-spacing: 0.16em; text-transform: uppercase; color: var(--polder-200); padding-top: 3px; }
+.afspraak dd { margin: 0; color: var(--wit); }
+.plan .vooraf { display: grid; gap: 8px; margin-top: 6px; }
+.plan .vooraf .label { margin: 0; font-size: 12px; font-weight: 600; letter-spacing: 0.16em; text-transform: uppercase; color: var(--polder-200); }
+.plan ol { margin: 0; padding-left: 20px; display: grid; gap: 8px; }
+@media (max-width: 520px) { .afspraak > div { grid-template-columns: minmax(0, 1fr); gap: 4px; } }
 @media (max-width: 880px) { .contact-grid { grid-template-columns: minmax(0, 1fr); } }
 
 /* Voet */
@@ -951,10 +962,32 @@ body::before {
     <div class="kop">
       <p class="kicker">Kennismaken</p>
       <h2 id="h-contact">Eén gesprek. Daarna weet je of het <span class="lat">klikt</span>.</h2>
-      <p class="rust">Vertel in een paar zinnen waar je staat en wat je bezighoudt, per mail of telefoon. Dan stel ik een moment voor.</p>
+      <p class="rust">Kies zelf een moment in mijn agenda: twintig minuten, kosteloos. Liever eerst bellen of mailen? Dat kan ook.</p>
     </div>
     <div class="contact-grid">
+      <div class="plan">
+        <h3>Plan twintig minuten</h3>
+        <dl class="afspraak">
+          <div><dt>Wanneer</dt><dd>Maandagochtend of donderdagmiddag</dd></div>
+          <div><dt>Hoe</dt><dd>Via video. Liever aan je keukentafel of buiten? Dat spreken we daarna af.</dd></div>
+          <div><dt>Kosten</dt><dd>Geen</dd></div>
+        </dl>
+        <p><a class="knop vol" href="https://calendar.app.google/uK1NGzYM1U4datPM6" target="_blank" rel="noopener">Kies een moment <span aria-hidden="true">→</span></a></p>
+        <p class="klein">Je boekt via Google Agenda en krijgt meteen een bevestiging met de videolink. Samen met je partner? Nodig hem of haar uit in die bevestiging.</p>
+        <div class="vooraf">
+          <p class="label">Om vooraf over na te denken</p>
+          <ol>
+            <li>De vraag die je het langst voor je uit schuift.</li>
+            <li>Of je alleen komt of samen met je partner.</li>
+            <li>Een datum die meetelt: een verkoop, een verhuizing, een stopdatum.</li>
+          </ol>
+        </div>
+      </div>
       <div>
+        <div class="kanaal">
+          <p class="label">Telefoon</p>
+          <div class="rij"><a class="waarde" href="tel:+31651739714">06 51 73 97 14</a></div>
+        </div>
         <div class="kanaal">
           <p class="label">E-mail</p>
           <div class="rij">
@@ -962,10 +995,7 @@ body::before {
             <button class="knop leeg" type="button" id="kopieer">Kopieer adres</button>
             <span class="status" id="kopieer-status" role="status" aria-live="polite"></span>
           </div>
-        </div>
-        <div class="kanaal">
-          <p class="label">Telefoon</p>
-          <div class="rij"><a class="waarde" href="tel:+31651739714">06 51 73 97 14</a></div>
+          <p class="klein" style="color: var(--polder-200);">Stuur geen burgerservicenummer, gezondheidsgegevens of financiële documenten per e-mail. Daar is in een traject een beveiligde weg voor.</p>
         </div>
         <div class="kanaal">
           <p class="label">LinkedIn</p>
@@ -975,16 +1005,6 @@ body::before {
           <p class="label">Waar</p>
           <p>Gesprekken in de buitenlucht, bij je thuis, bij mij in Wolphaartsdijk of via video. Binnen 30 kilometer reken ik geen reiskosten.</p>
         </div>
-      </div>
-      <div class="stuur">
-        <h3>Wat helpt in je eerste bericht</h3>
-        <ol>
-          <li>De vraag die je het langst voor je uit schuift.</li>
-          <li>Of je alleen komt of samen met je partner.</li>
-          <li>Een datum die meetelt: een verkoop, een verhuizing, een stopdatum.</li>
-        </ol>
-        <p class="klein" style="color: var(--polder-200);">Stuur geen burgerservicenummer, gezondheidsgegevens of financiële documenten per e-mail. Daar is in een traject een beveiligde weg voor.</p>
-        <p style="margin-top: 6px;"><a class="knop vol" href="mailto:arko@hoondert.me?subject=Kennismaking">Schrijf een e-mail <span aria-hidden="true">→</span></a></p>
       </div>
     </div>
   </div>
