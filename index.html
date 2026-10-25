@@ -153,6 +153,7 @@ body::before {
 .nieuwsbrief { margin-top: 28px; padding: 18px 20px; background: var(--wit); box-shadow: 0 0 0 1px var(--lijn); border-radius: 4px; display: flex; flex-wrap: wrap; align-items: center; gap: 14px 24px; max-width: 620px; }
 .nieuwsbrief p { flex: 1 1 260px; min-width: 0; font-size: 15px; line-height: 1.45; }
 .nieuwsbrief b { color: var(--polder); }
+.nieuwsbrief .label { display: block; margin-bottom: 4px; font-size: 12px; font-weight: 600; letter-spacing: 0.16em; text-transform: uppercase; color: var(--polder); }
 .libutton {
   display: flex; flex-direction: column; justify-content: center; flex: none;
   padding: 7px; text-align: center; outline: none; text-decoration: none !important; color: #ffffff !important;
@@ -201,10 +202,10 @@ body::before {
 .leven p { font-size: 16px; }
 @media (max-width: 880px) { .levens { grid-template-columns: minmax(0, 1fr); } }
 
-/* 3 Vier poorten */
+/* 3 Het 4R-model */
 .poorten { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: var(--goot); margin-top: 56px; }
 .poort { display: grid; gap: 12px; align-content: start; }
-.paal { display: block; width: auto; height: 72px; }
+.poort .r { display: block; font: 700 72px/0.9 var(--sans); letter-spacing: -0.04em; color: var(--polder); border-bottom: 3px solid var(--vonk); width: max-content; padding-bottom: 6px; }
 .poort h3 { font-size: 15px; font-weight: 600; letter-spacing: 0.16em; text-transform: uppercase; padding-top: 4px; }
 .poort .vraag { font-family: var(--serif); font-weight: 300; font-size: 22px; line-height: 1.28; color: var(--polder); }
 .poort p { font-size: 16px; }
@@ -246,9 +247,6 @@ body::before {
 .stappen h3 { font-size: 20px; line-height: 1.25; }
 .stappen .meta { font-size: 14.5px; color: var(--polder-500); margin-top: 3px; }
 .stappen p { margin-top: 6px; }
-.abonnement { margin-top: 32px; background: var(--wit); box-shadow: 0 0 0 1px var(--polder); border-radius: 4px; padding: 28px; display: grid; gap: 12px; }
-.abonnement h3 { font-size: 23px; line-height: 1.2; }
-.abonnement ul { margin: 4px 0 0; padding-left: 20px; display: grid; gap: 8px; }
 .prijsregel { background: var(--wit); box-shadow: 0 0 0 1px var(--lijn); border-radius: 8px; padding: 22px 24px; display: grid; gap: 8px; }
 .prijsregel b { color: var(--polder); }
 
@@ -427,14 +425,6 @@ body::before {
     },
     {
      "@type": "Offer",
-     "itemOffered": {
-      "@type": "Service",
-      "name": "Abonnement vaste planner",
-      "description": "Vaste financieel planner voor personen, gezinnen en families, ook op moeilijke momenten."
-     }
-    },
-    {
-     "@type": "Offer",
      "price": "0",
      "priceCurrency": "EUR",
      "itemOffered": {
@@ -525,7 +515,7 @@ body::before {
      "name": "Wat kost het?",
      "acceptedAnswer": {
       "@type": "Answer",
-      "text": "De kennismaking kost niets. Voor een traject spreken we vooraf een vaste prijs af, inclusief btw, vastgelegd in de opdrachtbevestiging. Wie daarna een vaste planner wil, kiest voor het abonnement."
+      "text": "De kennismaking kost niets. Voor een traject spreken we vooraf een vaste prijs af, inclusief btw, vastgelegd in de opdrachtbevestiging."
      }
     },
     {
@@ -602,7 +592,7 @@ body::before {
     </a>
     <nav class="nav" aria-label="Hoofdmenu">
       <a class="lnk" href="#levens">Drie levens</a>
-      <a class="lnk" href="#poorten">Vier poorten</a>
+      <a class="lnk" href="#poorten">4R-model</a>
       <a class="lnk" href="#over">Over mij</a>
       <a class="lnk" href="#werkwijze">Werkwijze</a>
       <a class="knop vol" href="#contact">Kennismaken</a>
@@ -622,8 +612,8 @@ body::before {
         <a class="knop leeg" href="#werkwijze">Zo werk ik</a>
       </div>
       <div class="nieuwsbrief">
-        <p><b>Waarvoor doe je het?</b> Elke zondag één vraag, één inzicht en één stap voor die week. Mijn nieuwsbrief op LinkedIn.</p>
-        <a class="libutton" href="https://www.linkedin.com/build-relation/newsletter-follow?entityUrn=7479311765558960129" target="_blank" rel="noopener">Abonneren op LinkedIn</a>
+        <p><span class="label">Wekelijkse nieuwsbrief</span><b>Waarvoor doe je het?</b> Elke zondag één vraag, één inzicht en één stap, gratis op LinkedIn.</p>
+        <a class="libutton" href="https://www.linkedin.com/build-relation/newsletter-follow?entityUrn=7479311765558960129" target="_blank" rel="noopener">Gratis abonneren</a>
       </div>
       <p class="klein waar">Gesprekken in de buitenlucht, bij je thuis, in Wolphaartsdijk of online.</p>
     </div>
@@ -695,30 +685,30 @@ body::before {
   <div class="wrap">
     <div class="kop">
       <p class="kicker">Het 4R-model</p>
-      <h2 id="h-poorten">Elke grote keuze gaat door vier <span class="lat">poorten</span>.</h2>
+      <h2 id="h-poorten">Elke grote keuze toets ik aan vier <span class="lat">R's</span>.</h2>
       <p class="rust">Een huis kopen, een bedrijf verkopen, eerder stoppen, de kinderen helpen. Ik toets elke grote keuze op dezelfde vier vragen. Zo zie je waar hij het eerst gaat wiebelen.</p>
     </div>
     <div class="poorten">
       <div class="poort">
-        <svg class="paal" viewBox="-6 -6 52 112" preserveAspectRatio="xMinYMid meet" aria-hidden="true"><g fill="none" stroke="#183026" stroke-width="6"><path d="M0 0V100M40 0V100M0 62H40"/></g></svg>
+        <span class="r" aria-hidden="true">R</span>
         <h3>Richting</h3>
         <p class="vraag">Waar leef je voor, en dient deze keuze dat?</p>
         <p>Eerst je levensdoelen, in je eigen woorden. Pas daarna de cijfers.</p>
       </div>
       <div class="poort">
-        <svg class="paal" viewBox="-6 -6 52 112" preserveAspectRatio="xMinYMid meet" aria-hidden="true"><g fill="none" stroke="#183026" stroke-width="6"><path d="M0 0V100M40 0V100M0 62H40"/></g></svg>
+        <span class="r" aria-hidden="true">R</span>
         <h3>Rust</h3>
         <p class="vraag">Houdt het stand bij een lang, kort of rot leven?</p>
         <p>Elk scenario doorgerekend, met wat er nog ontbreekt in je vangnet.</p>
       </div>
       <div class="poort">
-        <svg class="paal" viewBox="-6 -6 52 112" preserveAspectRatio="xMinYMid meet" aria-hidden="true"><g fill="none" stroke="#183026" stroke-width="6"><path d="M0 0V100M40 0V100M0 62H40"/></g></svg>
+        <span class="r" aria-hidden="true">R</span>
         <h3>Ritme</h3>
         <p class="vraag">Past het in wat je elke maand volhoudt?</p>
         <p>Een plan werkt pas als het in je gewone maand past, zonder wilskracht.</p>
       </div>
       <div class="poort">
-        <svg class="paal" viewBox="-6 -6 52 112" preserveAspectRatio="xMinYMid meet" aria-hidden="true"><g fill="none" stroke="#183026" stroke-width="6"><path d="M0 0V100M40 0V100M0 62H40"/></g></svg>
+        <span class="r" aria-hidden="true">R</span>
         <h3>Ruimte</h3>
         <p class="vraag">Wat is genoeg, en wat mag er nu al?</p>
         <p>Genoeg in een bedrag en een jaartal. En wat je niet langer hoeft uit te stellen.</p>
@@ -734,14 +724,13 @@ body::before {
 <section id="over" aria-labelledby="h-over">
   <div class="wrap twee">
     <div class="plak">
-      <img class="portret" src="arko-hoondert-keukentafel.jpg" width="1800" height="1208" loading="lazy" alt="Arko in gesprek met twee mensen aan een keukentafel">
-    </div>
-    <div>
       <div class="kop">
         <p class="kicker">Over mij</p>
         <h2 id="h-over">Ik zeg wat ik zie. De keuze blijft van <span class="lat">jou</span>.</h2>
       </div>
-      <div class="tekst" style="margin-top: 30px;">
+    </div>
+    <div>
+      <div class="tekst">
         <p class="opener">Onmacht omzetten in kracht.</p>
         <p>Dat heb ik jarenlang mogelijk gemaakt. Eerst bij Stichting KiKa. Daarna met een eigen adviesbureau, dat ik na vier jaar verkocht. Ik werkte voor doelen in binnen- en buitenland, van dierenwelzijn tot zelfmoordpreventie, van het Wereld Natuur Fonds tot Greenpeace België. En toen bij KWF, in het managementteam van het grootste goede doel van Nederland. Ik zat aan veel keukentafels waar het ging over geven en nalaten.</p>
         <p>Ik had een mooi appartement in Amsterdam Oud-West, speelde voor het nationale rugbyteam en had een goed salaris. En van binnen was ik een lege huls. Eén vraag duwde ik steeds weg: waarvoor doe je dit?</p>
@@ -759,7 +748,7 @@ body::before {
         <p class="slot">Jarenlang vocht ik tegen wat buiten mijn macht lag: kanker, armoede, de dood. Nu werk ik aan wat je wel in de hand hebt: je keuzes en het leven dat je ermee maakt.</p>
       </div>
       <ul class="feiten">
-        <li><b>CFP in opleiding</b><span>Lindenhaeghe. De titel voer ik pas na certificering.</span></li>
+        <li><b>CFP in opleiding</b><span>Lindenhaeghe</span></li>
         <li><b>MBA</b><span>Quantic School of Business and Technology</span></li>
         <li><b>Vijftien jaar fondsenwerving</b><span>Oprichter van PeerWorks, voormalig hoofd fondsenwerving en MT-lid bij KWF</span></li>
         <li><b>Grote giften en nalatenschappen</b><span>Adviseur bij Het Zeeuwse Landschap, naast mijn praktijk</span></li>
@@ -774,7 +763,7 @@ body::before {
       <div class="kop">
         <p class="kicker">Werkwijze</p>
         <h2 id="h-werk">Je weet vooraf wat het <span class="lat">kost</span>.</h2>
-        <p class="rust">Van kennismaking tot een plan dat je kunt volhouden. Daarna, als je wilt, een vaste planner.</p>
+        <p class="rust">Van kennismaking tot een plan dat je kunt volhouden.</p>
       </div>
       <div class="prijsregel">
         <p><b>Een vaste prijs, vooraf op papier.</b> In euro's, inclusief btw, in de opdrachtbevestiging.</p>
@@ -824,17 +813,6 @@ body::before {
         <p>Wat leeft er nog? We nemen je vragen bij het plan door en kijken hoe de eerste stappen gaan.</p>
       </li>
     </ol>
-    <div class="abonnement">
-      <p class="kicker">Daarna: het abonnement</p>
-      <h3>Je vaste planner, ook als het erop aankomt</h3>
-      <p>Voor personen, gezinnen en families die een most trusted advisor willen: iemand die hun verhaal kent en het geheel overziet.</p>
-      <ul>
-        <li>Je mag me 24 uur per dag, 7 dagen per week bellen.</li>
-        <li>Op moeilijke momenten zorg ik dat alles goed geregeld is.</li>
-        <li>Na een overlijden sta ik je naasten bij.</li>
-        <li>Verandert je leven, dan verandert je plan mee.</li>
-      </ul>
-    </div>
     </div>
   </div>
 </section>
@@ -875,7 +853,7 @@ body::before {
     <div class="kop">
       <p class="kicker">Drie manieren</p>
       <h2 id="h-aanbod">Begin waar het <span class="lat">past</span>.</h2>
-      <p class="rust">Van een nieuwsbrief op zondag tot een planner die jaren met je meeloopt.</p>
+      <p class="rust">Van een nieuwsbrief op zondag tot een plan voor je eigen leven.</p>
     </div>
     <div class="manieren">
       <article class="manier">
@@ -890,7 +868,7 @@ body::before {
       <article class="manier">
         <p class="kicker">Samen met anderen</p>
         <h3>Programma's voor groepen</h3>
-        <p>Een groep leert de vier poorten zelf hanteren, in een paar weken en met één poort per week. Ik ontwerp ze ook voor organisaties die dit hun ondernemers, leden of medewerkers willen bieden.</p>
+        <p>Een groep leert de vier R's zelf hanteren, in een paar weken en met één R per week. Ik ontwerp ze ook voor organisaties die dit hun ondernemers, leden of medewerkers willen bieden.</p>
         <div class="links">
           <a href="mailto:arko@hoondert.me?subject=Wachtlijst%20programma">Geef je interesse aan voor een programma (wachtlijst) <span aria-hidden="true">→</span></a>
         </div>
@@ -898,7 +876,7 @@ body::before {
       <article class="manier een">
         <p class="kicker">Eén op één</p>
         <h3>Je financieel levensplan</h3>
-        <p>Van kennismaking tot visiegesprek, met een uitgebreid plan en naslagwerk voor privé, onderneming en vermogen samen. Daarna kun je een abonnement nemen: dan ben ik je vaste planner, ook op moeilijke momenten.</p>
+        <p>Van kennismaking tot visiegesprek, met een uitgebreid plan en naslagwerk voor privé, onderneming en vermogen samen.</p>
         <div class="links">
           <a href="#werkwijze">Zo verloopt een traject <span aria-hidden="true">→</span></a>
         </div>
@@ -932,7 +910,7 @@ body::before {
       </details>
       <details>
         <summary>Wat kost het?</summary>
-        <div class="antwoord"><p>De kennismaking kost niets. Voor een traject spreken we vooraf een vaste prijs af, inclusief btw, vastgelegd in de opdrachtbevestiging. Wie daarna een vaste planner wil, kiest voor het abonnement.</p></div>
+        <div class="antwoord"><p>De kennismaking kost niets. Voor een traject spreken we vooraf een vaste prijs af, inclusief btw, vastgelegd in de opdrachtbevestiging.</p></div>
       </details>
       <details>
         <summary>Hoe lang duurt een traject?</summary>
