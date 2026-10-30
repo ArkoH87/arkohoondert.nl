@@ -194,8 +194,9 @@ body::before {
 .cijfervervolg { font-size: 15px; line-height: 1.5; color: var(--polder-800); }
 @media (max-width: 420px) { .schaal { gap: 4px; } .schaal button { font-size: 14px; } }
 
-/* 2 Drie levensvragen */
-.levens { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: var(--goot); margin-top: 56px; }
+/* 2 Vier levens */
+.levens { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: var(--goot); margin-top: 56px; }
+@media (max-width: 1100px) { .levens { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
 .leven { background: var(--wit); box-shadow: 0 0 0 1px var(--lijn); border-radius: 4px; padding: 30px; display: grid; gap: 14px; align-content: start; }
 .leven .naam { font-size: 13px; font-weight: 600; letter-spacing: 0.16em; text-transform: uppercase; color: var(--polder); }
 .leven .vraag { font-family: var(--serif); font-weight: 300; font-size: 24px; line-height: 1.25; color: var(--polder); }
@@ -377,7 +378,7 @@ body::before {
    "url": "https://arkohoondert.nl/",
    "logo": "https://arkohoondert.nl/favicon.svg",
    "image": "https://arkohoondert.nl/arko-hoondert-polder.jpg",
-   "description": "Financiële levensplanning in Zeeland en online, voor mensen rond en na hun veertigste die hun leven opnieuw inrichten: stoppen of minder werken, de kinderen helpen, het bedrijf verkopen, nalaten. Het gesprek begint bij waar je voor leeft; daarna wordt doorgerekend of het klopt bij een lang, kort of rot leven.",
+   "description": "Financiële levensplanning in Zeeland en online, voor mensen rond en na hun veertigste die hun leven opnieuw inrichten: stoppen of minder werken, de kinderen helpen, het bedrijf verkopen, nalaten. Het gesprek begint bij waar je voor leeft; daarna wordt doorgerekend of het klopt bij een lang, kort, rot of apart leven.",
    "email": "arko@hoondert.me",
    "telephone": "+31651739714",
    "address": {
@@ -483,7 +484,7 @@ body::before {
      "name": "Wat is financiële levensplanning?",
      "acceptedAnswer": {
       "@type": "Answer",
-      "text": "Een plan dat begint bij je leven en pas daarna bij je geld. We brengen in kaart wat je wilt, waar je nu staat en wat er gebeurt bij een lang, kort of rot leven. Inkomen, vermogen, wonen, werk, stoppen met werken en nalaten komen samen in één plan, voor privé en onderneming tegelijk."
+      "text": "Een plan dat begint bij je leven en pas daarna bij je geld. We brengen in kaart wat je wilt, waar je nu staat en wat er gebeurt bij een lang, kort, rot of apart leven. Inkomen, vermogen, wonen, werk, stoppen met werken en nalaten komen samen in één plan, voor privé en onderneming tegelijk."
      }
     },
     {
@@ -591,7 +592,7 @@ body::before {
       <span class="wm"><span class="naam">ARKO HOONDERT</span><span class="vak">FINANCIËLE LEVENSPLANNING</span></span>
     </a>
     <nav class="nav" aria-label="Hoofdmenu">
-      <a class="lnk" href="#levens">Drie levens</a>
+      <a class="lnk" href="#levens">Vier levens</a>
       <a class="lnk" href="#poorten">4R-model</a>
       <a class="lnk" href="#over">Over mij</a>
       <a class="lnk" href="#werkwijze">Werkwijze</a>
@@ -653,9 +654,9 @@ body::before {
 <section id="levens" aria-labelledby="h-levens">
   <div class="wrap">
     <div class="kop">
-      <p class="kicker">Drie scenario's</p>
+      <p class="kicker">Vier scenario's</p>
       <h2 id="h-levens">Houdt je plan stand als het leven anders <span class="lat">loopt</span>?</h2>
-      <p class="rust">Niemand weet hoe zijn leven gaat. Je kunt wel weten wat er gebeurt in elk van de drie scenario's. Daar begint rust.</p>
+      <p class="rust">Niemand weet hoe zijn leven gaat. Je kunt wel weten wat er gebeurt in elk van de vier scenario's. Daar begint rust.</p>
     </div>
     <div class="levens">
       <article class="leven">
@@ -671,7 +672,12 @@ body::before {
       <article class="leven">
         <p class="naam">Rot leven</p>
         <p class="vraag">Wat vangt je op als het tegenzit?</p>
-        <p>Langdurig ziek, arbeidsongeschikt, een bedrijf dat stopt of een relatie die eindigt. Hoeveel maanden kom je door, en wat ontbreekt er nog in je vangnet?</p>
+        <p>Langdurig ziek, arbeidsongeschikt of een bedrijf dat stopt. Hoeveel maanden kom je door, en wat ontbreekt er nog in je vangnet?</p>
+      </article>
+      <article class="leven">
+        <p class="naam">Apart leven</p>
+        <p class="vraag">Kan ieder verder als jullie uit elkaar gaan?</p>
+        <p>Een relatie die eindigt, ook na lange tijd. Wat is van wie, wat gebeurt er met het huis en het pensioen, en kan ieder daarna op eigen benen staan? Niemand rekent erop. Toch geeft het rust om te weten hoe het dan zit.</p>
       </article>
     </div>
     <div class="download">
@@ -698,7 +704,7 @@ body::before {
       <div class="poort">
         <span class="r" aria-hidden="true">R</span>
         <h3>Rust</h3>
-        <p class="vraag">Houdt het stand bij een lang, kort of rot leven?</p>
+        <p class="vraag">Houdt het stand bij een lang, kort, rot of apart leven?</p>
         <p>Elk scenario doorgerekend, met wat er nog ontbreekt in je vangnet.</p>
       </div>
       <div class="poort">
@@ -773,7 +779,7 @@ body::before {
         <p class="label">Wat je van mij mag verwachten</p>
         <ul>
           <li>We beginnen bij je leven, niet bij je geld.</li>
-          <li>Ik vraag naar alle drie: lang, kort en rot leven.</li>
+          <li>Ik vraag naar alle vier: lang, kort, rot en apart.</li>
           <li>Ik ben eerlijk, ook als dat schuurt.</li>
           <li>Ik blijf naast je staan, ook als het tegenzit.</li>
         </ul>
@@ -800,7 +806,7 @@ body::before {
       <li>
         <h3>Visiegesprek</h3>
         <p class="meta">Hier maak je de laatste keuzes</p>
-        <p>Ik laat zien waar je staat en wat er gebeurt bij een lang, kort of rot leven. Samen maken we de laatste keuzes: wat is genoeg, wat mag er nu al en wat regel je.</p>
+        <p>Ik laat zien waar je staat en wat er gebeurt bij een lang, kort, rot of apart leven. Samen maken we de laatste keuzes: wat is genoeg, wat mag er nu al en wat regel je.</p>
       </li>
       <li>
         <h3>Je plan en naslagwerk</h3>
@@ -894,7 +900,7 @@ body::before {
     <div class="vragen">
       <details>
         <summary>Wat is financiële levensplanning?</summary>
-        <div class="antwoord"><p>Een plan dat begint bij je leven en pas daarna bij je geld. We brengen in kaart wat je wilt, waar je nu staat en wat er gebeurt bij een lang, kort of rot leven. Inkomen, vermogen, wonen, werk, stoppen met werken en nalaten komen samen in één plan, voor privé en onderneming tegelijk.</p></div>
+        <div class="antwoord"><p>Een plan dat begint bij je leven en pas daarna bij je geld. We brengen in kaart wat je wilt, waar je nu staat en wat er gebeurt bij een lang, kort, rot of apart leven. Inkomen, vermogen, wonen, werk, stoppen met werken en nalaten komen samen in één plan, voor privé en onderneming tegelijk.</p></div>
       </details>
       <details>
         <summary>Wat is het verschil met een financieel adviseur of mijn bank?</summary>
