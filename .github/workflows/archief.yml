@@ -1,0 +1,50 @@
+name: Archief Waarvoor doe je het?
+
+# Elke zondag na de verzending van 09.00 uur: nieuwe edities uit Kit halen en het archief opnieuw bouwen.
+on:
+  schedule:
+    - cron: '17 10 * * 0'   # zondag 10.17 UTC, 11.17 uur in de winter en 12.17 uur in de zomer
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - 'waarvoor-doe-je-het/_edities/**'
+      - 'scripts/bouw-archief.mjs'
+
+permissions:
+  contents: write
+
+concurrency:
+  group: archief
+  cancel-in-progress: false
+
+jobs:
+  bouw:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+      - name: Nieuwe edities uit Kit halen
+        if: ${{ env.KIT_API_KEY != '' }}
+        env:
+          KIT_API_KEY: ${{ secrets.KIT_API_KEY }}
+        run: node scripts/haal-uit-kit.mjs
+      - name: Archief bouwen
+        env:
+          KIT_FORM_URL: ${{ vars.KIT_FORM_URL }}
+        run: node scripts/bouw-archief.mjs
+      - name: Wijzigingen opslaan
+        run: |
+          if [ -n "$(git status --porcelain)" ]; then
+            git config user.name "archief-bot"
+            git config user.email "archief-bot@users.noreply.github.com"
+            git add -A
+            git commit -m "Archief Waarvoor doe je het? bijgewerkt"
+            git push
+          else
+            echo "Niets nieuw."
+          fi
+    env:
+      KIT_API_KEY: ${{ secrets.KIT_API_KEY }}
