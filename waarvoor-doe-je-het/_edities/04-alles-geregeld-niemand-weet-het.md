@@ -2,6 +2,8 @@
 nummer: 4
 titel: Alles geregeld. Niemand weet het.
 datum: 2026-08-02
+onderwerp: Rust
+kort: Je hebt alles geregeld. Maar weet iemand waar het ligt?
 beschrijving: Voor ondernemers die alles geregeld hebben. Wie kan erbij als jij drie weken uitvalt? Eén kleine stap die je thuis duidelijkheid geeft over wat waar staat.
 linkedin: https://www.linkedin.com/pulse/alles-geregeld-niemand-die-het-weet-arko-hoondert--ygnyf
 ---

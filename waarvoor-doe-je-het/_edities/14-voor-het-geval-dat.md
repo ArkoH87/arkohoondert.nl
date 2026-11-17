@@ -2,6 +2,8 @@
 nummer: 14
 titel: Voor het geval dat
 datum: 2026-10-11
+onderwerp: Richting
+kort: De reservesleutel die je bewaart, voor het geval dat.
 beschrijving: Voor ondernemers rond de vijftig of zestig die stoppen of overdragen. Welke reservesleutel bewaar jij nog? Waarom een achterdeur een gemaakte keuze ondermijnt.
 linkedin: https://www.linkedin.com/pulse/voor-het-geval-dat-arko-hoondert--phdce
 ---

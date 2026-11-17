@@ -3,6 +3,8 @@ nummer: 19
 titel: Het weer van dit jaar
 ondertitel: Over regels die elk jaar anders zijn, en wat je elke maand doet.
 datum: 2026-11-15
+onderwerp: Ritme
+kort: Een tarief is geen plan. Het is het weer van dit jaar.
 beschrijving: Voor wie bij elk bericht over box 3 denkt dat hij iets moet doen. Waar is jouw geld voor? Waarom een tarief geen plan is, maar het weer van dit jaar.
 linkedin: https://www.linkedin.com/pulse/het-weer-van-dit-jaar-arko-hoondert-mba-i6jge
 ---

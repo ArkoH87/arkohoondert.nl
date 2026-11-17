@@ -2,6 +2,8 @@
 nummer: 7
 titel: De drie levens
 datum: 2026-08-23
+onderwerp: Rust
+kort: Een plan voor alleen een lang leven valt om.
 beschrijving: Voor wie spaart en plant voor later. Welk van de drie levens krijgt bij jou de minste aandacht? Waarom een plan voor alleen een lang leven omvalt.
 linkedin: https://www.linkedin.com/pulse/de-drie-levens-arko-hoondert--yzv9e
 ---

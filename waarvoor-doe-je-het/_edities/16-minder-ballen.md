@@ -3,6 +3,8 @@ nummer: 16
 titel: Minder ballen
 ondertitel: Over een keuze die me deze week meer kostte dan geld.
 datum: 2026-10-25
+onderwerp: Ruimte
+kort: Wat je al betaald hebt, verplicht je tot niets.
 beschrijving: Voor wie twijfelt of hij moet stoppen omdat hij er al zoveel in stak. Welke bal houd jij hoog? Waarom wat je al betaalde je tot niets verplicht.
 linkedin: https://www.linkedin.com/pulse/minder-ballen-arko-hoondert-eeiwe
 ---

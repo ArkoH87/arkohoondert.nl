@@ -2,6 +2,8 @@
 nummer: 8
 titel: De acht stenen
 datum: 2026-08-30
+onderwerp: Richting
+kort: Acht stenen op de grond, en de vraag hoe je naar de zevende kijkt.
 beschrijving: Voor ondernemers rond de vijftig die leven alsof tijd eindeloos is. Hoeveel stenen heb je nog? Een oefening die laat zien dat kiezen de kern is.
 linkedin: https://www.linkedin.com/pulse/de-acht-stenen-arko-hoondert--tqbke
 ---

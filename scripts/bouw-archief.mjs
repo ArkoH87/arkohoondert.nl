@@ -191,33 +191,87 @@ ${aanmelden()}`;
   });
 }
 
+const ONDERWERPEN = [
+  ['Richting', 'waar leef je voor?'],
+  ['Rust', 'wat als het tegenzit?'],
+  ['Ritme', 'wat doe je elke maand?'],
+  ['Ruimte', 'wat is genoeg?'],
+];
+
+function aanmeldRegel() {
+  if (KIT_FORM_URL) {
+    return `<form class="aanmeld regel" action="${esc(KIT_FORM_URL)}" method="post">
+      <label class="sr" for="email-kop">E-mailadres</label>
+      <input id="email-kop" name="email_address" type="email" autocomplete="email" required placeholder="Je e-mailadres">
+      <button class="knop vol" type="submit">Elke zondag ontvangen</button>
+    </form>
+    <p class="klein">Gratis. Je bevestigt eerst per mail, afmelden kan onder elke mail.</p>`;
+  }
+  return `<p><a class="knop vol" href="${LINKEDIN_VOLGEN}" target="_blank" rel="noopener">Elke zondag ontvangen via LinkedIn <span aria-hidden="true">↗</span></a></p>`;
+}
+
 function overzicht(edities) {
-  const lijst = edities.map((e) => `<li>
-      <a href="${PAD}${e.slug}/">
-        <span class="klein">Editie ${e.nummer} · <time datetime="${e.datum}">${datumNL(e.datum)}</time></span>
-        <span class="titel">${esc(e.titel)}</span>
-        ${e.beschrijving ? `<span class="besch">${esc(e.beschrijving)}</span>` : ''}
-      </a>
-    </li>`).join('\n    ');
-  const inhoud = `<section class="archief-kop">
+  const rijen = edities.map((e) => {
+    const zoek = [e.titel, e.kort, e.beschrijving, e.onderwerp].filter(Boolean).join(' ').toLowerCase();
+    return `<li data-onderwerp="${esc(e.onderwerp || '')}" data-zoek="${esc(zoek)}">
+        <a href="${PAD}${e.slug}/">
+          <span class="rij-kop"><span class="titel">${esc(e.titel)}</span><time datetime="${e.datum}">${datumNL(e.datum)}</time></span>
+          ${e.kort || e.ondertitel ? `<span class="kort">${esc(e.kort || e.ondertitel)}</span>` : ''}
+        </a>
+      </li>`;
+  }).join('\n      ');
+  const opties = ONDERWERPEN.map(([r, v]) => `<option value="${r}">${r}: ${v}</option>`).join('');
+  const inhoud = `<section class="essays">
   <div class="wrap smal">
-    <p class="kicker">Nieuwsbrief</p>
-    <h1>Waarvoor doe je het?</h1>
+    <h1>Edities</h1>
     <p class="rust">Elke zondag één vraag, één inzicht en één stap. Over geld, werk en de keuzes die je ooit nog wilt maken.</p>
-    <p><a class="knop vol" href="#aanmelden">Elke zondag ontvangen</a> <a class="knop leeg" href="${PAD}laatste/">Lees de nieuwste editie</a></p>
+    ${aanmeldRegel()}
+    <div class="zoekbalk" role="search">
+      <label class="sr" for="zoek">Zoek in de edities</label>
+      <input id="zoek" type="search" placeholder="Zoek in de edities" autocomplete="off">
+      <label class="sr" for="onderwerp">Filter op onderwerp</label>
+      <select id="onderwerp"><option value="">Alle onderwerpen</option>${opties}</select>
+    </div>
+    <ul class="rijen" id="rijen">
+      ${rijen}
+    </ul>
+    <p class="geen klein" id="geen" hidden>Geen editie gevonden. Probeer een ander woord.</p>
+    <nav class="pager" id="pager" aria-label="Pagina's" hidden>
+      <button class="lnk" type="button" id="nieuwer">← Nieuwere edities</button>
+      <span class="klein" id="paginanr"></span>
+      <button class="lnk" type="button" id="ouder">Oudere edities →</button>
+    </nav>
   </div>
 </section>
-<section class="archief">
-  <div class="wrap smal">
-    <h2 class="sr">Alle edities</h2>
-    <ol class="edities" reversed>
-    ${lijst}
-    </ol>
-  </div>
-</section>
-${aanmelden()}`;
+<script>
+(() => {
+  const PER = 10;
+  const rijen = [...document.querySelectorAll('#rijen > li')];
+  const zoek = document.getElementById('zoek'), ond = document.getElementById('onderwerp');
+  const pager = document.getElementById('pager'), nr = document.getElementById('paginanr');
+  const ouder = document.getElementById('ouder'), nieuwer = document.getElementById('nieuwer'), geen = document.getElementById('geen');
+  let pagina = 1;
+  function toon() {
+    const q = zoek.value.trim().toLowerCase(), r = ond.value;
+    const passend = rijen.filter((li) => (!r || li.dataset.onderwerp === r) && (!q || li.dataset.zoek.includes(q)));
+    const totaal = Math.max(1, Math.ceil(passend.length / PER));
+    pagina = Math.min(pagina, totaal);
+    rijen.forEach((li) => { li.hidden = true; });
+    passend.slice((pagina - 1) * PER, pagina * PER).forEach((li) => { li.hidden = false; });
+    geen.hidden = passend.length > 0;
+    pager.hidden = totaal < 2;
+    nr.textContent = 'Pagina ' + pagina + ' van ' + totaal;
+    nieuwer.disabled = pagina === 1; ouder.disabled = pagina === totaal;
+  }
+  zoek.addEventListener('input', () => { pagina = 1; toon(); });
+  ond.addEventListener('change', () => { pagina = 1; toon(); });
+  ouder.addEventListener('click', () => { pagina++; toon(); document.getElementById('rijen').scrollIntoView({ behavior: 'smooth' }); });
+  nieuwer.addEventListener('click', () => { pagina--; toon(); document.getElementById('rijen').scrollIntoView({ behavior: 'smooth' }); });
+  toon();
+})();
+</script>`;
   return pagina({
-    titel: 'Waarvoor doe je het? · Alle edities · Arko Hoondert',
+    titel: 'Edities · Waarvoor doe je het? · Arko Hoondert',
     beschrijving: 'Alle edities van Waarvoor doe je het?, de nieuwsbrief van Arko Hoondert. Elke zondag één vraag, één inzicht en één stap.',
     canoniek: `${SITE}${PAD}`,
     jsonld: { '@context': 'https://schema.org', '@type': 'CollectionPage', name: 'Waarvoor doe je het?', url: `${SITE}${PAD}`, inLanguage: 'nl', author: { '@type': 'Person', name: 'Arko Hoondert' } },

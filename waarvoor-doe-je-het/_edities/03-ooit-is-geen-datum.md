@@ -2,6 +2,8 @@
 nummer: 3
 titel: Ooit is geen datum
 datum: 2026-07-26
+onderwerp: Richting
+kort: Het lijstje waar nooit iets vanaf gaat, en de vraag die het opent.
 beschrijving: Er is een lijstje waar nooit iets vanaf gaat: ooit. Waarom je belangrijkste zaken nooit urgent worden, en de ene vraag die het gesprek opent.
 linkedin: https://www.linkedin.com/pulse/ooit-geen-datum-arko-hoondert--ubxse
 ---

@@ -2,6 +2,8 @@
 nummer: 2
 titel: Wie ontwerpt jouw leven?
 datum: 2026-07-19
+onderwerp: Ritme
+kort: Je agenda staat vol. Maar wie plant de dingen zonder deadline?
 beschrijving: Je ontwerpt je werkdag tot op het kwartier. Maar wie ontwerpt je leven? Waarom de belangrijkste zaken geen deadline hebben, en hoe een ritme helpt.
 linkedin: https://www.linkedin.com/pulse/wie-ontwerpt-jouw-leven-arko-hoondert--a0eqf
 ---

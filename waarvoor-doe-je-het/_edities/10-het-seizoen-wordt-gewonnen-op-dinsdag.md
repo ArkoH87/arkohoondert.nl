@@ -2,6 +2,8 @@
 nummer: 10
 titel: Het seizoen wordt gewonnen op dinsdag
 datum: 2026-09-13
+onderwerp: Ritme
+kort: Het werk dat niemand ziet, weegt zwaarder dan het besluit dat iedereen ziet.
 beschrijving: Voor wie rond de veertig of vijftig het leven opnieuw inricht. Wat is jouw training die niemand ziet? Waarom vaste routines zwaarder wegen dan één besluit.
 linkedin: https://www.linkedin.com/pulse/het-seizoen-wordt-gewonnen-op-dinsdag-arko-hoondert--w3y4e
 ---
