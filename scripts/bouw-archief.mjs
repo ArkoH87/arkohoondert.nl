@@ -321,9 +321,10 @@ function gesprekPagina() {
       <p class="kicker">${esc(kicker)}</p>
       <h1>Het gesprek</h1>
       <p class="rust">${esc(titel)}. ${esc(intro)}</p>
-      <dl class="prijs"><div><dt>Duur</dt><dd>120 minuten</dd></div><div><dt>Prijs</dt><dd>€495 inclusief btw</dd></div></dl>
+      <dl class="prijs"><div><dt>Alleen</dt><dd>90 minuten · €395</dd></div><div><dt>Samen met je partner</dt><dd>120 minuten · €495</dd></div></dl>
+      <p class="klein">Prijzen inclusief btw.</p>
       ${boek}
-      <p class="klein">Start je binnen drie maanden een traject, dan trekken we de €495 af van de vaste prijs.</p>
+      <p class="klein">Start je binnen drie maanden een traject, dan trekken we het bedrag af van de vaste prijs.</p>
       <div class="eerst">
         <p><b>Eerst kijken of het klikt?</b> Plan een kennismaking van 20 minuten, kosteloos en via video.</p>
         <a class="knop leeg" href="${KENNISMAKING_URL}" target="_blank" rel="noopener">Plan een kennismaking <span aria-hidden="true">↗</span></a>
@@ -343,9 +344,9 @@ function gesprekPagina() {
 </section>`;
   return pagina({
     titel: 'Het gesprek · Arko Hoondert',
-    beschrijving: 'Een persoonlijk gesprek van twee uur over je leven en je geld, alleen of samen met je partner. €495 inclusief btw, verrekend als je een traject start.',
+    beschrijving: 'Een persoonlijk gesprek over je leven en je geld: alleen 90 minuten voor €395, samen met je partner 120 minuten voor €495, inclusief btw. Verrekend als je een traject start.',
     canoniek: `${SITE}/hetgesprek/`,
-    jsonld: { '@context': 'https://schema.org', '@type': 'Service', name: 'Het gesprek', provider: { '@type': 'Person', name: 'Arko Hoondert' }, areaServed: 'NL', offers: { '@type': 'Offer', price: '495', priceCurrency: 'EUR' }, url: `${SITE}/hetgesprek/` },
+    jsonld: { '@context': 'https://schema.org', '@type': 'Service', name: 'Het gesprek', provider: { '@type': 'Person', name: 'Arko Hoondert' }, areaServed: 'NL', offers: [{ '@type': 'Offer', name: 'Alleen, 90 minuten', price: '395', priceCurrency: 'EUR' }, { '@type': 'Offer', name: 'Samen met je partner, 120 minuten', price: '495', priceCurrency: 'EUR' }], url: `${SITE}/hetgesprek/` },
     inhoud,
   });
 }

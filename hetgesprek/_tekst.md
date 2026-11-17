@@ -1,7 +1,7 @@
 ## Kop
 Via video · alleen of samen met je partner
 Persoonlijk gesprek, voor jou of voor jullie samen
-Neem de keuze mee die je het langst voor je uit schuift. In twee uur leggen we je leven en je geld naast elkaar. Daarna weet je waar je staat en wat je eerste stap is.
+Neem de keuze mee die je het langst voor je uit schuift. In anderhalf uur, of twee uur als jullie samen komen, leggen we je leven en je geld naast elkaar. Daarna weet je waar je staat en wat je eerste stap is.
 
 ## Wat je kunt verwachten
 Wat voor cijfer geef je je leven nu? Wat schuif je voor je uit? Wat heb je al geregeld, en wat mist er nog? Welke grote levensmomenten komen eraan? Wanneer kun je stoppen, en wanneer is het genoeg? We gaan samen in gesprek over hoe we jouw leven een tikje beter kunnen maken.
@@ -18,7 +18,7 @@ Ik ben Arko Hoondert, financieel levensplanner. Tien jaar lang was ik betrokken 
 ## Zo werkt het
 1. **Kies een moment.** Je kiest een tijd in mijn agenda en betaalt meteen, met creditcard, Apple Pay of Google Pay.
 2. **Bereid je kort voor.** Je krijgt de levensvragen en een korte checklist van wat je al hebt: inkomen, spaargeld, pensioen, hypotheek, testament, verzekeringen en eventueel een bv. Bedragen bij benadering zijn genoeg, en documenten hoef je niet te sturen.
-3. **Het gesprek.** We spreken elkaar via video. Wil je samen met je partner? Graag, zonder extra kosten.
+3. **Het gesprek.** We spreken elkaar via video. Kom je alleen, dan duurt het 90 minuten. Kom je samen met je partner, dan nemen we 120 minuten, zodat jullie allebei aan bod komen.
 
 ## Wat het niet is
 Ik adviseer niet over specifieke financiële producten en bemiddel er niet in. Ik heb geen vergunning op grond van de Wet op het financieel toezicht. Komt een product aan de orde, zoals een hypotheek of een belegging, dan verwijs ik je naar een adviseur met vergunning. Voor een testament of huwelijkse voorwaarden ga je naar de notaris.
@@ -27,9 +27,9 @@ Ik adviseer niet over specifieke financiële producten en bemiddel er niet in. I
 ### Voor wie is dit?
 Voor wie rond of na zijn veertigste het leven opnieuw inricht. Wanneer kan ik stoppen? Help ik de kinderen nu of later? Is dit nog het goede huis? Of je nu in loondienst bent, een eenmanszaak hebt of een bv.
 ### Wat is het verschil met de kennismaking?
-De kennismaking duurt 20 minuten en is kosteloos: je stelt je vraag en we kijken of het klikt. Het gesprek is het echte werk: twee uur, met je levenskaart op papier.
+De kennismaking duurt 20 minuten en is kosteloos: je stelt je vraag en we kijken of het klikt. Het gesprek is het echte werk: anderhalf of twee uur, met je levenskaart op papier.
 ### Kan mijn partner mee?
-Graag. Veel keuzes maak je samen. De prijs blijft hetzelfde, en jullie krijgen allebei de levenskaart.
+Graag. Veel keuzes maak je samen. Samen duurt het gesprek 120 minuten en kost het €495 inclusief btw, en jullie krijgen allebei de levenskaart.
 ### Wat moet ik voorbereiden?
 De levensvragen en de checklist. Op de checklist vul je alleen in wat er is, met bedragen bij benadering. Weet je iets niet, laat het dan open: dat zoeken we samen uit. Volledige cijfers en documenten komen pas in een traject, via een beveiligde weg.
 ### Waar spreken we af?
