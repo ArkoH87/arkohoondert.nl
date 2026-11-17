@@ -8,7 +8,7 @@ Wat voor cijfer geef je je leven nu? Wat schuif je voor je uit? Wat heb je al ge
 
 Daarna leggen we je inkomen, vermogen, pensioen, wonen en wat je al geregeld hebt ernaast. En we kijken wat er gebeurt in vier levens. Bij een lang leven word je ouder dan je dacht. Bij een kort leven val je eerder weg. Bij een rot leven kun je niet meer werken zoals nu. En bij een apart leven gaan jullie uit elkaar.
 
-Binnen een week krijg je een samenvatting van één à twee pagina's: waar je staat, wat opvalt in de vier levens en je drie volgende stappen.
+Binnen een week krijg je je levenskaart. Dat is één vel met per leven een kleur: groen staat goed, oranje vraagt aandacht, rood is nog niet geregeld. Daaronder staat wat opvalt, en je drie volgende stappen.
 
 Is een volledig plan daarna zinvol, dan zeg ik dat, met een vaste prijs. Is het niet nodig, dan zeg ik dat ook.
 
@@ -17,7 +17,7 @@ Ik ben Arko Hoondert, financieel levensplanner. Tien jaar lang was ik betrokken 
 
 ## Zo werkt het
 1. **Kies een moment.** Je kiest een tijd in mijn agenda en betaalt meteen, met creditcard, Apple Pay of Google Pay.
-2. **Bereid je kort voor.** Je krijgt de levensvragen en een korte checklist van wat je al hebt: pensioen, hypotheek, testament, verzekeringen en eventueel een bv. Bedragen bij benadering zijn genoeg, en documenten hoef je niet te sturen.
+2. **Bereid je kort voor.** Je krijgt de levensvragen en een korte checklist van wat je al hebt: inkomen, spaargeld, pensioen, hypotheek, testament, verzekeringen en eventueel een bv. Bedragen bij benadering zijn genoeg, en documenten hoef je niet te sturen.
 3. **Het gesprek.** We spreken elkaar via video. Wil je samen met je partner? Graag, zonder extra kosten.
 
 ## Wat het niet is
@@ -26,10 +26,10 @@ Ik adviseer niet over specifieke financiële producten en bemiddel er niet in. I
 ## Veelgestelde vragen
 ### Voor wie is dit?
 Voor wie rond of na zijn veertigste het leven opnieuw inricht. Wanneer kan ik stoppen? Help ik de kinderen nu of later? Is dit nog het goede huis? Of je nu in loondienst bent, een eenmanszaak hebt of een bv.
-### Wat is het verschil met het eerste contact?
-Het eerste contact duurt twintig minuten en is kosteloos: je stelt je vraag en kijkt of het klikt. Het gesprek is het echte werk: twee uur, met een samenvatting op papier.
+### Wat is het verschil met de kennismaking?
+De kennismaking duurt 15 minuten en is kosteloos: je stelt je vraag en we kijken of het klikt. Het gesprek is het echte werk: twee uur, met je levenskaart op papier.
 ### Kan mijn partner mee?
-Graag. Veel keuzes maak je samen. De prijs blijft hetzelfde, en jullie krijgen allebei de samenvatting.
+Graag. Veel keuzes maak je samen. De prijs blijft hetzelfde, en jullie krijgen allebei de levenskaart.
 ### Wat moet ik voorbereiden?
 De levensvragen en de checklist. Op de checklist vul je alleen in wat er is, met bedragen bij benadering. Weet je iets niet, laat het dan open: dat zoeken we samen uit. Volledige cijfers en documenten komen pas in een traject, via een beveiligde weg.
 ### Waar spreken we af?

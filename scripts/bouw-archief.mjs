@@ -103,10 +103,10 @@ function pagina({ titel, beschrijving, canoniek, ogType = 'website', jsonld, inh
       ${LOCKUP}
     </a>
     <nav class="nav" aria-label="Hoofdmenu">
+      <a class="lnk" href="/#werkwijze">Werkwijze</a>
+      <a class="lnk" href="/hetgesprek/">Het gesprek</a>
       <a class="lnk" href="/waarvoor-doe-je-het/">Edities</a>
       <a class="lnk" href="/over/">Over mij</a>
-      <a class="lnk" href="/hetgesprek/">Het gesprek</a>
-      <a class="lnk" href="/#werkwijze">Werkwijze</a>
       <a class="knop vol" href="/#contact">Kennismaken</a>
     </nav>
   </div>
@@ -296,6 +296,8 @@ function overzicht(edities) {
 // ---------- Het gesprek (/hetgesprek/) uit hetgesprek/_tekst.md ----------
 // Boekingslink van de betaalde afsprakenpagina in Google Agenda. Leeg = knop naar het contactblok.
 const BOEK_GESPREK_URL = process.env.BOEK_GESPREK_URL || '';
+// Kosteloze kennismaking van 15 minuten (afsprakenpagina in Google Agenda).
+const KENNISMAKING_URL = 'https://calendar.app.google/uK1NGzYM1U4datPM6';
 function gesprekPagina() {
   const pad = join(ROOT, 'hetgesprek', '_tekst.md');
   if (!existsSync(pad)) return null;
@@ -322,6 +324,10 @@ function gesprekPagina() {
       <dl class="prijs"><div><dt>Duur</dt><dd>120 minuten</dd></div><div><dt>Prijs</dt><dd>€495 inclusief btw</dd></div></dl>
       ${boek}
       <p class="klein">Start je binnen drie maanden een traject, dan trekken we de €495 af van de vaste prijs.</p>
+      <div class="eerst">
+        <p><b>Eerst kijken of het klikt?</b> Plan een kennismaking van 15 minuten, kosteloos en via video.</p>
+        <a class="knop leeg" href="${KENNISMAKING_URL}" target="_blank" rel="noopener">Plan een kennismaking <span aria-hidden="true">↗</span></a>
+      </div>
     </div>
     ${sectie('Wat je kunt verwachten')}
     ${sectie('Over mij')}

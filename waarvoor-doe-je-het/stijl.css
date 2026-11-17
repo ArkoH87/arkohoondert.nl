@@ -178,3 +178,6 @@ section.klei { background: var(--klei); }
 .vragen details p { margin: 12px 0 0; line-height: 1.6; }
 .terug { margin-top: 32px; }
 @media (max-width: 560px) { .boekkaart { padding: 24px 20px 20px; } .prijs { gap: 28px; } }
+
+.eerst { margin-top: 20px; padding-top: 18px; border-top: 1px solid var(--polder-200); display: flex; flex-wrap: wrap; gap: 12px 20px; align-items: center; justify-content: space-between; }
+.eerst p { margin: 0; flex: 1 1 260px; line-height: 1.5; }
