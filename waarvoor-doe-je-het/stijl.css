@@ -152,3 +152,29 @@ section.klei { background: var(--klei); }
 .over-aanmelden { margin-top: 64px; padding-top: 8px; border-top: 1px solid var(--polder-200); }
 .over-aanmelden .rust { margin: 0 0 20px; }
 @media (max-width: 560px) { .tijdlijn li { grid-template-columns: 1fr; gap: 2px; } }
+
+/* Het gesprek */
+.gesprek { padding: 56px 0 96px; }
+.boekkaart { background: var(--wit); box-shadow: 0 0 0 1px var(--polder-200); border-radius: 6px; padding: 32px 32px 24px; }
+.boekkaart h1 { font-family: var(--serif); font-weight: 300; font-size: clamp(36px, 6vw, 48px); line-height: 1.1; margin: 10px 0 14px; }
+.boekkaart .rust { margin: 0 0 24px; font-size: 18px; line-height: 1.6; }
+.prijs { display: flex; gap: 40px; margin: 0 0 20px; }
+.prijs dt { font-size: 13px; color: var(--polder-500); }
+.prijs dd { margin: 2px 0 0; font-weight: 600; color: var(--polder-900); }
+.knop.breed { width: 100%; justify-content: space-between; }
+.boekkaart .klein { margin: 12px 0 0; }
+.gesprek h2 { font-family: var(--serif); font-weight: 300; font-size: 28px; line-height: 1.2; margin: 56px 0 16px; color: var(--polder-900); }
+.gesprek .tekst p, .gesprek .tekst li { font-family: var(--serif); font-weight: 300; font-size: 19px; line-height: 1.7; color: var(--polder-900); }
+.gesprek .tekst p { margin: 0 0 1em; }
+.stappen ol { list-style: none; counter-reset: stap; padding: 0; margin: 0; }
+.stappen li { counter-increment: stap; position: relative; padding: 14px 0 14px 3em; border-top: 1px solid var(--polder-200); }
+.stappen li::before { content: "0" counter(stap); position: absolute; left: 0; top: 14px; font: 600 14px/2.2 var(--sans); color: var(--polder-500); }
+.stappen li strong { font-weight: 600; }
+.vragen details { border-top: 1px solid var(--polder-200); padding: 16px 0; }
+.vragen details:last-child { border-bottom: 1px solid var(--polder-200); }
+.vragen summary { cursor: pointer; font-weight: 600; color: var(--polder-900); list-style: none; display: flex; justify-content: space-between; gap: 16px; }
+.vragen summary::after { content: "+"; color: var(--polder-500); font-weight: 400; }
+.vragen details[open] summary::after { content: "−"; }
+.vragen details p { margin: 12px 0 0; line-height: 1.6; }
+.terug { margin-top: 32px; }
+@media (max-width: 560px) { .boekkaart { padding: 24px 20px 20px; } .prijs { gap: 28px; } }

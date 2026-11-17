@@ -105,6 +105,7 @@ function pagina({ titel, beschrijving, canoniek, ogType = 'website', jsonld, inh
     <nav class="nav" aria-label="Hoofdmenu">
       <a class="lnk" href="/waarvoor-doe-je-het/">Edities</a>
       <a class="lnk" href="/over/">Over mij</a>
+      <a class="lnk" href="/hetgesprek/">Het gesprek</a>
       <a class="lnk" href="/#werkwijze">Werkwijze</a>
       <a class="knop vol" href="/#contact">Kennismaken</a>
     </nav>
@@ -292,6 +293,57 @@ function overzicht(edities) {
   });
 }
 
+// ---------- Het gesprek (/hetgesprek/) uit hetgesprek/_tekst.md ----------
+// Boekingslink van de betaalde afsprakenpagina in Google Agenda. Leeg = knop naar het contactblok.
+const BOEK_GESPREK_URL = process.env.BOEK_GESPREK_URL || '';
+function gesprekPagina() {
+  const pad = join(ROOT, 'hetgesprek', '_tekst.md');
+  if (!existsSync(pad)) return null;
+  const delen = {};
+  for (const blok of readFileSync(pad, 'utf8').split(/^## /m).filter(Boolean)) {
+    const i = blok.indexOf('\n');
+    delen[blok.slice(0, i).trim()] = blok.slice(i + 1).trim();
+  }
+  const [kicker, titel, intro] = delen['Kop'].split('\n');
+  const vragen = delen['Veelgestelde vragen'].split(/^### /m).filter(Boolean).map((v) => {
+    const i = v.indexOf('\n');
+    return `<details><summary>${esc(v.slice(0, i).trim())}</summary>${markdownNaarHtml(v.slice(i + 1).trim())}</details>`;
+  }).join('\n      ');
+  const boek = BOEK_GESPREK_URL
+    ? `<a class="knop vol breed" href="${esc(BOEK_GESPREK_URL)}" target="_blank" rel="noopener">Kies een moment <span aria-hidden="true">→</span></a>`
+    : `<a class="knop vol breed" href="/#contact">Kies een moment <span aria-hidden="true">→</span></a>`;
+  const sectie = (kop) => `<h2>${esc(kop)}</h2>\n    <div class="tekst">${markdownNaarHtml(delen[kop])}</div>`;
+  const inhoud = `<section class="gesprek">
+  <div class="wrap smal">
+    <div class="boekkaart" id="boeken">
+      <p class="kicker">${esc(kicker)}</p>
+      <h1>Het gesprek</h1>
+      <p class="rust">${esc(titel)}. ${esc(intro)}</p>
+      <dl class="prijs"><div><dt>Duur</dt><dd>120 minuten</dd></div><div><dt>Prijs</dt><dd>€495 inclusief btw</dd></div></dl>
+      ${boek}
+      <p class="klein">Start je binnen drie maanden een traject, dan trekken we de €495 af van de vaste prijs.</p>
+    </div>
+    ${sectie('Wat je kunt verwachten')}
+    ${sectie('Over mij')}
+    <h2>Zo werkt het</h2>
+    <div class="tekst stappen">${markdownNaarHtml(delen['Zo werkt het'])}</div>
+    ${sectie('Wat het niet is')}
+    <h2>Veelgestelde vragen</h2>
+    <div class="vragen">
+      ${vragen}
+    </div>
+    <p class="terug"><a href="#boeken">Terug naar boeken ↑</a></p>
+  </div>
+</section>`;
+  return pagina({
+    titel: 'Het gesprek · Arko Hoondert',
+    beschrijving: 'Een persoonlijk gesprek van twee uur over je leven en je geld, alleen of samen met je partner. €495 inclusief btw, verrekend als je een traject start.',
+    canoniek: `${SITE}/hetgesprek/`,
+    jsonld: { '@context': 'https://schema.org', '@type': 'Service', name: 'Het gesprek', provider: { '@type': 'Person', name: 'Arko Hoondert' }, areaServed: 'NL', offers: { '@type': 'Offer', price: '495', priceCurrency: 'EUR' }, url: `${SITE}/hetgesprek/` },
+    inhoud,
+  });
+}
+
 // ---------- Over mij (/over/) uit over/_tekst.md ----------
 function overPagina() {
   const pad = join(ROOT, 'over', '_tekst.md');
@@ -370,10 +422,13 @@ function bouw() {
   writeFileSync(join(MAP, 'laatste', 'index.html'), laatste(edities[0]));
   const over = overPagina();
   if (over) writeFileSync(join(ROOT, 'over', 'index.html'), over);
+  const gesprek = gesprekPagina();
+  if (gesprek) writeFileSync(join(ROOT, 'hetgesprek', 'index.html'), gesprek);
 
   const vandaag = new Date().toISOString().slice(0, 10);
   const urls = [
     `  <url><loc>${SITE}/</loc><lastmod>2026-10-19</lastmod></url>`,
+    ...(existsSync(join(ROOT, 'hetgesprek', '_tekst.md')) ? [`  <url><loc>${SITE}/hetgesprek/</loc><lastmod>${vandaag}</lastmod></url>`] : []),
     ...(existsSync(join(ROOT, 'over', '_tekst.md')) ? [`  <url><loc>${SITE}/over/</loc><lastmod>${vandaag}</lastmod></url>`] : []),
     `  <url><loc>${SITE}${PAD}</loc><lastmod>${edities[0]?.datum || vandaag}</lastmod></url>`,
     ...edities.map((e) => `  <url><loc>${SITE}${PAD}${e.slug}/</loc><lastmod>${e.datum}</lastmod></url>`),
