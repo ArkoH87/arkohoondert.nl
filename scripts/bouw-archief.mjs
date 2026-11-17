@@ -103,11 +103,11 @@ function pagina({ titel, beschrijving, canoniek, ogType = 'website', jsonld, inh
       ${LOCKUP}
     </a>
     <nav class="nav" aria-label="Hoofdmenu">
-      <a class="lnk" href="/#werkwijze">Werkwijze</a>
+      <a class="lnk" href="/werkwijze/">Werkwijze</a>
       <a class="lnk" href="/hetgesprek/">Het gesprek</a>
       <a class="lnk" href="/waarvoor-doe-je-het/">Edities</a>
       <a class="lnk" href="/over/">Over mij</a>
-      <a class="knop vol" href="/#contact">Kennismaken</a>
+      <a class="knop vol" href="/kennismaken/">Plan een kennismaking</a>
     </nav>
   </div>
 </header>
@@ -123,6 +123,13 @@ ${inhoud}
       <p class="klein" style="margin-top: 18px;">De Perponcherpolderweg 5, 4471 RX Wolphaartsdijk<br>KvK 85352012 · btw-id NL004086452B40<br><a href="mailto:arko@hoondert.me">arko@hoondert.me</a> · <a href="tel:+31651739714">06 51 73 97 14</a></p>
     </div>
     <div>
+      <nav class="juridisch sitelinks" aria-label="Praktijk">
+        <a href="/werkwijze/">Werkwijze</a>
+        <a href="/hetgesprek/">Het gesprek</a>
+        <a href="/kennismaken/">Kennismaken</a>
+        <a href="/waarvoor-doe-je-het/">Edities</a>
+        <a href="/over/">Over mij</a>
+      </nav>
       <nav class="juridisch" aria-label="Juridisch">
         <a href="/algemene-voorwaarden-arko-hoondert.pdf" target="_blank" rel="noopener">Algemene voorwaarden</a>
         <a href="/privacyverklaring-arko-hoondert.pdf" target="_blank" rel="noopener">Privacyverklaring</a>
@@ -293,9 +300,40 @@ function overzicht(edities) {
   });
 }
 
+// ---------- Werkwijze en Kennismaken: pagina's in de schil van de homepage ----------
+// De homepage (index.html) is de bron voor kop, stijl, voet en scripts. De inhoud staat in _sectie.html.
+function vanHome({ map, titel, beschrijving, extra = '' }) {
+  const bron = join(ROOT, map, '_sectie.html');
+  if (!existsSync(bron)) return null;
+  const home = readFileSync(join(ROOT, 'index.html'), 'utf8');
+  const a = home.indexOf('<main id="inhoud">') + '<main id="inhoud">'.length;
+  const b = home.indexOf('</main>');
+  let kop = home.slice(0, a);
+  const url = `${SITE}/${map}/`;
+  kop = kop.replace(/<title>[\s\S]*?<\/title>/, `<title>${esc(titel)}</title>`)
+    .replace(/<meta name="description" content="[^"]*">/, `<meta name="description" content="${esc(beschrijving)}">`)
+    .replace(/<link rel="canonical" href="[^"]*">/, `<link rel="canonical" href="${url}">`)
+    .replace(/<meta property="og:url" content="[^"]*">/, `<meta property="og:url" content="${url}">`)
+    .replace(/<meta property="og:title" content="[^"]*">/, `<meta property="og:title" content="${esc(titel)}">`)
+    .replace(/<meta property="og:description" content="[^"]*">/, `<meta property="og:description" content="${esc(beschrijving)}">`)
+    .replace(/<script type="application\/ld\+json">[\s\S]*?<\/script>/, `<script type="application/ld+json">${JSON.stringify({ '@context': 'https://schema.org', '@type': 'WebPage', name: titel, url, inLanguage: 'nl', isPartOf: { '@type': 'WebSite', url: SITE } })}</script>`)
+    .replace(/href="(favicon\.svg|fonts\/|arko-hoondert)/g, 'href="/$1')
+    .replace(/src="(arko-hoondert|fonts\/)/g, 'src="/$1')
+    .replace(/url\((['"]?)fonts\//g, 'url($1/fonts/')
+    .replace(`<a class="lnk" href="/${map}/">`, `<a class="lnk" href="/${map}/" aria-current="page">`);
+  const voet = home.slice(b);
+  return `${kop}\n${readFileSync(bron, 'utf8')}${extra}\n${voet}`;
+}
+function beginnenBlok() {
+  const home = readFileSync(join(ROOT, 'index.html'), 'utf8');
+  const m = home.match(/<section class="contact" id="contact"[\s\S]*?<\/section>\n/);
+  return m ? `\n${m[0]}` : '';
+}
+
 // ---------- Het gesprek (/hetgesprek/) uit hetgesprek/_tekst.md ----------
-// Boekingslink van de betaalde afsprakenpagina in Google Agenda. Leeg = knop naar het contactblok.
-const BOEK_GESPREK_URL = process.env.BOEK_GESPREK_URL || '';
+// Betaalde afsprakenpagina's in Google Agenda (aangemaakt 18 november 2026, betaling via Stripe).
+const BOEK_ALLEEN_URL = 'https://calendar.google.com/calendar/appointments/schedules/AcZssZ26gBiVdJDFRYG7vXqGGpwhdmHwSfb-5njB06bf7MlQMze9MYmZuUA_tUR_HfDnM62u9WUhBmNA';
+const BOEK_SAMEN_URL = 'https://calendar.google.com/calendar/appointments/schedules/AcZssZ1sH--h7cynaZ1LdYQ7NS4rTDNZCiq2hwpSC3W9ucFylcZ07MxuxLNMk8wucgCs0owXXHk4mgUc';
 // Kosteloze kennismaking van 20 minuten (afsprakenpagina in Google Agenda).
 const KENNISMAKING_URL = 'https://calendar.app.google/uK1NGzYM1U4datPM6';
 function gesprekPagina() {
@@ -311,9 +349,10 @@ function gesprekPagina() {
     const i = v.indexOf('\n');
     return `<details><summary>${esc(v.slice(0, i).trim())}</summary>${markdownNaarHtml(v.slice(i + 1).trim())}</details>`;
   }).join('\n      ');
-  const boek = BOEK_GESPREK_URL
-    ? `<a class="knop vol breed" href="${esc(BOEK_GESPREK_URL)}" target="_blank" rel="noopener">Kies een moment <span aria-hidden="true">→</span></a>`
-    : `<a class="knop vol breed" href="/#contact">Kies een moment <span aria-hidden="true">→</span></a>`;
+  const boek = `<div class="boekknoppen">
+        <a class="knop vol breed" href="${BOEK_ALLEEN_URL}" target="_blank" rel="noopener">Alleen · kies een moment <span aria-hidden="true">↗</span></a>
+        <a class="knop vol breed" href="${BOEK_SAMEN_URL}" target="_blank" rel="noopener">Samen · kies een moment <span aria-hidden="true">↗</span></a>
+      </div>`;
   const sectie = (kop) => `<h2>${esc(kop)}</h2>\n    <div class="tekst">${markdownNaarHtml(delen[kop])}</div>`;
   const inhoud = `<section class="gesprek">
   <div class="wrap smal">
@@ -327,7 +366,7 @@ function gesprekPagina() {
       <p class="klein">Start je binnen drie maanden een traject, dan trekken we het bedrag af van de vaste prijs.</p>
       <div class="eerst">
         <p><b>Eerst kijken of het klikt?</b> Plan een kennismaking van 20 minuten, kosteloos en via video.</p>
-        <a class="knop leeg" href="${KENNISMAKING_URL}" target="_blank" rel="noopener">Plan een kennismaking <span aria-hidden="true">↗</span></a>
+        <a class="knop leeg" href="/kennismaken/">Plan een kennismaking <span aria-hidden="true">→</span></a>
       </div>
     </div>
     ${sectie('Wat je kunt verwachten')}
@@ -434,12 +473,18 @@ function bouw() {
   writeFileSync(join(MAP, 'laatste', 'index.html'), laatste(edities[0]));
   const over = overPagina();
   if (over) writeFileSync(join(ROOT, 'over', 'index.html'), over);
+  const werk = vanHome({ map: 'werkwijze', titel: 'Werkwijze · Arko Hoondert', beschrijving: 'Van kennismaking tot een financieel levensplan met een vaste prijs, vooraf op papier. Zo werk ik, en wat ik niet doe.', extra: beginnenBlok() });
+  if (werk) writeFileSync(join(ROOT, 'werkwijze', 'index.html'), werk);
+  const kennis = vanHome({ map: 'kennismaken', titel: 'Kennismaken · Arko Hoondert', beschrijving: 'Plan een kosteloze kennismaking van 20 minuten via video, of bel of mail. Daarna weet je of het klikt.' });
+  if (kennis) writeFileSync(join(ROOT, 'kennismaken', 'index.html'), kennis);
   const gesprek = gesprekPagina();
   if (gesprek) writeFileSync(join(ROOT, 'hetgesprek', 'index.html'), gesprek);
 
   const vandaag = new Date().toISOString().slice(0, 10);
   const urls = [
     `  <url><loc>${SITE}/</loc><lastmod>2026-10-19</lastmod></url>`,
+    `  <url><loc>${SITE}/werkwijze/</loc><lastmod>${vandaag}</lastmod></url>`,
+    `  <url><loc>${SITE}/kennismaken/</loc><lastmod>${vandaag}</lastmod></url>`,
     ...(existsSync(join(ROOT, 'hetgesprek', '_tekst.md')) ? [`  <url><loc>${SITE}/hetgesprek/</loc><lastmod>${vandaag}</lastmod></url>`] : []),
     ...(existsSync(join(ROOT, 'over', '_tekst.md')) ? [`  <url><loc>${SITE}/over/</loc><lastmod>${vandaag}</lastmod></url>`] : []),
     `  <url><loc>${SITE}${PAD}</loc><lastmod>${edities[0]?.datum || vandaag}</lastmod></url>`,
