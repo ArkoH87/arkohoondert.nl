@@ -27,7 +27,7 @@ Ik adviseer niet over specifieke financiële producten en bemiddel er niet in. I
 ### Voor wie is dit?
 Voor wie rond of na zijn veertigste het leven opnieuw inricht. Wanneer kan ik stoppen? Help ik de kinderen nu of later? Is dit nog het goede huis? Of je nu in loondienst bent, een eenmanszaak hebt of een bv.
 ### Wat is het verschil met de kennismaking?
-De kennismaking duurt 15 minuten en is kosteloos: je stelt je vraag en we kijken of het klikt. Het gesprek is het echte werk: twee uur, met je levenskaart op papier.
+De kennismaking duurt 20 minuten en is kosteloos: je stelt je vraag en we kijken of het klikt. Het gesprek is het echte werk: twee uur, met je levenskaart op papier.
 ### Kan mijn partner mee?
 Graag. Veel keuzes maak je samen. De prijs blijft hetzelfde, en jullie krijgen allebei de levenskaart.
 ### Wat moet ik voorbereiden?

@@ -296,7 +296,7 @@ function overzicht(edities) {
 // ---------- Het gesprek (/hetgesprek/) uit hetgesprek/_tekst.md ----------
 // Boekingslink van de betaalde afsprakenpagina in Google Agenda. Leeg = knop naar het contactblok.
 const BOEK_GESPREK_URL = process.env.BOEK_GESPREK_URL || '';
-// Kosteloze kennismaking van 15 minuten (afsprakenpagina in Google Agenda).
+// Kosteloze kennismaking van 20 minuten (afsprakenpagina in Google Agenda).
 const KENNISMAKING_URL = 'https://calendar.app.google/uK1NGzYM1U4datPM6';
 function gesprekPagina() {
   const pad = join(ROOT, 'hetgesprek', '_tekst.md');
@@ -325,7 +325,7 @@ function gesprekPagina() {
       ${boek}
       <p class="klein">Start je binnen drie maanden een traject, dan trekken we de €495 af van de vaste prijs.</p>
       <div class="eerst">
-        <p><b>Eerst kijken of het klikt?</b> Plan een kennismaking van 15 minuten, kosteloos en via video.</p>
+        <p><b>Eerst kijken of het klikt?</b> Plan een kennismaking van 20 minuten, kosteloos en via video.</p>
         <a class="knop leeg" href="${KENNISMAKING_URL}" target="_blank" rel="noopener">Plan een kennismaking <span aria-hidden="true">↗</span></a>
       </div>
     </div>
