@@ -16,7 +16,7 @@ Is een volledig plan daarna zinvol, dan zeg ik dat, met een vaste prijs. Is het 
 Ik ben Arko Hoondert, financieel levensplanner. Tien jaar lang was ik betrokken bij het ophalen van ruim 250 miljoen euro voor goede doelen, en ik zat aan veel keukentafels waar het ging over het gevoel van onmacht in het leven. Nu help ik mensen leven vanuit kracht. [Het hele verhaal](https://arkohoondert.nl/over/)
 
 ## Zo werkt het
-1. **Kies een moment.** Je kiest een tijd in mijn agenda en betaalt meteen, met creditcard, Apple Pay of Google Pay.
+1. **Kies een moment.** Je kiest een tijd in mijn agenda, minimaal 15 dagen vooruit, en betaalt meteen, met creditcard, Apple Pay of Google Pay.
 2. **Bereid je kort voor.** Je krijgt de levensvragen en een korte checklist van wat je al hebt: inkomen, spaargeld, pensioen, hypotheek, testament, verzekeringen en eventueel een bv. Bedragen bij benadering zijn genoeg, en documenten hoef je niet te sturen.
 3. **Het gesprek.** We spreken elkaar via video. Kom je alleen, dan duurt het 90 minuten. Kom je samen met je partner, dan nemen we 120 minuten, zodat jullie allebei aan bod komen.
 
@@ -35,8 +35,8 @@ De levensvragen en de checklist. Op de checklist vul je alleen in wat er is, met
 ### Waar spreken we af?
 Via video. Woon je in Zeeland en wil je liever aan je keukentafel zitten? Zet het in de opmerking bij je boeking. Binnen 30 kilometer reken ik geen reiskosten.
 ### Kan ik verzetten of annuleren?
-Tot 48 uur van tevoren kosteloos. Daarna kan dat niet meer, behalve binnen je bedenktijd: zie hieronder. Gebeurt er iets onverwachts, neem dan contact met me op.
+Tot 48 uur van tevoren kosteloos. Daarna kan dat niet meer. Gebeurt er iets onverwachts, neem dan contact met me op.
 ### Heb ik bedenktijd?
-Boek je als particulier, dan heb je 14 dagen bedenktijd, te rekenen vanaf je boeking. Plan je het gesprek binnen die 14 dagen, dan vraag je mij bij het boeken uitdrukkelijk om eerder te beginnen. Je verklaart dan ook dat je bedenktijd vervalt zodra het gesprek heeft plaatsgevonden. Zie je binnen je bedenktijd en voor het gesprek toch af, dan krijg je het volle bedrag terug. Boek je voor je bedrijf, dan geldt geen bedenktijd.
+Ja. Boek je als particulier, dan heb je 14 dagen bedenktijd, te rekenen vanaf je boeking. Zie je in die tijd af, dan krijg je het volle bedrag terug. Omdat je minimaal 15 dagen vooruit boekt, valt het gesprek altijd na je bedenktijd. Boek je voor je bedrijf, dan geldt geen bedenktijd.
 ### Wat gebeurt er met mijn gegevens?
-Wat we bespreken, blijft tussen ons. Stuur geen burgerservicenummer of financiële documenten per mail. Lees ook mijn [privacyverklaring](https://arkohoondert.nl/privacyverklaring-arko-hoondert.pdf).
+Wat we bespreken, blijft tussen ons. Ik neem het gesprek op als je dat goed vindt, en laat het uitwerken, ook met AI. Zo krijg je binnen een week je levenskaart. Aan het begin vraag ik of het goed is; je kunt altijd nee zeggen. De opname verwijder ik binnen 30 dagen. Stuur geen burgerservicenummer of financiële documenten per mail. Lees ook mijn [privacyverklaring](https://arkohoondert.nl/privacyverklaring-arko-hoondert.pdf).
