@@ -103,7 +103,8 @@ function pagina({ titel, beschrijving, canoniek, ogType = 'website', jsonld, inh
       ${LOCKUP}
     </a>
     <nav class="nav" aria-label="Hoofdmenu">
-      <a class="lnk" href="/waarvoor-doe-je-het/">Alle edities</a>
+      <a class="lnk" href="/waarvoor-doe-je-het/">Edities</a>
+      <a class="lnk" href="/over/">Over mij</a>
       <a class="lnk" href="/#werkwijze">Werkwijze</a>
       <a class="knop vol" href="/#contact">Kennismaken</a>
     </nav>
@@ -291,6 +292,42 @@ function overzicht(edities) {
   });
 }
 
+// ---------- Over mij (/over/) uit over/_tekst.md ----------
+function overPagina() {
+  const pad = join(ROOT, 'over', '_tekst.md');
+  if (!existsSync(pad)) return null;
+  const t = readFileSync(pad, 'utf8');
+  const tijdlijn = (t.match(/## Tijdlijn\n([\s\S]*?)\n## /) || [])[1] || '';
+  const verhaal = (t.match(/## Verhaal\n([\s\S]*)$/) || [])[1] || '';
+  const regels = tijdlijn.trim().split('\n').map((r) => r.split('|').map((x) => x.trim()))
+    .map(([j, w]) => `<li><span class="jaar">${esc(j)}</span><span>${inline(w)}</span></li>`).join('\n        ');
+  const inhoud = `<section class="over-mij">
+  <div class="wrap smal">
+    <h1>Hoi, ik ben Arko Hoondert.</h1>
+    <figure class="foto"><img src="/arko-hoondert-polder.jpg" alt="Arko Hoondert in de polder bij Wolphaartsdijk" width="1800" height="1208" loading="eager"></figure>
+    <h2>De versie van twintig seconden</h2>
+    <ol class="tijdlijn">
+        ${regels}
+    </ol>
+    <h2>De versie van twee minuten</h2>
+    <div class="tekst">${markdownNaarHtml(verhaal.trim())}</div>
+    <div class="over-aanmelden">
+      <h2>Elke zondag één vraag</h2>
+      <p class="rust">Eén vraag, één inzicht en één stap. Over geld, werk en de keuzes die je ooit nog wilt maken.</p>
+      ${aanmeldRegel()}
+    </div>
+  </div>
+</section>`;
+  return pagina({
+    titel: 'Over mij · Arko Hoondert',
+    beschrijving: 'Rugbyinternational, tien jaar fondsenwerving, opgebrand, opnieuw begonnen. Nu financieel levensplanner in Zeeland. Het verhaal van Arko Hoondert.',
+    canoniek: `${SITE}/over/`,
+    ogType: 'profile',
+    jsonld: { '@context': 'https://schema.org', '@type': 'ProfilePage', url: `${SITE}/over/`, inLanguage: 'nl', mainEntity: { '@type': 'Person', name: 'Arko Hoondert', jobTitle: 'Financieel levensplanner', url: SITE } },
+    inhoud,
+  });
+}
+
 function laatste(e) {
   const doel = `${PAD}${e.slug}/`;
   return `<!doctype html>
@@ -331,10 +368,13 @@ function bouw() {
   writeFileSync(join(MAP, 'index.html'), overzicht(edities));
   mkdirSync(join(MAP, 'laatste'), { recursive: true });
   writeFileSync(join(MAP, 'laatste', 'index.html'), laatste(edities[0]));
+  const over = overPagina();
+  if (over) writeFileSync(join(ROOT, 'over', 'index.html'), over);
 
   const vandaag = new Date().toISOString().slice(0, 10);
   const urls = [
     `  <url><loc>${SITE}/</loc><lastmod>2026-10-19</lastmod></url>`,
+    ...(existsSync(join(ROOT, 'over', '_tekst.md')) ? [`  <url><loc>${SITE}/over/</loc><lastmod>${vandaag}</lastmod></url>`] : []),
     `  <url><loc>${SITE}${PAD}</loc><lastmod>${edities[0]?.datum || vandaag}</lastmod></url>`,
     ...edities.map((e) => `  <url><loc>${SITE}${PAD}${e.slug}/</loc><lastmod>${e.datum}</lastmod></url>`),
   ];

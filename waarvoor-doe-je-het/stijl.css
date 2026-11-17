@@ -138,3 +138,17 @@ section.klei { background: var(--klei); }
   .zoekbalk { flex-direction: column; align-items: stretch; gap: 0; }
   .zoekbalk select { max-width: none; border-top: 1px solid var(--polder-200); }
 }
+
+/* Over mij */
+.over-mij { padding: 72px 0 96px; }
+.over-mij h1 { font-family: var(--serif); font-weight: 300; font-size: clamp(36px, 6vw, 50px); line-height: 1.1; margin: 0 0 32px; }
+.over-mij h2 { font-family: var(--serif); font-weight: 300; font-size: 26px; line-height: 1.2; margin: 56px 0 20px; color: var(--polder-900); }
+.over-mij .foto { margin: 0; }
+.over-mij .foto img { width: 100%; height: auto; display: block; border-radius: 4px; }
+.tijdlijn { list-style: none; margin: 0; padding: 0; border-top: 1px solid var(--polder-200); }
+.tijdlijn li { display: grid; grid-template-columns: 9.5em 1fr; gap: 16px; padding: 14px 0; border-bottom: 1px solid var(--polder-200); line-height: 1.5; }
+.tijdlijn .jaar { font-size: 14px; color: var(--polder-500); padding-top: 2px; }
+.over-mij .tekst p { font-family: var(--serif); font-weight: 300; font-size: 19px; line-height: 1.7; margin: 0 0 1.1em; color: var(--polder-900); }
+.over-aanmelden { margin-top: 64px; padding-top: 8px; border-top: 1px solid var(--polder-200); }
+.over-aanmelden .rust { margin: 0 0 20px; }
+@media (max-width: 560px) { .tijdlijn li { grid-template-columns: 1fr; gap: 2px; } }
