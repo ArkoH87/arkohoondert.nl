@@ -369,6 +369,11 @@ function overPagina() {
     </ol>
     <h2>De versie van twee minuten</h2>
     <div class="tekst">${markdownNaarHtml(verhaal.trim())}</div>
+    <h2>De versie van twintig minuten</h2>
+    <div class="tekst">
+      <p>Die vertel ik je liever zelf, en dan wil ik vooral jouw verhaal horen. In een kennismaking van twintig minuten via video stel je je vraag en kijken we samen of het klikt. Het kost niets.</p>
+      <p><a class="knop" href="${KENNISMAKING_URL}">Plan een kennismaking</a></p>
+    </div>
     <div class="over-aanmelden">
       <h2>Elke zondag één vraag</h2>
       <p class="rust">Eén vraag, één inzicht en één stap. Over geld, werk en de keuzes die je ooit nog wilt maken.</p>
