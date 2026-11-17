@@ -44,6 +44,22 @@ De website van Arko Hoondert, financieel planner in Zeeland. Eén statische pagi
 - LinkedIn-profiel: website arkohoondert.nl toevoegen.
 - Samenwerkingsblok met Maurice van den Hemel terugzetten zodra hij akkoord geeft.
 
+## Archief Waarvoor doe je het?
+
+Onder `/waarvoor-doe-je-het/` staan alle edities van de nieuwsbrief, nieuwste eerst. `/waarvoor-doe-je-het/laatste/` stuurt altijd door naar de nieuwste editie; die link staat in welkomstmail 1.
+
+| Bestand | Wat |
+| --- | --- |
+| `waarvoor-doe-je-het/_edities/*.md` | De bron: één bestand per editie, met kopblok (nummer, titel, datum, beschrijving, linkedin) |
+| `scripts/bouw-archief.mjs` | Maakt de pagina's, de doorverwijzing en `sitemap.xml`. Draaien: `node scripts/bouw-archief.mjs` |
+| `scripts/haal-uit-kit.mjs` | Haalt verzonden edities uit Kit (Description begint met `Waarvoor doe je het? \| editie N`) |
+| `.github/workflows/archief.yml` | Elke zondag rond 11.17 uur: ophalen, bouwen, opslaan |
+| `waarvoor-doe-je-het/stijl.css` | Opmaak van het archief, in dezelfde huisstijl |
+
+Nodig in GitHub (Settings, Secrets and variables, Actions): het geheim `KIT_API_KEY` en, zodra het Kit-formulier bestaat, de variabele `KIT_FORM_URL` (het form-adres van Kit, bijvoorbeeld `https://app.kit.com/forms/1234567/subscriptions`). Zonder formulier toont het archief de aanmeldknop van LinkedIn.
+
+Een editie wijzigen: pas het `.md`-bestand aan. Bij opslaan op `main` bouwt de workflow de pagina's opnieuw.
+
 ## Aanpassen
 
 Tekst wijzigen kan rechtstreeks in `index.html` op GitHub. Na opslaan staat de wijziging binnen een paar minuten online.
