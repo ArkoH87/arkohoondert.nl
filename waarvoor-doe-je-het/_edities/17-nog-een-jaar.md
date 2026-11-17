@@ -4,7 +4,7 @@ titel: Nog één jaar
 ondertitel: Over de streep die steeds een jaar opschuift.
 datum: 2026-11-01
 beschrijving: Voor ondernemers en professionals die hun stopdatum steeds een jaar opschuiven. Waar ligt jouw streep? Waarom nog één jaar zelden een rekensom is.
-linkedin:
+linkedin: https://www.linkedin.com/pulse/nog-%C3%A9%C3%A9n-jaar-arko-hoondert-mba-s3nme
 ---
 Een ondernemer van in de vijftig schuift aan bij zijn planner en zegt dat hij wil stoppen, het liefst morgen. Hij is moe, en hij verwacht te horen dat hij nog een paar jaar door moet. Maar als de cijfers op tafel liggen, blijkt dat hij elke dag kan stoppen. Dus doet hij iets wat hij niet van plan was. Hij gaat de maandag erna gewoon weer aan het werk, en het werk voelt anders.
 
