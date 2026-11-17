@@ -198,16 +198,28 @@ const ONDERWERPEN = [
   ['Ruimte', 'wat is genoeg?'],
 ];
 
+// Lezers: LinkedIn-abonnees plus mailabonnees, uit _lezers.json.
+function lezersTekst() {
+  const pad = join(MAP, '_lezers.json');
+  if (!existsSync(pad)) return '';
+  const l = JSON.parse(readFileSync(pad, 'utf8'));
+  const totaal = (Number(l.linkedin) || 0) + (Number(l.mail) || 0);
+  return totaal > 0 ? `samen met ${totaal.toLocaleString('nl-NL')} anderen` : '';
+}
+
 function aanmeldRegel() {
+  const samen = lezersTekst();
+  const knop = samen ? `Schrijf je in, ${samen}` : 'Schrijf je in';
   if (KIT_FORM_URL) {
     return `<form class="aanmeld regel" action="${esc(KIT_FORM_URL)}" method="post">
       <label class="sr" for="email-kop">E-mailadres</label>
       <input id="email-kop" name="email_address" type="email" autocomplete="email" required placeholder="Je e-mailadres">
-      <button class="knop vol" type="submit">Elke zondag ontvangen</button>
+      <button class="knop vol" type="submit">${knop}</button>
     </form>
-    <p class="klein">Gratis. Je bevestigt eerst per mail, afmelden kan onder elke mail.</p>`;
+    <p class="klein">Elke zondag, gratis. Je bevestigt eerst per mail, afmelden kan onder elke mail.</p>`;
   }
-  return `<p><a class="knop vol" href="${LINKEDIN_VOLGEN}" target="_blank" rel="noopener">Elke zondag ontvangen via LinkedIn <span aria-hidden="true">↗</span></a></p>`;
+  return `<p><a class="knop vol" href="${LINKEDIN_VOLGEN}" target="_blank" rel="noopener">${knop} <span aria-hidden="true">↗</span></a></p>
+    <p class="klein">Elke zondag, gratis, via LinkedIn.</p>`;
 }
 
 function overzicht(edities) {
