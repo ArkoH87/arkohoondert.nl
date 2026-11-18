@@ -13,53 +13,34 @@
 <link rel="alternate" type="text/plain" title="Samenvatting voor taalmodellen" href="/llms.txt">
 <link rel="preload" href="fonts/instrument-sans-700.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="fonts/literata-300.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="preload" as="image" href="arko-hoondert-polder-1200.webp" imagesrcset="arko-hoondert-polder-mobiel.webp 900w, arko-hoondert-polder-1200.webp 1200w, arko-hoondert-polder-1920.webp 1920w" imagesizes="(max-width: 880px) 100vw, 42vw" fetchpriority="high">
+<link rel="preload" as="image" href="arko-hoondert-polder-1200.webp" imagesrcset="arko-hoondert-polder-mobiel.webp 900w, arko-hoondert-polder-1200.webp 1200w, arko-hoondert-polder-1920.webp 1920w" imagesizes="(max-width: 880px) 100vw, 40vw" fetchpriority="high">
 <meta property="og:type" content="website">
 <meta property="og:locale" content="nl_NL">
 <meta property="og:url" content="https://arkohoondert.nl/">
-<meta property="og:title" content="Arko Hoondert · Financieel planner in Zeeland">
-<meta property="og:description" content="Het gesprek begint bij waar je voor leeft. Daarna rekenen we uit of het klopt, ook als het leven anders loopt.">
+<meta property="og:title" content="Arko Hoondert · Financieel levensplanner in Zeeland">
+<meta property="og:description" content="Eerst je leven, dan je geld. Financiële levensplanning voor wie rond of na zijn veertigste het leven opnieuw inricht. Zeeland en online.">
 <meta property="og:image" content="https://arkohoondert.nl/arko-hoondert-og.jpg">
 <meta name="twitter:card" content="summary_large_image">
-<title>Arko Hoondert · Financieel planner in Zeeland</title>
-<meta name="description" content="Financieel planner in Zeeland en online. Voor wie rond en na zijn veertigste wil weten: wanneer kan ik stoppen, wat doe ik met mijn bedrijf, wat laat ik na?">
+<title>Arko Hoondert · Financieel levensplanner in Zeeland</title>
+<meta name="description" content="Eerst je leven, dan je geld. Financieel levensplanner in Zeeland en online, voor wie rond of na zijn veertigste het leven opnieuw inricht. Geen producten, geen provisie, vaste prijs vooraf.">
 <style>
-/* Layout: één pagina, tien stops: gezicht, vraag, levens, poorten, verhaal, werkwijze, voor wie, aanbod, vragen, contact. Elk vlak opent met de uitdaging (sans 700, één woord op de lat)
-   en antwoordt met de rust (Literata 300). Eigen huisstijl Arko Hoondert: polder, kalk, klei, vonk als lat. */
+/* Huisstijl Arko Hoondert: polder, kalk, klei, vonk als lat. Opzet november 2026: eerst lezen of kennismaken,
+   per scherm één gevulde knop, uitleg op de pagina Wat is een levensplan. Deze stijl geldt ook voor de pagina's die
+   uit deze homepage worden gebouwd (werkwijze, kennismaken, levensplan, nieuwsbrief, zeeland, bedankt, bevestigd). */
 :root {
-  --kalk: #f6f2ea;
-  --wit: #ffffff;
-  --klei: #eae3d5;
-  --lijn: #dcd4c5;
-  --polder: #183026;
-  --polder-900: #0f2119;
-  --polder-800: #24382d;
-  --polder-500: #4e6256;
-  --polder-200: #bfccc2;
-  --vonk: #f2a93b;
-  --vonk-wash: #fbe7c4;
-
+  --kalk: #f6f2ea; --wit: #ffffff; --klei: #eae3d5; --lijn: #dcd4c5;
+  --polder: #183026; --polder-900: #0f2119; --polder-800: #24382d; --polder-500: #4e6256; --polder-200: #bfccc2;
+  --vonk: #f2a93b; --vonk-wash: #fbe7c4;
+  --groen: #8bb48a; --rood: #d9614c;
   --sans: 'Instrument Sans', 'Helvetica Neue', Arial, sans-serif;
   --serif: 'Literata', Georgia, 'Times New Roman', serif;
-
-  --maat: 62ch;
-  --max: 1200px;
-  --goot: 24px;
+  --maat: 62ch; --max: 1200px; --goot: 24px;
   color-scheme: light;
 }
-
 * { box-sizing: border-box; }
 html { scroll-behavior: smooth; scroll-padding-top: 84px; }
-@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
-body {
-  margin: 0;
-  background: var(--kalk);
-  color: var(--polder-800);
-  font-family: var(--sans);
-  font-size: 17px;
-  line-height: 1.55;
-  -webkit-font-smoothing: antialiased;
-}
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } * { transition: none !important; } }
+body { margin: 0; background: var(--kalk); color: var(--polder-800); font-family: var(--sans); font-size: 18px; line-height: 1.55; -webkit-font-smoothing: antialiased; }
 ::selection { background: var(--vonk-wash); color: var(--polder); }
 a { color: var(--polder); text-decoration-thickness: 1px; text-underline-offset: 3px; }
 a:hover { color: var(--polder-900); }
@@ -67,314 +48,234 @@ a:hover { color: var(--polder-900); }
 h1, h2, h3, p { margin: 0; }
 h1, h2 { color: var(--polder); font-weight: 700; letter-spacing: -0.035em; text-wrap: balance; }
 h3 { color: var(--polder); font-weight: 600; letter-spacing: -0.01em; }
-
-.wrap {
-  max-width: var(--max);
-  margin-inline: auto;
-  padding-left: max(24px, env(safe-area-inset-left, 0px));
-  padding-right: max(24px, env(safe-area-inset-right, 0px));
-}
-@media (max-width: 520px) {
-  .wrap {
-    padding-left: max(16px, env(safe-area-inset-left, 0px));
-    padding-right: max(16px, env(safe-area-inset-right, 0px));
-  }
-}
-
-/* De lat: Arko's nadruk. Eén per vlak, alleen in de uitdagingsstem. */
-.lat {
-  text-decoration-line: underline;
-  text-decoration-color: var(--vonk);
-  text-decoration-thickness: 0.18em;
-  text-underline-offset: 0.1em;
-  text-decoration-skip-ink: none;
-}
-.kicker {
-  display: flex; align-items: center; gap: 10px;
-  font-size: 12px; font-weight: 600; letter-spacing: 0.16em; text-transform: uppercase;
-  color: var(--polder-500);
-}
+img { max-width: 100%; }
+.wrap { max-width: var(--max); margin-inline: auto; padding-left: max(24px, env(safe-area-inset-left, 0px)); padding-right: max(24px, env(safe-area-inset-right, 0px)); }
+.wrap.smal { max-width: 820px; }
+@media (max-width: 520px) { .wrap { padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); } }
+.lat { text-decoration-line: underline; text-decoration-color: var(--vonk); text-decoration-thickness: 0.18em; text-underline-offset: 0.1em; text-decoration-skip-ink: none; }
+.kicker { display: flex; align-items: center; gap: 10px; font-size: 12px; font-weight: 600; letter-spacing: 0.16em; text-transform: uppercase; color: var(--polder-500); }
 .kicker::before { content: ""; width: 14px; height: 3px; background: var(--vonk); flex: none; }
 .rust { font-family: var(--serif); font-weight: 300; color: var(--polder); }
-.klein { font-size: 14.5px; line-height: 1.45; color: var(--polder-500); }
-.tekst { max-width: var(--maat); }
-.tekst p + p { margin-top: 14px; }
-
-section { padding-block: clamp(72px, 10vw, 128px); }
+.klein { font-size: 15px; line-height: 1.45; color: var(--polder-500); }
+.sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+section { padding-block: clamp(64px, 9vw, 112px); }
 section.klei { background: var(--klei); }
-.kop { display: grid; gap: 18px; max-width: 820px; }
-.kop h2 { font-size: clamp(34px, 5vw, 56px); line-height: 1.05; }
-.kop .rust { font-size: clamp(21px, 2.4vw, 28px); line-height: 1.3; max-width: 34ch; }
+.kop { display: grid; gap: 18px; max-width: 820px; margin-bottom: 40px; }
+.kop h1 { font-size: clamp(38px, 5.6vw, 64px); line-height: 1.03; }
+.kop h2 { font-size: clamp(32px, 4.6vw, 52px); line-height: 1.05; }
+.kop .rust { font-size: clamp(20px, 2.3vw, 26px); line-height: 1.35; max-width: 38ch; }
+.raster { display: grid; gap: var(--goot); }
+.r2 { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: clamp(36px, 5vw, 64px); } .r3 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+@media (max-width: 880px) { .r2, .r3 { grid-template-columns: minmax(0, 1fr); } }
+.boven { align-items: start; } .midden { align-items: center; }
+.verder { margin-top: 20px; font-weight: 600; }
 
-/* Header */
-body::before {
-  content: ""; position: fixed; inset: 0 0 auto; height: env(safe-area-inset-top, 0px);
-  z-index: 20; background: var(--kalk);
-}
-.balk {
-  position: sticky; top: env(safe-area-inset-top, 0px); z-index: 10;
-  background: var(--kalk); border-bottom: 1px solid var(--lijn);
-}
+/* Kop */
+body::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-area-inset-top, 0px); z-index: 20; background: var(--kalk); }
+.balk { position: sticky; top: env(safe-area-inset-top, 0px); z-index: 10; background: var(--kalk); border-bottom: 1px solid var(--lijn); }
 .balk .wrap { display: flex; align-items: center; justify-content: space-between; gap: 24px; padding-block: 14px; }
 .lockup { display: flex; align-items: center; gap: 14px; text-decoration: none; color: var(--polder); }
 .lockup svg { height: 32px; width: auto; flex: none; }
 .lockup .wm { display: grid; gap: 5px; }
 .lockup .naam { font-size: 18px; font-weight: 600; letter-spacing: 0.1em; line-height: 1; white-space: nowrap; }
 .lockup .vak { font-size: 9.5px; font-weight: 500; letter-spacing: 0.24em; line-height: 1; color: var(--polder-500); }
-.nav { display: flex; align-items: center; gap: 26px; }
+.nav { display: flex; align-items: center; gap: 24px; }
 .nav a { font-size: 15px; font-weight: 500; text-decoration: none; color: var(--polder-800); }
-.nav a:hover { color: var(--polder); text-decoration: underline; }
-@media (max-width: 960px) { .nav .lnk { display: none; } }
-@media (max-width: 420px) { .lockup .vak { display: none; } .lockup .naam { font-size: 15px; } .lockup svg { height: 26px; } }
+.nav a.lnk { padding-block: 4px; border-bottom: 2px solid transparent; }
+.nav a.lnk:hover { color: var(--polder); border-bottom-color: var(--polder-200); }
+.nav a.lnk[aria-current="page"] { border-bottom-color: var(--vonk); color: var(--polder); }
+@media (max-width: 1040px) { .nav .lnk { display: none; } }
+@media (max-width: 420px) { .lockup .vak { display: none; } .lockup .naam { font-size: 15px; } .lockup svg { height: 26px; } .nav .knop { padding: 10px 12px; font-size: 13.5px; } }
+.balk.kaal .nav { display: none; }
 
-/* Knoppen */
-.knop {
-  display: inline-flex; align-items: center; gap: 10px; min-height: 44px;
-  font: 600 15px/1 var(--sans); padding: 14px 20px; border-radius: 4px;
-  text-decoration: none; cursor: pointer; border: 1px solid var(--polder);
-  transition: background .16s cubic-bezier(.2,.7,.2,1), color .16s cubic-bezier(.2,.7,.2,1);
-}
+/* Knoppen: per scherm één gevulde knop, de rest omlijnd of een tekstlink */
+.knop { display: inline-flex; align-items: center; justify-content: center; gap: 10px; min-height: 48px; font: 600 16px/1.2 var(--sans); padding: 14px 22px; border-radius: 4px; text-decoration: none; cursor: pointer; border: 1px solid var(--polder); transition: background .16s cubic-bezier(.2,.7,.2,1), color .16s cubic-bezier(.2,.7,.2,1); }
 .knop:active { transform: scale(.98); }
 .knop.vol { background: var(--polder); color: var(--wit); }
 .knop.vol:hover { background: var(--polder-800); color: var(--wit); }
 .knop.leeg { background: transparent; color: var(--polder); }
 .knop.leeg:hover { background: var(--klei); }
-.nav .knop { padding: 11px 16px; font-size: 14px; }
+.nav .knop { min-height: 44px; padding: 11px 16px; font-size: 14.5px; }
+.nav .knop[aria-current="page"] { background: var(--polder); color: var(--wit); }
+.knoppen { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 28px; }
 
-/* 1 Opening */
-.opening { padding-block: clamp(56px, 8vw, 112px) clamp(64px, 9vw, 112px); }
-.opening-grid { display: grid; grid-template-columns: minmax(0, 7fr) minmax(0, 5fr); gap: clamp(40px, 6vw, 96px); align-items: center; }
-.opening h1 { font-size: clamp(46px, 7.4vw, 88px); line-height: 1.02; letter-spacing: -0.04em; margin-top: 0; }
-.opening h1 .kicker { margin-bottom: 22px; line-height: 1.4; }
-.opening h1 .h1-tekst { display: block; }
-.opening .rust { font-size: clamp(22px, 2.6vw, 30px); line-height: 1.28; margin-top: 30px; max-width: 30ch; }
-.opening .acties { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 38px; }
-.opening .waar { margin-top: 20px; }
-.nieuwsbrief { margin-top: 28px; padding: 18px 20px; background: var(--wit); box-shadow: 0 0 0 1px var(--lijn); border-radius: 4px; display: flex; flex-wrap: wrap; align-items: center; gap: 14px 24px; max-width: 620px; }
-.nieuwsbrief p { flex: 1 1 260px; min-width: 0; font-size: 15px; line-height: 1.45; }
-.nieuwsbrief b { color: var(--polder); }
-.mailform { display: flex; flex-wrap: wrap; gap: 8px; flex: 1 1 100%; }
-.mailform input { flex: 1 1 220px; min-height: 46px; padding: 10px 14px; font: 400 16px/1.2 var(--sans); color: var(--polder-900); background: var(--wit); border: 1px solid var(--polder-200); border-radius: 4px; }
-.mailform input:focus { outline: 2px solid var(--polder); outline-offset: 1px; }
-.nieuwsbrief .klein { flex: 1 1 100%; }
-.nieuwsbrief .label { display: block; margin-bottom: 4px; font-size: 12px; font-weight: 600; letter-spacing: 0.16em; text-transform: uppercase; color: var(--polder); }
-.libutton {
-  display: flex; flex-direction: column; justify-content: center; flex: none;
-  padding: 7px; text-align: center; outline: none; text-decoration: none !important; color: #ffffff !important;
-  width: 200px; min-height: 44px; border-radius: 22px; background-color: #0A66C2;
-  font-family: "SF Pro Text", Helvetica, sans-serif; font-size: 15px; font-weight: 600;
-}
-.libutton:hover { background-color: #004182; }
-.libutton:focus-visible { outline: 2px solid var(--polder); outline-offset: 3px; }
-.tafel { border-top: 1px solid var(--polder); }
-.tafel .kicker { padding-block: 16px 6px; }
-.tafel ul { list-style: none; margin: 0; padding: 0; }
-.tafel li {
-  font-family: var(--serif); font-weight: 300; font-size: clamp(20px, 2vw, 23px); line-height: 1.3;
-  color: var(--polder); padding-block: 15px; border-bottom: 1px solid var(--lijn);
-}
-@media (max-width: 880px) { .opening-grid { grid-template-columns: minmax(0, 1fr); align-items: start; } .gezicht { order: -1; } .gezicht .foto { aspect-ratio: 4 / 3; } }
-.gezicht { margin: 0; display: grid; gap: 14px; }
-.gezicht .foto { aspect-ratio: 4 / 5; max-width: 100%; border-radius: 8px; background: var(--klei); border: 1px dashed var(--polder-200); display: grid; align-items: end; padding: 24px; }
-.foto-richting { display: grid; gap: 8px; max-width: 30ch; }
-.foto-richting p:not(.kicker) { font-size: 15px; line-height: 1.45; color: var(--polder-500); }
-.gezicht figcaption { display: grid; gap: 2px; padding-top: 12px; border-top: 1px solid var(--polder); }
-.gezicht figcaption b { color: var(--polder); font-size: 16px; }
-.gezicht figcaption span { font-size: 14.5px; color: var(--polder-500); }
-@media (max-width: 880px) { .gezicht .foto { aspect-ratio: 4 / 3; } .opening h1 .kicker { margin-bottom: 16px; } }
-.vraag-grid { display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); gap: clamp(36px, 6vw, 96px); margin-top: 48px; align-items: start; }
-@media (max-width: 880px) { .vraag-grid { grid-template-columns: minmax(0, 1fr); } }
-.cijfer { display: grid; gap: 18px; }
-.cijfervervolg { font-family: var(--serif); font-weight: 300; font-size: clamp(21px, 2.2vw, 25px) !important; line-height: 1.3 !important; color: var(--polder) !important; }
-.cijfervraag { font-family: var(--serif); font-weight: 300; font-size: clamp(24px, 2.4vw, 28px); line-height: 1.2; color: var(--polder); }
+/* Aanmelden: label boven het veld, alleen e-mail */
+.aanmeld { display: grid; gap: 8px; max-width: 540px; }
+.aanmeld label { font-weight: 600; color: var(--polder); font-size: 15px; }
+.aanmeld .rij { display: flex; gap: 8px; flex-wrap: wrap; }
+.aanmeld input { flex: 1 1 220px; min-height: 52px; padding: 12px 14px; font: 400 18px/1.2 var(--sans); border: 1px solid var(--polder-500); border-radius: 4px; background: var(--wit); color: var(--polder-900); }
+.aanmeld input:focus { outline: 2px solid var(--polder); outline-offset: 1px; }
+.aanmeld .knop { min-height: 52px; }
+.aanmeld .hulp { font-size: 15px; color: var(--polder-500); }
+.aanmeld .bewijs { font-size: 15px; color: var(--polder-800); }
+@media (max-width: 600px) { .aanmeld .knop { width: 100%; } }
+
+/* Opening */
+.opening { padding-block: clamp(40px, 6vw, 88px); }
+.opening-grid { display: grid; grid-template-columns: minmax(0, 7fr) minmax(0, 5fr); gap: clamp(36px, 6vw, 88px); align-items: center; }
+.opening h1 { font-size: clamp(44px, 7vw, 84px); line-height: 1; letter-spacing: -0.04em; margin-top: 18px; }
+.opening .rust { font-size: clamp(20px, 2.4vw, 27px); line-height: 1.35; margin-top: 22px; max-width: 32ch; }
+.opening .acties { display: grid; gap: 22px; margin-top: 30px; }
+.opening .of { display: flex; flex-wrap: wrap; align-items: center; gap: 12px; color: var(--polder-500); font-size: 15px; }
+.gezicht { margin: 0; }
+.gezicht img { display: block; width: 100%; height: auto; aspect-ratio: 4 / 4.4; object-fit: cover; object-position: 63% 40%; border-radius: 8px; background: var(--klei); }
+.gezicht figcaption { font-size: 14.5px; color: var(--polder-500); margin-top: 10px; }
+@media (max-width: 880px) { .opening-grid { grid-template-columns: minmax(0, 1fr); } .gezicht img { aspect-ratio: 16 / 10; object-position: 50% 22%; } .opening .of { flex-direction: column; align-items: stretch; } .opening .of .knop { width: 100%; } }
+
+/* Vertrouwensstrook, niet klikbaar */
+.strook { border-block: 1px solid var(--lijn); background: var(--wit); padding-block: 22px; }
+.strook ul { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 16px; }
+.strook li { display: flex; gap: 12px; align-items: baseline; font-weight: 600; color: var(--polder); font-size: 16px; }
+.strook li::before { content: ""; width: 12px; height: 3px; background: var(--vonk); flex: none; transform: translateY(-4px); }
+@media (max-width: 880px) { .strook ul { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); } }
+
+/* Herken je dit en het cijfer */
+.tafel ul, .vragenlijst { list-style: none; margin: 0; padding: 0; border-top: 1px solid var(--polder); }
+.tafel li, .vragenlijst li { font-family: var(--serif); font-weight: 300; font-size: clamp(19px, 2vw, 22px); line-height: 1.35; color: var(--polder); padding-block: 14px; border-bottom: 1px solid var(--lijn); }
+.tafel .kicker { padding-block: 0 12px; }
+.kaart-wit { background: var(--wit); box-shadow: 0 0 0 1px var(--lijn); border-radius: 8px; padding: clamp(22px, 3.4vw, 34px); display: grid; gap: 16px; align-content: start; }
+.cijfervraag { font-size: clamp(24px, 2.6vw, 30px); line-height: 1.15; font-weight: 700; letter-spacing: -0.02em; color: var(--polder); }
 .schaal { display: grid; grid-template-columns: repeat(10, minmax(0, 1fr)); gap: 6px; }
-.schaal button {
-  min-height: 44px; padding: 0; border: 1px solid var(--lijn); border-radius: 4px; background: var(--wit);
-  font: 600 16px/1 var(--sans); color: var(--polder-500); font-variant-numeric: tabular-nums; cursor: pointer;
-  transition: border-color .16s cubic-bezier(.2,.7,.2,1), background .16s cubic-bezier(.2,.7,.2,1);
-}
+.schaal button { min-height: 44px; padding: 0; border: 1px solid var(--lijn); border-radius: 4px; background: var(--kalk); font: 600 16px/1 var(--sans); color: var(--polder-500); font-variant-numeric: tabular-nums; cursor: pointer; }
 .schaal button:hover { border-color: var(--polder); color: var(--polder); }
 .schaal button[aria-pressed="true"] { background: var(--polder); border-color: var(--polder); color: var(--wit); }
-.cijfervervolg { font-size: 15px; line-height: 1.5; color: var(--polder-800); }
+.cijfervervolg { font-family: var(--serif); font-weight: 300; font-size: clamp(19px, 2vw, 22px); line-height: 1.4; color: var(--polder); }
 @media (max-width: 420px) { .schaal { gap: 4px; } .schaal button { font-size: 14px; } }
 
-/* 2 Vier levens */
-.levens { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: var(--goot); margin-top: 56px; }
-@media (max-width: 1100px) { .levens { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
-.leven { background: var(--wit); box-shadow: 0 0 0 1px var(--lijn); border-radius: 4px; padding: 30px; display: grid; gap: 14px; align-content: start; }
-.leven .naam { font-size: 13px; font-weight: 600; letter-spacing: 0.16em; text-transform: uppercase; color: var(--polder); }
-.leven .vraag { font-family: var(--serif); font-weight: 300; font-size: 24px; line-height: 1.25; color: var(--polder); }
-.leven p { font-size: 16px; }
-@media (max-width: 880px) { .levens { grid-template-columns: minmax(0, 1fr); } }
+/* Verschil gewoon plan en levensplan */
+.verschil { display: grid; grid-template-columns: 8.5em minmax(0, 1fr) minmax(0, 1fr); border-top: 1px solid var(--polder); }
+.verschil > div { padding: 14px 14px 14px 0; border-bottom: 1px solid var(--lijn); font-size: 17px; }
+.verschil .kopje { font-size: 12px; letter-spacing: .12em; text-transform: uppercase; color: var(--polder-500); font-weight: 600; }
+.verschil .wij { color: var(--polder); font-weight: 600; }
+@media (max-width: 600px) { .verschil { grid-template-columns: 6.5em minmax(0, 1fr) minmax(0, 1fr); } .verschil > div { font-size: 15px; } }
 
-/* 3 Het 4R-model */
-.poorten { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: var(--goot); margin-top: 56px; }
-.poort { display: grid; gap: 12px; align-content: start; }
-.poort .r { display: block; font: 700 72px/0.9 var(--sans); letter-spacing: -0.04em; color: var(--polder); border-bottom: 3px solid var(--vonk); width: max-content; padding-bottom: 6px; }
-.poort h3 { font-size: 15px; font-weight: 600; letter-spacing: 0.16em; text-transform: uppercase; padding-top: 4px; }
-.poort .vraag { font-family: var(--serif); font-weight: 300; font-size: 22px; line-height: 1.28; color: var(--polder); }
-.poort p { font-size: 16px; }
-.kernzin { margin-top: 64px; padding-top: 28px; border-top: 1px solid var(--polder); display: grid; grid-template-columns: minmax(0, 4fr) minmax(0, 8fr); gap: var(--goot); align-items: baseline; }
-.kernzin .rust { font-size: clamp(24px, 3vw, 34px); line-height: 1.25; }
-@media (max-width: 960px) { .poorten { grid-template-columns: repeat(2, minmax(0, 1fr)); row-gap: 40px; } }
-@media (max-width: 560px) { .poorten { grid-template-columns: minmax(0, 1fr); } .kernzin { grid-template-columns: minmax(0, 1fr); } }
+/* Voorbeeldpagina's: kleine documenten met echte tekst */
+.voorbeelden { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: var(--goot); }
+@media (max-width: 880px) { .voorbeelden { grid-template-columns: minmax(0, 1fr); max-width: 420px; } }
+.vb { background: var(--wit); border: 1px solid var(--lijn); border-radius: 6px; padding: 22px 20px 20px; aspect-ratio: 1 / 1.3; display: flex; flex-direction: column; gap: 9px; box-shadow: 0 12px 30px -20px rgba(15,33,25,.5); position: relative; overflow: hidden; font-size: 12.5px; line-height: 1.4; color: var(--polder-800); }
+.vb .label { position: absolute; top: 10px; right: 10px; font-size: 10px; font-weight: 600; letter-spacing: .1em; text-transform: uppercase; background: var(--klei); color: var(--polder-500); padding: 3px 7px; border-radius: 3px; }
+.vb .titel { color: var(--polder); font-size: 15px; font-weight: 700; margin-top: 10px; }
+.vb .sub { color: var(--polder-500); font-size: 11.5px; }
+.vb .doel { font: 300 14px/1.4 var(--serif); color: var(--polder); border-left: 3px solid var(--vonk); padding-left: 10px; }
+.vb .vier { display: grid; grid-template-columns: 1fr 1fr; gap: 6px; }
+.vb .vier span { font-size: 11.5px; padding: 7px 8px; border-radius: 4px; background: var(--kalk); border-top: 4px solid; }
+.vb .vier b { display: block; color: var(--polder); font-size: 12px; }
+.vb ol, .vb ul { margin: 0; padding-left: 16px; display: grid; gap: 4px; }
+.vb .regel { border-top: 1px solid var(--lijn); padding-top: 7px; }
+.vb .regel b { color: var(--polder); display: block; }
+.vb-onder { margin-top: 14px; font-weight: 600; color: var(--polder); }
+.vb-onder + .klein { margin-top: 4px; }
 
-/* 4 Drie manieren */
-.manieren { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: var(--goot); margin-top: 56px; }
-.manier { background: var(--wit); box-shadow: 0 0 0 1px var(--lijn); border-radius: 4px; padding: 30px; display: grid; grid-template-rows: auto auto 1fr auto; gap: 14px; }
-.manier h3 { font-size: 23px; line-height: 1.2; }
-.manier .links { display: grid; gap: 10px; padding-top: 6px; align-content: start; }
-.manier .links a { font-weight: 600; font-size: 15px; }
-.manier .links a.knop { justify-self: start; color: var(--wit); }
-.manier.een { box-shadow: 0 0 0 1px var(--polder); }
-@supports (grid-template-rows: subgrid) {
-  .manier { grid-row: span 4; grid-template-rows: subgrid; }
-}
-@media (max-width: 880px) { .manieren { grid-template-columns: minmax(0, 1fr); } }
+/* Stappenrij en prijs */
+.rij-stappen { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); counter-reset: s; }
+.rij-stappen li { counter-increment: s; padding: 20px 22px 20px 0; border-top: 3px solid var(--polder-200); display: grid; gap: 6px; align-content: start; }
+.rij-stappen li:first-child { border-top-color: var(--vonk); }
+.rij-stappen li::before { content: counter(s); font: 300 30px/1 var(--serif); color: var(--polder-500); }
+.rij-stappen h3 { font-size: 19px; }
+.rij-stappen .meta { font-size: 14.5px; color: var(--polder-500); }
+@media (max-width: 880px) { .rij-stappen { grid-template-columns: minmax(0, 1fr); } }
+.prijskaart { background: var(--wit); box-shadow: 0 0 0 1px var(--polder-200); border-radius: 10px; padding: clamp(22px, 3.4vw, 32px); display: grid; gap: 14px; margin-top: 32px; max-width: 780px; }
+.prijskaart .bedrag { font-size: clamp(26px, 3.4vw, 36px); font-weight: 700; color: var(--polder); letter-spacing: -0.02em; line-height: 1.1; }
+.prijskaart ul { margin: 0; padding-left: 20px; display: grid; gap: 6px; }
+.zijpad { border-top: 1px solid var(--lijn); padding-top: 14px; font-size: 16px; }
 
-/* Twee kolommen */
-.twee { display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); gap: clamp(36px, 6vw, 96px); }
-.twee > .plak { align-self: start; position: sticky; top: 100px; display: grid; gap: 24px; }
-@media (max-width: 880px) { .twee { grid-template-columns: minmax(0, 1fr); } .twee > .plak { position: static; } }
-.twee > .plak.los { position: static; }
+/* Wie ik ben */
+.portret { display: block; width: 100%; height: auto; aspect-ratio: 4 / 3; object-fit: cover; object-position: 50% 30%; border-radius: 8px; background: var(--klei); }
+.citaat { font: 300 clamp(21px, 2.3vw, 25px)/1.35 var(--serif); color: var(--polder); margin-top: 20px; }
 
-/* 5 Werkwijze */
+/* Edities */
+.rijen { list-style: none; margin: 0; padding: 0; border-top: 1px solid var(--polder); }
+.rijen a { display: block; padding: 18px 0; border-bottom: 1px solid var(--lijn); text-decoration: none; }
+.rijen .t { display: flex; justify-content: space-between; gap: 16px; align-items: baseline; }
+.rijen .titel { font-size: 21px; font-weight: 600; color: var(--polder); letter-spacing: -0.01em; }
+.rijen time { font-size: 13.5px; color: var(--polder-500); white-space: nowrap; }
+.rijen .kort { display: block; color: var(--polder-500); margin-top: 4px; font-size: 16px; }
+.rijen a:hover .titel { text-decoration: underline; text-underline-offset: 3px; }
+.fragment { font: 300 19px/1.5 var(--serif); color: var(--polder); border-left: 3px solid var(--vonk); padding: 4px 0 4px 16px; margin: 0 0 18px; }
+.fragment span { display: block; font: 400 14.5px/1.4 var(--sans); color: var(--polder-500); margin-top: 6px; }
+
+/* Slot: één gevulde knop, naar de kennismaking */
+.slot { background: var(--polder); color: var(--kalk); border-radius: 10px; padding: clamp(28px, 5vw, 52px); display: grid; grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr); gap: 36px; align-items: center; }
+.slot h2 { color: var(--kalk); font-size: clamp(30px, 4vw, 44px); line-height: 1.05; }
+.slot .kicker { color: var(--polder-200); }
+.slot ul { margin: 0; padding: 0; list-style: none; display: grid; gap: 12px; }
+.slot li { padding-left: 24px; position: relative; color: var(--kalk); } .slot li::before { content: ""; position: absolute; left: 0; top: .72em; width: 12px; height: 3px; background: var(--vonk); }
+.slot .knop.vol { background: var(--vonk); color: var(--polder); border-color: var(--vonk); margin-top: 26px; }
+.slot .knop.vol:hover { background: #f5b95c; }
+.slot a:not(.knop) { color: var(--kalk); }
+.slot .klein { color: var(--polder-200); margin-top: 22px; }
+@media (max-width: 880px) { .slot { grid-template-columns: minmax(0, 1fr); } .slot .knop { width: 100%; } }
+
+/* Casus en vier levens */
+.casus { background: var(--wit); box-shadow: 0 0 0 1px var(--lijn); border-radius: 10px; padding: clamp(22px, 4vw, 38px); display: grid; gap: 18px; }
+.casus .verhaal { font: 300 19px/1.65 var(--serif); color: var(--polder-900); max-width: var(--maat); }
+.vierlevens { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px; }
+.vierlevens > div { border-top: 6px solid var(--groen); border-radius: 6px; background: var(--kalk); padding: 16px 18px; display: grid; gap: 6px; align-content: start; }
+.vierlevens .oranje { border-top-color: var(--vonk); } .vierlevens .rood { border-top-color: var(--rood); }
+.vierlevens b { color: var(--polder); }
+.vierlevens .vraag { font: 300 18px/1.35 var(--serif); color: var(--polder); }
+.vierlevens .keuze { font-size: 15px; color: var(--polder-800); border-top: 1px solid var(--lijn); padding-top: 8px; margin-top: 4px; }
+@media (max-width: 700px) { .vierlevens { grid-template-columns: minmax(0, 1fr); } }
+.r4schema { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); border: 1px solid var(--polder-200); border-radius: 8px; overflow: hidden; background: var(--wit); }
+.r4schema > div { padding: 22px; border-right: 1px solid var(--polder-200); display: grid; gap: 10px; align-content: start; }
+.r4schema > div:last-child { border-right: 0; }
+.r4schema .r { font-weight: 700; font-size: 13px; color: var(--polder); background: var(--vonk-wash); border-radius: 99px; padding: 6px 11px; justify-self: start; }
+.r4schema .vraag { font: 300 19px/1.35 var(--serif); color: var(--polder); }
+.r4schema p:not(.vraag) { font-size: 15.5px; }
+@media (max-width: 880px) { .r4schema { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); } .r4schema > div:nth-child(2) { border-right: 0; } .r4schema > div:nth-child(-n+2) { border-bottom: 1px solid var(--polder-200); } }
+@media (max-width: 480px) { .r4schema { grid-template-columns: minmax(0, 1fr); } .r4schema > div { border-right: 0; border-bottom: 1px solid var(--polder-200); } .r4schema > div:last-child { border-bottom: 0; } }
+
+/* Werkwijze */
 .stappen { list-style: none; margin: 0; padding: 0; counter-reset: stap; }
-.stappen li { counter-increment: stap; display: grid; grid-template-columns: 56px minmax(0, 1fr); gap: 4px 16px; padding-block: 26px; border-top: 1px solid var(--lijn); }
+.stappen li { counter-increment: stap; display: grid; grid-template-columns: 56px minmax(0, 1fr); gap: 4px 16px; padding-block: 24px; border-top: 1px solid var(--lijn); }
 .stappen li:first-child { border-top-color: var(--polder); }
 .stappen li:last-child { border-bottom: 1px solid var(--lijn); }
-.stappen li::before {
-  content: counter(stap); grid-column: 1; grid-row: 1 / span 3;
-  font-family: var(--serif); font-style: italic; font-weight: 300; font-size: 34px; line-height: 1;
-  color: var(--polder-500); font-variant-numeric: tabular-nums;
-}
+.stappen li::before { content: counter(stap); grid-column: 1; grid-row: 1 / span 3; font: italic 300 34px/1 var(--serif); color: var(--polder-500); }
 .stappen li > * { grid-column: 2; }
+.stappen li.keuze { background: var(--wit); border-radius: 8px; border-top-color: transparent; padding-inline: 0 18px; }
 .stappen h3 { font-size: 20px; line-height: 1.25; }
-.stappen .meta { font-size: 14.5px; color: var(--polder-500); margin-top: 3px; }
+.stappen .meta { font-size: 15px; color: var(--polder-500); margin-top: 3px; }
 .stappen p { margin-top: 6px; }
-.prijsregel { background: var(--wit); box-shadow: 0 0 0 1px var(--lijn); border-radius: 8px; padding: 22px 24px; display: grid; gap: 8px; }
-.prijsregel b { color: var(--polder); }
-
-/* 6 Voor wie */
-.momenten { list-style: none; margin: 0; padding: 0; border-top: 1px solid var(--polder); }
-.momenten li { padding-block: 16px; border-bottom: 1px solid var(--lijn); font-size: 18px; color: var(--polder); }
-.niet { margin-top: 36px; background: var(--wit); box-shadow: 0 0 0 1px var(--lijn); border-radius: 4px; padding: 26px 28px; display: grid; gap: 12px; }
-.niet h3 { font-size: 18px; }
-.niet ul { margin: 0; padding-left: 20px; display: grid; gap: 8px; }
-
-/* 7 Over mij */
-.portret {
-  aspect-ratio: 4 / 5; max-width: 100%; border-radius: 8px; background: var(--klei);
-  border: 1px dashed var(--polder-200); display: grid; align-content: end; gap: 8px; padding: 24px;
-}
-.portret p { max-width: 24ch; }
-.feiten { list-style: none; margin: 36px 0 0; padding: 0; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0 var(--goot); }
-.feiten li { padding-block: 14px; border-top: 1px solid var(--lijn); display: grid; gap: 2px; }
-.feiten b { font-weight: 600; color: var(--polder); font-size: 16px; }
-.feiten span { font-size: 14.5px; color: var(--polder-500); }
-@media (max-width: 560px) { .feiten { grid-template-columns: minmax(0, 1fr); } }
-.tekst .opener { font-family: var(--serif); font-weight: 300; font-size: 26px; line-height: 1.25; color: var(--polder); }
-.belofte { margin-top: 36px; padding: 28px 30px; background: var(--polder); color: var(--wit); border-radius: 8px; display: grid; gap: 14px; }
-.belofte .kicker { color: var(--polder-200); }
-.belofte ol { list-style: none; margin: 0; padding: 0; counter-reset: b; }
-.belofte li { counter-increment: b; display: grid; grid-template-columns: 32px minmax(0, 1fr); gap: 12px; padding-block: 12px; border-top: 1px solid rgba(191, 204, 194, 0.3); font-size: 18px; font-weight: 600; line-height: 1.35; }
-.belofte li::before { content: counter(b); font-family: var(--serif); font-style: italic; font-weight: 300; font-size: 22px; color: var(--polder-200); line-height: 1.1; }
-.esse { margin: 0 0 6px; display: grid; gap: 6px; }
-.esse span { font-family: var(--serif); font-style: italic; font-weight: 300; font-size: clamp(30px, 3.6vw, 42px); line-height: 1.1; color: var(--wit); }
-.esse small { font-size: 14px; font-weight: 500; color: var(--polder-200); }
-.verhaal { display: grid; gap: 14px; padding-top: 18px; border-top: 1px solid rgba(191, 204, 194, 0.3); }
-.verhaal p { margin: 0; font-size: 17px; line-height: 1.6; color: var(--polder-200); }
-.verhaal p:first-child { font-family: var(--serif); font-weight: 300; font-size: clamp(20px, 2.1vw, 23px); line-height: 1.4; color: var(--wit); }
-.download { margin-top: 32px; display: flex; flex-wrap: wrap; align-items: center; gap: 12px 20px; }
-.verwachten { display: grid; gap: 0; }
-.verwachten .label { margin: 0 0 6px; font-size: 12px; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; color: var(--polder-500); }
-.verwachten ul { list-style: none; margin: 0; padding: 0; }
-.verwachten li { padding-block: 10px; border-top: 1px solid var(--lijn); font-size: 16px; line-height: 1.45; color: var(--polder); }
-.verwachten li:last-child { border-bottom: 1px solid var(--lijn); }
-.belofte .slot { font-family: var(--serif); font-weight: 300; font-size: clamp(22px, 2.4vw, 27px); line-height: 1.3; color: var(--wit); padding-top: 14px; border-top: 1px solid rgba(191, 204, 194, 0.3); }
-.samen { margin-top: 32px; padding: 24px 26px; background: var(--wit); box-shadow: 0 0 0 1px var(--lijn); border-radius: 8px; display: grid; gap: 10px; }
-.samen h3 { font-size: 17px; }
-
-/* 8 Vragen */
-.vragen { margin-top: 48px; border-bottom: 1px solid var(--lijn); max-width: 880px; }
+.tabel { overflow-x: auto; }
+.tabel table { width: 100%; min-width: 640px; border-collapse: collapse; font-size: 16px; background: var(--wit); border-radius: 8px; overflow: hidden; box-shadow: 0 0 0 1px var(--lijn); }
+.tabel th, .tabel td { text-align: left; padding: 14px 16px; border-bottom: 1px solid var(--lijn); vertical-align: top; }
+.tabel th { font-size: 12px; letter-spacing: .12em; text-transform: uppercase; color: var(--polder-500); background: var(--kalk); }
+.tabel tr:last-child td { border-bottom: 0; }
+.tabel td:first-child { font-weight: 600; color: var(--polder); width: 9em; }
+.past { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: var(--goot); }
+.past > div, .niet { background: var(--wit); box-shadow: 0 0 0 1px var(--lijn); border-radius: 8px; padding: 26px 28px; display: grid; gap: 12px; align-content: start; }
+.past ul, .niet ul { margin: 0; padding-left: 20px; display: grid; gap: 8px; }
+.past h3, .niet h3 { font-size: 19px; }
+@media (max-width: 760px) { .past { grid-template-columns: minmax(0, 1fr); } }
+.vragen { border-bottom: 1px solid var(--lijn); max-width: 880px; }
 .vragen details { border-top: 1px solid var(--lijn); }
 .vragen details:first-child { border-top-color: var(--polder); }
-.vragen summary {
-  list-style: none; cursor: pointer; display: flex; justify-content: space-between; align-items: baseline; gap: 24px;
-  padding-block: 20px; font-size: 19px; font-weight: 600; color: var(--polder); line-height: 1.3;
-}
+.vragen summary { list-style: none; cursor: pointer; display: flex; justify-content: space-between; align-items: baseline; gap: 24px; padding-block: 20px; font-size: 19px; font-weight: 600; color: var(--polder); line-height: 1.3; }
 .vragen summary::-webkit-details-marker { display: none; }
 .vragen summary::after { content: "+"; font-weight: 400; font-size: 26px; line-height: 1; color: var(--polder-500); flex: none; transition: transform .16s ease; }
 .vragen details[open] summary::after { transform: rotate(45deg); }
 .vragen .antwoord { padding-bottom: 24px; max-width: var(--maat); }
+.verwacht { list-style: none; margin: 0; padding: 0; border-top: 1px solid var(--polder); }
+.verwacht li { display: grid; grid-template-columns: 9.5em minmax(0, 1fr); gap: 16px; padding-block: 14px; border-bottom: 1px solid var(--lijn); }
+.verwacht li b { color: var(--polder); }
+@media (max-width: 600px) { .verwacht li { grid-template-columns: minmax(0, 1fr); gap: 2px; } }
+.avatar { width: 88px; height: 88px; border-radius: 50%; object-fit: cover; }
+.lees { font: 300 19px/1.65 var(--serif); color: var(--polder-900); max-width: var(--maat); }
+.lees p + p { margin-top: 1em; }
 
-/* 9 Contact, het donkere vlak */
-.contact { background: var(--polder); color: var(--polder-200); position: relative; overflow: hidden; }
-.contact .watermerk { position: absolute; right: -120px; bottom: -80px; width: min(620px, 80vw); height: auto; opacity: 0.07; pointer-events: none; }
-.contact .wrap { position: relative; }
-.contact h1, .contact h2, .contact h3 { color: var(--wit); }
-.contact .kop h1 { font-size: clamp(34px, 5vw, 56px); line-height: 1.05; }
-.contact .kicker { color: var(--polder-200); }
-.contact .rust { color: var(--polder-200); }
-.contact a { color: var(--wit); }
-.contact .knop.vol { background: var(--wit); color: var(--polder); border-color: var(--wit); }
-.contact .knop.vol:hover { background: var(--klei); }
-.contact .knop.leeg { color: var(--wit); border-color: var(--polder-200); }
-.contact .knop.leeg:hover { background: var(--polder-900); }
-.contact-grid { display: grid; grid-template-columns: minmax(0, 6fr) minmax(0, 6fr); gap: clamp(36px, 6vw, 96px); margin-top: 48px; }
-.kanaal { border-top: 1px solid rgba(201, 200, 218, 0.35); padding-block: 20px; display: grid; gap: 8px; }
-.kanaal:last-child { border-bottom: 1px solid rgba(201, 200, 218, 0.35); }
-.kanaal .label { font-size: 12px; font-weight: 600; letter-spacing: 0.16em; text-transform: uppercase; color: var(--polder-200); }
-.kanaal .waarde { font-size: clamp(20px, 2.4vw, 26px); font-weight: 600; color: var(--wit); word-break: break-word; user-select: all; }
-.kanaal .rij { display: flex; flex-wrap: wrap; align-items: center; gap: 12px 16px; }
-.status { font-size: 14px; color: var(--polder-200); }
-.plan { background: var(--polder-800); border-radius: 8px; padding: clamp(24px, 3.2vw, 40px); display: grid; gap: 18px; align-content: start; }
-.plan h3 { margin: 0; font-size: clamp(24px, 2.6vw, 30px); }
-.plan .klein { color: var(--polder-200); margin: 0; }
-.plan p { margin: 0; }
-.afspraak { margin: 0; display: grid; }
-.afspraak > div { display: grid; grid-template-columns: 96px minmax(0, 1fr); gap: 12px; padding-block: 12px; border-top: 1px solid rgba(201, 200, 218, 0.25); }
-.afspraak > div:last-child { border-bottom: 1px solid rgba(201, 200, 218, 0.25); }
-.afspraak dt { font-size: 12px; font-weight: 600; letter-spacing: 0.16em; text-transform: uppercase; color: var(--polder-200); padding-top: 3px; }
-.afspraak dd { margin: 0; color: var(--wit); }
-.plan .vooraf { display: grid; gap: 8px; margin-top: 6px; }
-.plan .vooraf .label { margin: 0; font-size: 12px; font-weight: 600; letter-spacing: 0.16em; text-transform: uppercase; color: var(--polder-200); }
-.plan ol { margin: 0; padding-left: 20px; display: grid; gap: 8px; }
-@media (max-width: 520px) { .afspraak > div { grid-template-columns: minmax(0, 1fr); gap: 4px; } }
-@media (max-width: 880px) { .contact-grid { grid-template-columns: minmax(0, 1fr); } }
-
-/* Voet */
-.voet { padding-block: 48px; border-top: 1px solid var(--lijn); }
-.voet-grid { display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); gap: 32px var(--goot); }
-.voet .juridisch { display: flex; flex-wrap: wrap; gap: 10px 24px; }
-.voet .juridisch a { font-weight: 600; font-size: 15px; }
-.voet .klein + .klein { margin-top: 8px; }
-.voet .sitelinks { margin-bottom: 12px; }
-.voet .sitelinks a { font-weight: 500; }
-.kop h1 { font-size: clamp(34px, 5vw, 56px); line-height: 1.05; }
-@media (max-width: 760px) { .voet-grid { grid-template-columns: minmax(0, 1fr); } }
-
-.sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
-
-/* Foto's */
-.gezicht img.foto, #over img.portret { display: block; border-radius: 8px; width: 100%; height: auto; padding: 0; border: 0; object-fit: cover; background: var(--klei); }
-.gezicht img.foto { aspect-ratio: 4 / 5; object-position: 63% 40%; }
-.contact .avatar { width: 96px; height: 96px; border-radius: 50%; object-fit: cover; margin-bottom: 18px; border: 3px solid var(--wit); }
-#over img.portret { aspect-ratio: 4 / 5; object-position: 50% 30%; margin-top: 32px; }
-@media (max-width: 880px) { .gezicht img.foto { aspect-ratio: 4 / 3; object-position: 50% 22%; } #over img.portret { aspect-ratio: 3 / 2; } }
-
-/* Voet: donker, vier kolommen (gelijk op alle pagina's) */
+/* Voet: donker, vier kolommen */
 .voet.donker { background: #183026; color: #bfccc2; padding-block: 56px 40px; border-top: 1px solid rgba(255, 255, 255, 0.12); }
 .voet.donker p { color: #bfccc2; }
 .voet.donker a { color: #f6f2ea; text-decoration: none; }
 .voet.donker a:hover { text-decoration: underline; text-underline-offset: 3px; }
 .voet.donker .lockup .naam { color: #f6f2ea; }
 .voet.donker .lockup .vak { color: #bfccc2; }
+.voet .klein { color: #bfccc2; }
 .voet-kolommen { display: grid; grid-template-columns: minmax(0, 1.6fr) repeat(3, minmax(0, 1fr)); gap: 32px; }
 .voet-wie p { margin: 16px 0 0; max-width: 36ch; }
 .voet-kop { margin: 4px 0 12px; color: #f6f2ea !important; font-size: 13px; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; }
 .voet.donker ul { list-style: none; margin: 0; padding: 0; }
-.voet.donker li { margin-bottom: 8px; }
+.voet.donker li { margin-bottom: 8px; font-size: 16px; }
 .voet-onder { margin-top: 40px; padding-top: 24px; border-top: 1px solid rgba(255, 255, 255, 0.15); }
 .voet-onder .klein { max-width: 90ch; }
 .voet-onder .klein + .klein { margin-top: 8px; }
@@ -445,10 +346,18 @@ body::before {
    "makesOffer": [
     {
      "@type": "Offer",
+     "priceSpecification": {
+      "@type": "PriceSpecification",
+      "minPrice": "3500",
+      "maxPrice": "8500",
+      "priceCurrency": "EUR",
+      "valueAddedTaxIncluded": true
+     },
+     "url": "https://arkohoondert.nl/werkwijze/",
      "itemOffered": {
       "@type": "Service",
       "name": "Financieel levensplan",
-      "description": "Kennismaking, het gesprek, inventarisatie, visiegesprek, uitgebreid plan en naslagwerk, servicegesprek. Vaste prijs vooraf."
+      "description": "Kennismaking, inventarisatie, visiegesprek, plan en naslagwerk, servicegesprek. Vaste prijs vooraf, inclusief btw: €3.500 tot €8.500, afhankelijk van loondienst, eenmanszaak of bv."
      }
     },
     {
@@ -458,7 +367,7 @@ body::before {
      "itemOffered": {
       "@type": "Service",
       "name": "Kosteloze kennismaking",
-      "description": "Een kennismaking van 20 minuten om je vraag te stellen, in te plannen via https://calendar.app.google/uK1NGzYM1U4datPM6."
+      "description": "Een kennismaking van 20 minuten via video, om te kijken of een plan je verder helpt. In te plannen via https://arkohoondert.nl/kennismaken/."
      }
     },
     {
@@ -487,8 +396,8 @@ body::before {
    "@type": "Person",
    "@id": "https://arkohoondert.nl/#arko",
    "name": "Arko Hoondert",
-   "jobTitle": "Financieel planner",
-   "description": "Financieel planner in Zeeland, CFP in opleiding. Vijftien jaar fondsenwerving, onder meer als hoofd fondsenwerving en MT-lid bij KWF. Oprichter van PeerWorks. Adviseur grote giften en nalatenschappen bij Het Zeeuwse Landschap. Rugbycoach.",
+   "jobTitle": "Financieel levensplanner",
+   "description": "Financieel levensplanner in Zeeland. Vijftien jaar fondsenwerving, onder meer als hoofd fondsenwerving en MT-lid bij KWF. Oprichter van PeerWorks. Adviseur grote giften en nalatenschappen bij Het Zeeuwse Landschap. Volgt de opleiding tot Certified Financial Planner.",
    "image": "https://arkohoondert.nl/arko-hoondert-og.jpg",
    "url": "https://arkohoondert.nl/",
    "email": "arko@hoondert.me",
@@ -511,100 +420,6 @@ body::before {
    },
    "sameAs": [
     "https://www.linkedin.com/in/arkohoondert/"
-   ]
-  },
-  {
-   "@type": "FAQPage",
-   "@id": "https://arkohoondert.nl/#vragen",
-   "mainEntity": [
-    {
-     "@type": "Question",
-     "name": "Wat is financiële levensplanning?",
-     "acceptedAnswer": {
-      "@type": "Answer",
-      "text": "Een plan dat begint bij je leven en pas daarna bij je geld. We brengen in kaart wat je wilt, waar je nu staat en wat er gebeurt bij een lang, kort, rot of apart leven. Inkomen, vermogen, wonen, werk, stoppen met werken en nalaten komen samen in één plan, voor privé en onderneming tegelijk."
-     }
-    },
-    {
-     "@type": "Question",
-     "name": "Wat is het verschil met een financieel adviseur of mijn bank?",
-     "acceptedAnswer": {
-      "@type": "Answer",
-      "text": "Een adviseur of bank helpt je meestal aan een product: een hypotheek, een verzekering, een belegging. Ik verkoop geen producten, bemiddel niet en ontvang geen provisie. Jij bent de enige die mij betaalt. Daardoor kan ik naar het geheel kijken en zeggen wat ik zie."
-     }
-    },
-    {
-     "@type": "Question",
-     "name": "Adviseer je over verzekeringen, hypotheken of beleggingen?",
-     "acceptedAnswer": {
-      "@type": "Answer",
-      "text": "Nee. Ik heb geen vergunning op grond van de Wet op het financieel toezicht en beveel geen producten van een bepaalde aanbieder aan. Ik laat zien welke keuzes er zijn en wat ze betekenen voor je plan. Komt een product aan de orde, dan verwijs ik naar een adviseur met vergunning."
-     }
-    },
-    {
-     "@type": "Question",
-     "name": "Ik ben ondernemer. Kijk je ook naar mijn bedrijf?",
-     "acceptedAnswer": {
-      "@type": "Answer",
-      "text": "Ja. Bij ondernemers lopen privé en zaak door elkaar, dus ik kijk naar beide: je inkomen, het bedrijf als vermogen, een mogelijke verkoop en wat er gebeurt als jij uitvalt. Fiscale en juridische uitwerking doen je fiscalist, accountant of notaris."
-     }
-    },
-    {
-     "@type": "Question",
-     "name": "Wat kost het?",
-     "acceptedAnswer": {
-      "@type": "Answer",
-      "text": "De kennismaking kost niets. Het gesprek kost €395 als je alleen komt (90 minuten) en €495 als jullie samen komen (120 minuten), inclusief btw. Start je binnen drie maanden een traject, dan trekken we dat bedrag af van de vaste prijs. Die prijs spreken we vooraf af, inclusief btw, vastgelegd in de opdrachtbevestiging."
-     }
-    },
-    {
-     "@type": "Question",
-     "name": "Hoe lang duurt een traject?",
-     "acceptedAnswer": {
-      "@type": "Answer",
-      "text": "Een traject begint met een kennismaking van 20 minuten. Daarna volgen het gesprek, een inventarisatie en een visiegesprek. Daarna krijg je je plan en naslagwerk, en als je wilt volgt twee weken later een servicegesprek. Na het gesprek duren de gesprekken zo lang als nodig: soms een uur, soms drie. Hoe snel ze elkaar opvolgen, hangt af van je agenda en van hoe snel de gegevens er zijn. De planning leggen we samen vast."
-     }
-    },
-    {
-     "@type": "Question",
-     "name": "Ben je CFP?",
-     "acceptedAnswer": {
-      "@type": "Answer",
-      "text": "CFP is de hoogste certificering in mijn vak. Ze is niet verplicht om als financieel planner te werken, maar ik vind het belangrijk. Ik volg de opleiding tot Certified Financial Planner en voer de titel pas na certificering. Elk plan wordt voor oplevering gelezen door een tweede planner die wel gecertificeerd is."
-     }
-    },
-    {
-     "@type": "Question",
-     "name": "Werk je alleen in Zeeland?",
-     "acceptedAnswer": {
-      "@type": "Answer",
-      "text": "Nee. Ik woon in Wolphaartsdijk en kom graag bij je thuis of ga met je naar buiten, in heel Zeeland: van Goes en Middelburg tot Zierikzee en Vlissingen. Binnen 30 kilometer reken ik geen reiskosten. Gesprekken kunnen ook via video, dus je kunt overal in Nederland met me werken."
-     }
-    },
-    {
-     "@type": "Question",
-     "name": "Kan ik samen met mijn partner komen?",
-     "acceptedAnswer": {
-      "@type": "Answer",
-      "text": "Graag zelfs. Veel keuzes maak je samen, dus voer ik de gesprekken met jullie allebei en krijgen jullie allebei alle stukken. Lopen jullie belangen tijdens het traject uit elkaar, dan zeg ik dat en zetten we het werk stil tot jullie weten hoe verder."
-     }
-    },
-    {
-     "@type": "Question",
-     "name": "Je werkt ook bij Het Zeeuwse Landschap. Hoe zit dat met nalaten?",
-     "acceptedAnswer": {
-      "@type": "Answer",
-      "text": "Naast mijn praktijk ben ik adviseur grote giften en nalatenschappen bij Het Zeeuwse Landschap. In je plan behandel ik schenken en nalaten neutraal. Ik stuur je nooit naar een organisatie en ontvang van niemand een vergoeding. Zie ik een belangenconflict, dan meld ik dat en verwijs ik door."
-     }
-    },
-    {
-     "@type": "Question",
-     "name": "Wat gebeurt er met mijn gegevens?",
-     "acceptedAnswer": {
-      "@type": "Answer",
-      "text": "Ik behandel alles vertrouwelijk en verwerk niet meer dan nodig is. Een burgerservicenummer verwerk ik nooit. Gesprekken neem ik alleen op als je daar aan het begin mee instemt. Alles staat in mijn privacyverklaring onderaan deze pagina."
-     }
-    }
    ]
   }
  ]
@@ -630,324 +445,221 @@ body::before {
       <span class="wm"><span class="naam">ARKO HOONDERT</span><span class="vak">FINANCIËLE LEVENSPLANNING</span></span>
     </a>
     <nav class="nav" aria-label="Hoofdmenu">
-      <a class="lnk" href="/werkwijze/">Werkwijze</a>
-      <a class="lnk" href="/hetgesprek/">Het gesprek</a>
+      <a class="lnk" href="/levensplan/">Wat is een levensplan</a>
+      <a class="lnk" href="/werkwijze/">Werkwijze en prijzen</a>
       <a class="lnk" href="/waarvoor-doe-je-het/">Edities</a>
       <a class="lnk" href="/over/">Over mij</a>
-      <a class="knop vol" href="/kennismaken/">Plan een kennismaking</a>
+      <a class="knop leeg" href="/kennismaken/">Plan een kennismaking</a>
     </nav>
   </div>
 </header>
 
 <main id="inhoud">
-
 <section class="opening" id="top" aria-labelledby="h1">
   <div class="wrap opening-grid">
     <div>
-      <h1 id="h1"><span class="kicker">Arko Hoondert · financieel planner in Zeeland</span> <span class="h1-tekst">Waar leef je eigenlijk <span class="lat">voor</span>?</span></h1>
-      <p class="rust">De meeste financiële gesprekken beginnen bij wat je hebt. Dit gesprek begint bij waar je voor leeft. Daarna rekenen we uit of het klopt, ook als het leven anders loopt.</p>
+      <p class="kicker">Financiële levensplanning · Zeeland en online</p>
+      <h1 id="h1">Eerst je leven, dan je <span class="lat">geld</span>.</h1>
+      <p class="rust">Voor wie rond of na zijn veertigste het leven opnieuw inricht. We beginnen bij waar je voor leeft. Daarna rekenen we uit of het klopt, ook als het leven anders loopt.</p>
       <div class="acties">
-        <a class="knop vol" href="/kennismaken/">Plan een kennismaking <span aria-hidden="true">→</span></a>
-        <a class="knop leeg" href="/werkwijze/">Zo werk ik</a>
-      </div>
-      <div class="nieuwsbrief">
-        <p><span class="label">Wekelijkse nieuwsbrief</span><b>Waarvoor doe je het?</b> Elke zondag één vraag, één inzicht en één stap, gratis in je mailbox.</p>
-        <form class="mailform" action="https://app.kit.com/forms/10201840/subscriptions" method="post">
-          <label class="sr" for="email-top">E-mailadres</label>
-          <input id="email-top" name="email_address" type="email" autocomplete="email" required placeholder="Je e-mailadres">
-          <button class="knop vol" type="submit">Schrijf je in</button>
+        <form class="aanmeld" action="https://app.kit.com/forms/10201840/subscriptions" method="post">
+          <label for="mail-hero">Je e-mailadres</label>
+          <div class="rij"><input id="mail-hero" name="email_address" type="email" autocomplete="email" required><button class="knop vol" type="submit">Stuur mij de nieuwsbrief</button></div>
+          <p class="hulp">Elke zondag één vraag over je leven en je geld. Gratis, afmelden kan onder elke mail. Per mail vanaf 3 januari.</p>
+          <p class="bewijs">Je leest mee met ruim 700 anderen, nu nog via LinkedIn.</p>
         </form>
-        <p class="klein">Je bevestigt eerst per mail; afmelden kan onder elke mail. <a href="/waarvoor-doe-je-het/">Lees eerdere edities <span aria-hidden="true">→</span></a></p>
+        <p class="of"><span>Of praat eerst met mij:</span><a class="knop leeg" href="/kennismaken/">Plan een kennismaking van 20 minuten</a></p>
       </div>
-      <p class="klein waar">Gesprekken in de buitenlucht, bij je thuis, in Wolphaartsdijk of online.</p>
     </div>
     <figure class="gezicht">
       <picture>
-        <source media="(max-width: 880px)" srcset="arko-hoondert-polder-mobiel.webp" width="900" height="1122">
-        <img class="foto" src="arko-hoondert-polder-1200.webp" srcset="arko-hoondert-polder-1200.webp 1200w, arko-hoondert-polder-1920.webp 1920w" sizes="42vw" fetchpriority="high" decoding="async" width="1200" height="805" alt="Arko Hoondert in de polder bij Wolphaartsdijk, in avondlicht">
+        <source media="(max-width: 880px)" srcset="arko-hoondert-polder-mobiel.webp">
+        <img src="arko-hoondert-polder-1200.webp" srcset="arko-hoondert-polder-1200.webp 1200w, arko-hoondert-polder-1920.webp 1920w" sizes="(max-width: 880px) 100vw, 40vw" width="1200" height="805" fetchpriority="high" alt="Arko Hoondert in de Zeeuwse polder">
       </picture>
-      <figcaption><b>Arko Hoondert</b><span>Financieel planner, CFP in opleiding.</span></figcaption>
+      <figcaption>Arko Hoondert · financieel levensplanner in Wolphaartsdijk</figcaption>
     </figure>
   </div>
 </section>
-<section class="klei" id="vraag" aria-labelledby="h-vraag">
-  <div class="wrap">
-    <div class="kop">
-      <p class="kicker">Eerst één vraag</p>
-      <h2 id="h-vraag">Welk cijfer geef je je leven <span class="lat">nu</span>?</h2>
-    </div>
-    <div class="vraag-grid">
-      <div class="cijfer">
-        <div class="schaal" role="group" aria-label="Kies een cijfer van 1 tot 10">
-          <button type="button" id="c1" aria-pressed="false">1</button><button type="button" id="c2" aria-pressed="false">2</button><button type="button" id="c3" aria-pressed="false">3</button><button type="button" id="c4" aria-pressed="false">4</button><button type="button" id="c5" aria-pressed="false">5</button><button type="button" id="c6" aria-pressed="false">6</button><button type="button" id="c7" aria-pressed="false">7</button><button type="button" id="c8" aria-pressed="false">8</button><button type="button" id="c9" aria-pressed="false">9</button><button type="button" id="c10" aria-pressed="false">10</button>
-        </div>
-        <p class="cijfervervolg" id="cijfervervolg" aria-live="polite">En wat zou er nodig zijn om dat cijfer één punt hoger te maken? Daar begint het gesprek.</p>
+
+<div class="strook" aria-label="Hoe ik werk">
+  <div class="wrap"><ul><li>Geen producten</li><li>Geen provisie</li><li>Vaste prijs vooraf, inclusief btw</li><li>Aan tafel in Zeeland of via video</li></ul></div>
+</div>
+
+<section id="herken" aria-labelledby="h-herken">
+  <div class="wrap raster r2 boven">
+    <div>
+      <div class="kop">
+        <p class="kicker">Herken je dit?</p>
+        <h2 id="h-herken">Het klopt op papier. En toch kijk je <span class="lat">verder</span>.</h2>
+        <p class="rust">Je hebt iets opgebouwd. De vraag is nu waarvoor.</p>
       </div>
       <div class="tafel">
         <p class="kicker" id="tafelkop">Vragen die ik aan de keukentafel hoor</p>
         <ul id="tafellijst">
           <li>Kan ik stoppen wanneer ik wil, en houd ik dan genoeg over?</li>
-          <li>Wat doe ik met mijn bedrijf als ik ermee stop?</li>
-          <li>Wat gebeurt er als ik niet meer kan werken, of er niet meer ben?</li>
           <li>Kunnen we de kinderen helpen zonder onszelf tekort te doen?</li>
           <li>Eerst de hypotheek eraf, of toch dat huisje in Frankrijk?</li>
+          <li>Wat doe ik met mijn bedrijf als ik ermee stop?</li>
+          <li>Wat gebeurt er als ik niet meer kan werken, of er niet meer ben?</li>
+          <li>Gaan we samen verder, of apart?</li>
         </ul>
       </div>
     </div>
-  </div>
-</section>
-
-<section id="levens" aria-labelledby="h-levens">
-  <div class="wrap">
-    <div class="kop">
-      <p class="kicker">Vier scenario's</p>
-      <h2 id="h-levens">Houdt je plan stand als het leven anders <span class="lat">loopt</span>?</h2>
-      <p class="rust">Niemand weet hoe zijn leven gaat. Je kunt wel weten wat er gebeurt in elk van de vier scenario's. Daar begint rust.</p>
-    </div>
-    <div class="levens">
-      <article class="leven">
-        <p class="naam">Lang leven</p>
-        <p class="vraag">Gaat je geld net zo lang mee als jij?</p>
-        <p>Wanneer kun je stoppen of afbouwen, en wat doe je op de maandag erna? Pensioen, vermogen en wonen in één overzicht, doorgerekend tot op hoge leeftijd.</p>
-      </article>
-      <article class="leven">
-        <p class="naam">Kort leven</p>
-        <p class="vraag">Weten je naasten waar alles staat?</p>
-        <p>Wat erven je partner en kinderen, wat laat je na, en past je testament nog bij het leven dat je nu leidt? Goed geregeld is ook: de ander weet waar het dossier ligt.</p>
-      </article>
-      <article class="leven">
-        <p class="naam">Rot leven</p>
-        <p class="vraag">Wat vangt je op als het tegenzit?</p>
-        <p>Langdurig ziek, arbeidsongeschikt of een bedrijf dat stopt. Hoeveel maanden kom je door, en wat ontbreekt er nog in je vangnet?</p>
-      </article>
-      <article class="leven">
-        <p class="naam">Apart leven</p>
-        <p class="vraag">Kan ieder verder als jullie uit elkaar gaan?</p>
-        <p>Een relatie die eindigt, ook na lange tijd. Wat is van wie, wat gebeurt er met het huis en het pensioen, en kan ieder daarna op eigen benen staan? Niemand rekent erop. Toch geeft het rust om te weten hoe het dan zit.</p>
-      </article>
-    </div>
-    <div class="download">
-      <a class="knop" href="https://drive.google.com/file/d/1NeRiMKwTUVSNi6yir6JBow72-EzyY_DO/view?usp=sharing" target="_blank" rel="noopener">Download het werkblad De drie levensvragen <span aria-hidden="true">↓</span></a>
-      <span class="klein">Om zelf in te vullen, op een rustige avond. Pdf.</span>
+    <div class="kaart-wit">
+      <p class="kicker">Eerst één vraag</p>
+      <p class="cijfervraag" id="h-cijfer">Welk cijfer geef je je leven <span class="lat">nu</span>?</p>
+      <div class="schaal" role="group" aria-labelledby="h-cijfer">
+        <button type="button" aria-pressed="false">1</button><button type="button" aria-pressed="false">2</button><button type="button" aria-pressed="false">3</button><button type="button" aria-pressed="false">4</button><button type="button" aria-pressed="false">5</button><button type="button" aria-pressed="false">6</button><button type="button" aria-pressed="false">7</button><button type="button" aria-pressed="false">8</button><button type="button" aria-pressed="false">9</button><button type="button" aria-pressed="false">10</button>
+      </div>
+      <p class="cijfervervolg" id="cijfervervolg" aria-live="polite">En wat zou er nodig zijn om dat cijfer één punt hoger te maken? Over dat soort vragen schrijf ik elke zondag.</p>
+      <p><a href="/waarvoor-doe-je-het/">Lees de edities →</a></p>
     </div>
   </div>
 </section>
 
-<section class="klei" id="poorten" aria-labelledby="h-poorten">
+<section class="klei" id="levensplan" aria-labelledby="h-plan">
+  <div class="wrap raster r2 boven">
+    <div>
+      <div class="kop">
+        <p class="kicker">Wat een levensplan is</p>
+        <h2 id="h-plan">Een plan dat begint bij je <span class="lat">leven</span>.</h2>
+        <p class="rust">Een financieel levensplan is een plan voor de komende tien tot twintig jaar. Eerst staat erin hoe je wilt leven. Daarna wat dat betekent voor je geld.</p>
+      </div>
+      <p class="verder"><a href="/levensplan/">Lees wat een levensplan is →</a></p>
+    </div>
+    <div><div class="verschil" role="table" aria-label="Verschil tussen een gewoon financieel plan en een financieel levensplan">
+        <div role="row" style="display:contents"><div role="columnheader"></div><div class="kopje" role="columnheader">Gewoon financieel plan</div><div class="kopje" role="columnheader" style="color:var(--polder)">Financieel levensplan</div></div>
+        <div role="row" style="display:contents"><div class="kopje" role="rowheader">Begint bij</div><div role="cell">Je cijfers</div><div class="wij" role="cell">Je leven: waar je voor leeft</div></div>
+        <div role="row" style="display:contents"><div class="kopje" role="rowheader">De vraag</div><div role="cell">Hoeveel heb je?</div><div class="wij" role="cell">Waarvoor wil je het, en is het genoeg?</div></div>
+        <div role="row" style="display:contents"><div class="kopje" role="rowheader">Uitkomst</div><div role="cell">Een overzicht</div><div class="wij" role="cell">Keuzes die standhouden, ook als het leven anders loopt</div></div>
+      </div></div>
+  </div>
+</section>
+
+<section id="voorbeeld" aria-labelledby="h-voorbeeld">
   <div class="wrap">
     <div class="kop">
-      <p class="kicker">Het 4R-model</p>
-      <h2 id="h-poorten">Elke grote keuze toets ik aan vier <span class="lat">R's</span>.</h2>
-      <p class="rust">Een huis kopen, een bedrijf verkopen, eerder stoppen, de kinderen helpen. Ik toets elke grote keuze op dezelfde vier vragen. Zo zie je waar hij het eerst gaat wiebelen.</p>
+      <p class="kicker">Zo ziet een plan eruit</p>
+      <h2 id="h-voorbeeld">Wat je na afloop in handen <span class="lat">hebt</span>.</h2>
+      <p class="rust">Ingrid en Paul, 54 en 57, uit Goes, willen over vijf jaar minder werken en hun dochter helpen met een huis. Zo zag hun plan eruit.</p>
     </div>
-    <div class="poorten">
-      <div class="poort">
-        <span class="r" aria-hidden="true">R</span>
-        <h3>Richting</h3>
-        <p class="vraag">Waar leef je voor, en dient deze keuze dat?</p>
-        <p>Eerst je levensdoelen, in je eigen woorden. Pas daarna de cijfers.</p>
+    <div class="voorbeelden">
+      <div>
+        <div class="vb" aria-label="Voorbeeld van een levenskaart">
+          <span class="label">Voorbeeld</span>
+          <p class="titel">Levenskaart</p><p class="sub">Ingrid en Paul · na Het gesprek</p>
+          <div class="vier">
+            <span style="border-top-color:var(--groen)"><b>Lang leven</b>Rond tot op hoge leeftijd</span>
+            <span style="border-top-color:var(--vonk)"><b>Kort leven</b>Testament verouderd</span>
+            <span style="border-top-color:var(--rood)"><b>Rot leven</b>Zeven maanden vangnet</span>
+            <span style="border-top-color:var(--groen)"><b>Apart leven</b>Uitgesproken</span>
+          </div>
+          <p class="regel"><b>Drie volgende stappen</b></p>
+          <ol><li>Vierde vrije dag van Paul inplannen</li><li>Testament laten nakijken</li><li>Vangnet van Ingrid bespreken met een adviseur</li></ol>
+        </div>
+        <p class="vb-onder">Waar je staat, op één vel</p>
+        <p class="klein">Groen staat goed, oranje vraagt aandacht, rood is nog niet geregeld.</p>
       </div>
-      <div class="poort">
-        <span class="r" aria-hidden="true">R</span>
-        <h3>Rust</h3>
-        <p class="vraag">Houdt het stand bij een lang, kort, rot of apart leven?</p>
-        <p>Elk scenario doorgerekend, met wat er nog ontbreekt in je vangnet.</p>
+      <div>
+        <div class="vb" aria-label="Voorbeeld van een plan op één A4">
+          <span class="label">Voorbeeld</span>
+          <p class="titel">Plan op één A4</p>
+          <p class="doel">“We willen over vijf jaar minder werken en onze dochter helpen met een huis, zonder dat het onze rust kost.”</p>
+          <p class="regel"><b>Wat genoeg is</b>Het huidige leven, met één vrije dag meer.</p>
+          <p class="regel"><b>Onze keuzes</b>Paul vier dagen vanaf 62. Een bedrag voor het huis van onze dochter. Testament en vangnet vóór de zomer.</p>
+          <p class="regel"><b>Elk jaar</b>In januari samen het plan doorlopen.</p>
+        </div>
+        <p class="vb-onder">Je doel in één zin, je keuzes eronder</p>
+        <p class="klein">Zodat je in één oogopslag ziet waar je voor koos.</p>
       </div>
-      <div class="poort">
-        <span class="r" aria-hidden="true">R</span>
-        <h3>Ritme</h3>
-        <p class="vraag">Past het in wat je elke maand volhoudt?</p>
-        <p>Een plan werkt pas als het in je gewone maand past, zonder wilskracht.</p>
-      </div>
-      <div class="poort">
-        <span class="r" aria-hidden="true">R</span>
-        <h3>Ruimte</h3>
-        <p class="vraag">Wat is genoeg, en wat mag er nu al?</p>
-        <p>Genoeg in een bedrag en een jaartal. En wat je niet langer hoeft uit te stellen.</p>
+      <div>
+        <div class="vb" aria-label="Voorbeeld van een pagina uit het naslagwerk">
+          <span class="label">Voorbeeld</span>
+          <p class="titel">Naslagwerk</p><p class="sub">Per keuze de regel en de reden</p>
+          <p class="regel"><b>Testament</b>Van voor de geboorte van jullie dochter. Wat het nu regelt, en wat je de notaris vraagt.</p>
+          <p class="regel"><b>Schenking aan jullie dochter</b>Wat de wet zegt, wat het kost en waarom dit bedrag past in het plan.</p>
+          <p class="regel"><b>Vangnet</b>Welk soort vangnet past, en welke vragen je een adviseur stelt.</p>
+        </div>
+        <p class="vb-onder">Voor jou, je naasten en je notaris</p>
+        <p class="klein">Zodat ook later iemand begrijpt waarom je koos wat je koos.</p>
       </div>
     </div>
-    <div class="kernzin">
-      <p class="kicker">Wanneer een keuze standhoudt</p>
-      <p class="rust">Een keuze houdt stand als hij richting heeft, rust bewaart, in je ritme past en ruimte laat.</p>
+    <p class="klein" style="margin-top:24px">Ingrid en Paul bestaan niet. Hun verhaal is samengesteld uit situaties die vaak voorkomen. <a href="/levensplan/#casus">Bekijk het hele voorbeeld →</a></p>
+  </div>
+</section>
+
+<section class="klei" id="samen" aria-labelledby="h-samen">
+  <div class="wrap">
+    <div class="kop">
+      <p class="kicker">Zo werken we samen</p>
+      <h2 id="h-samen">Je weet vooraf wat het <span class="lat">kost</span>.</h2>
     </div>
+    <ol class="rij-stappen">
+      <li><h3>Kennismaking</h3><span class="meta">20 minuten · kosteloos · via video</span><p>We kijken of een plan je verder helpt.</p></li>
+      <li><h3>Inventarisatie</h3><span class="meta">Samen met je partner als dat speelt</span><p>Inkomen, vermogen, pensioen, wonen en wat er al geregeld is.</p></li>
+      <li><h3>Visiegesprek</h3><span class="meta">Hier maak je de keuzes</span><p>Wat gebeurt er als het leven lang, kort, rot of apart loopt?</p></li>
+      <li><h3>Plan en naslagwerk</h3><span class="meta">Op papier</span><p>Je keuzes, wat je regelt en waarom.</p></li>
+    </ol>
+    <div class="prijskaart">
+      <p class="kicker">Het levensplan</p>
+      <p class="bedrag">€3.500 tot €8.500, inclusief btw</p>
+      <p>De prijs hangt af van je situatie: loondienst, een eenmanszaak of een of meer bv's. In de kennismaking hoor je de vaste prijs voor jouw situatie, voordat je iets beslist.</p>
+      <p><a class="knop leeg" href="/kennismaken/">Plan een kennismaking</a></p>
+      <p class="zijpad">Eerst één vraag goed uitzoeken? Begin met <a href="/hetgesprek/">Het gesprek</a>: 90 minuten alleen (€395) of 120 minuten samen (€495). Start je binnen drie maanden een traject, dan trekken we het bedrag af.</p>
+    </div>
+    <p class="verder"><a href="/werkwijze/">Werkwijze en prijzen →</a></p>
   </div>
 </section>
 
 <section id="over" aria-labelledby="h-over">
-  <div class="wrap twee">
-    <div class="plak">
-      <div class="kop">
-        <p class="kicker">Over mij</p>
+  <div class="wrap raster r2 midden">
+    <img class="portret" src="arko-hoondert-portret-groen.webp" width="1400" height="1044" loading="lazy" decoding="async" alt="Arko Hoondert in een groene trui">
+    <div>
+      <div class="kop" style="margin-bottom:20px">
+        <p class="kicker">Wie ik ben</p>
         <h2 id="h-over">Ik zeg wat ik zie. De keuze blijft van <span class="lat">jou</span>.</h2>
       </div>
-      <img class="portret" src="arko-hoondert-portret-groen.webp" loading="lazy" decoding="async" width="1400" height="1044" alt="Arko Hoondert in een groene trui">
-    </div>
-    <div>
-      <div class="tekst">
-        <p class="opener">Onmacht omzetten in kracht.</p>
-        <p>Dat heb ik jarenlang mogelijk gemaakt. Eerst bij Stichting KiKa. Daarna met een eigen adviesbureau, dat ik na vier jaar verkocht. Ik werkte voor doelen in binnen- en buitenland, van dierenwelzijn tot zelfmoordpreventie, van het Wereld Natuur Fonds tot Greenpeace België. En toen bij KWF, in het managementteam van het grootste goede doel van Nederland. Ik zat aan veel keukentafels waar het ging over geven en nalaten.</p>
-        <p>Ik had een mooi appartement in Amsterdam Oud-West, speelde voor het nationale rugbyteam en had een goed salaris. En van binnen was ik een lege huls. Eén vraag duwde ik steeds weg: waarvoor doe je dit?</p>
-        <p>In 2025 ging ik terug naar Zeeland, om voor mijn oma te zorgen. In diezelfde tijd stond ik met een camera in de verloskamer toen mijn neefje werd geboren. Het rijke, volle leven van mijn oma. Het prille leven van mijn neefje. En alles daartussen. Toen wist ik het: het leven zit niet in wat je hebt, maar in waar je voor leeft.</p>
-        <p>Nu woon ik weer in de polder waar ik geboren ben en coach ik jonge mannen bij de rugbyclub waar ik zelf begon. Daar leer ik elke week opnieuw: je wint zelden met het mooiste gameplan, wel met spelers die weten wat ze doen als het tegenzit. Met geld werkt het net zo.</p>
-        <p><a href="/over/">Het hele verhaal →</a></p>
-      </div>
-      <div class="belofte">
-        <p class="kicker">Mijn credo</p>
-        <p class="esse"><span>Liever écht zijn dan lijken.</span></p>
-        <div class="verhaal">
-          <p>Van buiten klopte alles. Het appartement, het rugbyteam, de relatie, het salaris. Het leek goed. Maar het was het niet.</p>
-          <p>Sindsdien vraag ik mezelf niet meer hoe iets eruitziet, maar of het mij dient. Dat betekent het zware werk eerst doen: mezelf eerlijk aankijken. Nee zeggen tegen wat niet bij me past. En mijn eigen maatstaf houden, niet die van een ander.</p>
-          <p>Dat vraag ik ook van een plan. Een plan dat er goed uitziet, is niet genoeg. Het moet zorgvuldig zijn en kloppen met je leven, ook als dat anders loopt. Ik hoef de verandering niet voor je te maken. Ik help je die zelf te maken, en er rust in te vinden.</p>
-        </div>
-        <p class="slot">Jarenlang vocht ik tegen wat buiten mijn macht lag: kanker, armoede, de dood. Nu werk ik aan wat je wel in de hand hebt: je keuzes en het leven dat je ermee maakt.</p>
-      </div>
-      <ul class="feiten">
-        <li><b>CFP in opleiding</b><span>Lindenhaeghe</span></li>
-        <li><b>MBA</b><span>Quantic School of Business and Technology</span></li>
-        <li><b>Vijftien jaar fondsenwerving</b><span>Oprichter van PeerWorks, voormalig hoofd fondsenwerving en MT-lid bij KWF</span></li>
-        <li><b>Grote giften en nalatenschappen</b><span>Adviseur bij Het Zeeuwse Landschap, naast mijn praktijk</span></li>
-      </ul>
+      <p>Oud-rugbyinternational. Tien jaar fondsenwerving, betrokken bij het ophalen van ruim 250 miljoen euro voor goede doelen. Opgebrand, opnieuw begonnen. Sinds 2025 terug in de Zeeuwse polder waar ik geboren ben, als financieel levensplanner.</p>
+      <p class="citaat">Liever écht zijn dan lijken.</p>
+      <p class="verder"><a href="/over/">Meer over mij →</a></p>
     </div>
   </div>
 </section>
 
-
-<section id="voor-wie" aria-labelledby="h-wie">
-  <div class="wrap twee">
-    <div class="plak">
+<section class="klei" id="lees" aria-labelledby="h-lees">
+  <div class="wrap raster r2 boven">
+    <div>
       <div class="kop">
-        <p class="kicker">Voor wie</p>
-        <h2 id="h-wie">Het klopt op papier. En toch kijk je <span class="lat">verder</span>.</h2>
-        <p class="rust">Mensen rond en na hun veertigste die hun leven opnieuw inrichten. Je hebt iets opgebouwd. De vraag is nu waarvoor.</p>
+        <p class="kicker">Lees mee</p>
+        <h2 id="h-lees">Elke zondag één <span class="lat">vraag</span>.</h2>
+        <p class="rust">Eén vraag, één inzicht en één stap. Over geld, werk en de keuzes die je ooit nog wilt maken.</p>
       </div>
+      <form class="aanmeld" action="https://app.kit.com/forms/10201840/subscriptions" method="post">
+          <label for="mail-lees">Je e-mailadres</label>
+          <div class="rij"><input id="mail-lees" name="email_address" type="email" autocomplete="email" required><button class="knop vol" type="submit">Stuur mij de nieuwsbrief</button></div>
+          <p class="hulp">Elke zondag één vraag over je leven en je geld. Gratis, afmelden kan onder elke mail. Per mail vanaf 3 januari.</p>
+          <p class="bewijs">Je leest mee met ruim 700 anderen, nu nog via LinkedIn.</p>
+        </form>
     </div>
     <div>
-      <ul class="momenten" aria-label="Momenten waarop mensen bij mij komen">
-        <li>Je wilt weten wanneer je kunt stoppen of minder kunt gaan werken.</li>
-        <li>Je verkoopt je bedrijf, of hebt dat net gedaan.</li>
-        <li>Privé, onderneming en vermogen lopen door elkaar en niemand houdt het overzicht.</li>
-        <li>Je wilt je kinderen helpen met een huis of studie zonder jezelf tekort te doen.</li>
-        <li>Je hebt een erfenis ontvangen, of denkt na over wat je zelf nalaat.</li>
-        <li>Jullie leven gaat een andere kant op, samen of apart.</li>
-      </ul>
-      <p style="margin-top: 24px;"><a href="/werkwijze/#niet">Wat ik niet doe, en wat wel <span aria-hidden="true">→</span></a></p>
+      <p class="kicker" style="margin-bottom:12px">Best gelezen</p>
+      <ul class="rijen"><li><a href="/waarvoor-doe-je-het/de-drie-levens/"><span class="t"><span class="titel">De drie levens</span><time datetime="2026-08-23">23 augustus 2026</time></span><span class="kort">Een plan voor alleen een lang leven valt om.</span></a></li><li><a href="/waarvoor-doe-je-het/de-acht-stenen/"><span class="t"><span class="titel">De acht stenen</span><time datetime="2026-08-30">30 augustus 2026</time></span><span class="kort">Acht stenen op de grond, en de vraag hoe je naar de zevende kijkt.</span></a></li><li><a href="/waarvoor-doe-je-het/minder-ballen/"><span class="t"><span class="titel">Minder ballen</span><time datetime="2026-10-25">25 oktober 2026</time></span><span class="kort">Wat je al betaald hebt, verplicht je tot niets.</span></a></li></ul>
+      <p class="verder"><a href="/waarvoor-doe-je-het/">Alle edities →</a></p>
     </div>
   </div>
 </section>
 
-<section class="klei" id="aanbod" aria-labelledby="h-aanbod">
+<section aria-labelledby="h-slot">
   <div class="wrap">
-    <div class="kop">
-      <p class="kicker">Drie manieren</p>
-      <h2 id="h-aanbod">Begin waar het <span class="lat">past</span>.</h2>
-      <p class="rust">Van een nieuwsbrief op zondag tot een plan voor je eigen leven.</p>
-    </div>
-    <div class="manieren">
-      <article class="manier">
-        <p class="kicker">Zelf lezen</p>
-        <h3>Eén vraag per week</h3>
-        <p>Elke zondag schrijf ik <i>Waarvoor doe je het?</i>, mijn nieuwsbrief per mail en op LinkedIn: één vraag, één inzicht, één stap voor die week. Daarnaast doe ik de eindredactie van <i>Goed Geregeld op Zaterdag</i>, de nieuwsbrief van Maurice van den Hemel.</p>
-        <div class="links">
-          <a class="knop vol" href="/#top">Schrijf je in per mail <span aria-hidden="true">↑</span></a>
-          <a href="/waarvoor-doe-je-het/">Alle edities lezen <span aria-hidden="true">→</span></a>
-        </div>
-      </article>
-      <article class="manier">
-        <p class="kicker">Eén op één · vanaf €395</p>
-        <h3>Het gesprek</h3>
-        <p>Anderhalf uur alleen of twee uur samen met je partner over je leven en je geld. Binnen een week krijg je je levenskaart: waar je staat en je drie volgende stappen.</p>
-        <div class="links">
-          <a href="/hetgesprek/">Bekijk het gesprek <span aria-hidden="true">→</span></a>
-        </div>
-      </article>
-      <article class="manier een">
-        <p class="kicker">Eén op één</p>
-        <h3>Je financieel levensplan</h3>
-        <p>Van het gesprek tot visiegesprek, met een uitgebreid plan en naslagwerk voor privé, onderneming en vermogen samen.</p>
-        <div class="links">
-          <a href="/werkwijze/">Zo verloopt een traject <span aria-hidden="true">→</span></a>
-        </div>
-      </article>
-    </div>
-    <p class="klein" style="margin-top: 24px;">Liever zelf aan de slag, in je eigen tempo? Bij Ooit, mijn leerbedrijf, vind je online cursussen en e-books over onder meer je testament, samenwonen en je pensioen. <a href="https://nuofooit.nl/" target="_blank" rel="noopener">Naar nuofooit.nl <span aria-hidden="true">↗</span></a></p>
-  </div>
-</section>
-
-<section id="vragen" aria-labelledby="h-vragen">
-  <div class="wrap">
-    <div class="kop">
-      <p class="kicker">Veelgestelde vragen</p>
-      <h2 id="h-vragen">Wat mensen vragen voor ze <span class="lat">beginnen</span>.</h2>
-    </div>
-    <div class="vragen">
-      <details>
-        <summary>Wat is financiële levensplanning?</summary>
-        <div class="antwoord"><p>Een plan dat begint bij je leven en pas daarna bij je geld. We brengen in kaart wat je wilt, waar je nu staat en wat er gebeurt bij een lang, kort, rot of apart leven. Inkomen, vermogen, wonen, werk, stoppen met werken en nalaten komen samen in één plan, voor privé en onderneming tegelijk.</p></div>
-      </details>
-      <details>
-        <summary>Wat is het verschil met een financieel adviseur of mijn bank?</summary>
-        <div class="antwoord"><p>Een adviseur of bank helpt je meestal aan een product: een hypotheek, een verzekering, een belegging. Ik verkoop geen producten, bemiddel niet en ontvang geen provisie. Jij bent de enige die mij betaalt. Daardoor kan ik naar het geheel kijken en zeggen wat ik zie.</p></div>
-      </details>
-      <details>
-        <summary>Adviseer je over verzekeringen, hypotheken of beleggingen?</summary>
-        <div class="antwoord"><p>Nee. Ik heb geen vergunning op grond van de Wet op het financieel toezicht en beveel geen producten van een bepaalde aanbieder aan. Ik laat zien welke keuzes er zijn en wat ze betekenen voor je plan. Komt een product aan de orde, dan verwijs ik naar een adviseur met vergunning.</p></div>
-      </details>
-      <details>
-        <summary>Ik ben ondernemer. Kijk je ook naar mijn bedrijf?</summary>
-        <div class="antwoord"><p>Ja. Bij ondernemers lopen privé en zaak door elkaar, dus ik kijk naar beide: je inkomen, het bedrijf als vermogen, een mogelijke verkoop en wat er gebeurt als jij uitvalt. Fiscale en juridische uitwerking doen je fiscalist, accountant of notaris.</p></div>
-      </details>
-      <details>
-        <summary>Wat kost het?</summary>
-        <div class="antwoord"><p>De kennismaking kost niets. Het gesprek kost €395 als je alleen komt (90 minuten) en €495 als jullie samen komen (120 minuten), inclusief btw. Start je binnen drie maanden een traject, dan trekken we dat bedrag af van de vaste prijs. Die prijs spreken we vooraf af, inclusief btw, vastgelegd in de opdrachtbevestiging.</p></div>
-      </details>
-      <details>
-        <summary>Hoe lang duurt een traject?</summary>
-        <div class="antwoord"><p>Een traject begint met een kennismaking van 20 minuten. Daarna volgen het gesprek, een inventarisatie en een visiegesprek. Daarna krijg je je plan en naslagwerk, en als je wilt volgt twee weken later een servicegesprek. Na het gesprek duren de gesprekken zo lang als nodig: soms een uur, soms drie. Hoe snel ze elkaar opvolgen, hangt af van je agenda en van hoe snel de gegevens er zijn. De planning leggen we samen vast.</p></div>
-      </details>
-      <details>
-        <summary>Ben je CFP?</summary>
-        <div class="antwoord"><p>CFP is de hoogste certificering in mijn vak. Ze is niet verplicht om als financieel planner te werken, maar ik vind het belangrijk. Ik volg de opleiding tot Certified Financial Planner en voer de titel pas na certificering. Elk plan wordt voor oplevering gelezen door een tweede planner die wel gecertificeerd is.</p></div>
-      </details>
-      <details>
-        <summary>Werk je alleen in Zeeland?</summary>
-        <div class="antwoord"><p>Nee. Ik woon in Wolphaartsdijk en kom graag bij je thuis of ga met je naar buiten, in heel Zeeland: van Goes en Middelburg tot Zierikzee en Vlissingen. Binnen 30 kilometer reken ik geen reiskosten. Gesprekken kunnen ook via video, dus je kunt overal in Nederland met me werken.</p></div>
-      </details>
-      <details>
-        <summary>Kan ik samen met mijn partner komen?</summary>
-        <div class="antwoord"><p>Graag zelfs. Veel keuzes maak je samen, dus voer ik de gesprekken met jullie allebei en krijgen jullie allebei alle stukken. Lopen jullie belangen tijdens het traject uit elkaar, dan zeg ik dat en zetten we het werk stil tot jullie weten hoe verder.</p></div>
-      </details>
-      <details>
-        <summary>Je werkt ook bij Het Zeeuwse Landschap. Hoe zit dat met nalaten?</summary>
-        <div class="antwoord"><p>Naast mijn praktijk ben ik adviseur grote giften en nalatenschappen bij Het Zeeuwse Landschap. In je plan behandel ik schenken en nalaten neutraal. Ik stuur je nooit naar een organisatie en ontvang van niemand een vergoeding. Zie ik een belangenconflict, dan meld ik dat en verwijs ik door.</p></div>
-      </details>
-      <details>
-        <summary>Wat gebeurt er met mijn gegevens?</summary>
-        <div class="antwoord"><p>Ik behandel alles vertrouwelijk en verwerk niet meer dan nodig is. Een burgerservicenummer verwerk ik nooit. Gesprekken neem ik alleen op als je daar aan het begin mee instemt. Alles staat in mijn privacyverklaring onderaan deze pagina.</p></div>
-      </details>
-    </div>
-  </div>
-</section>
-
-<section class="contact" id="contact" aria-labelledby="h-contact">
-  <svg class="watermerk" viewBox="-6 -6 140 112" aria-hidden="true"><g fill="none" stroke="#ffffff" stroke-width="5"><path d="M0 100L32 0L64 100M84 0V100M124 0V100M12 62H124"/></g></svg>
-  <div class="wrap">
-    <div class="kop">
-      <p class="kicker">Beginnen</p>
-      <h2 id="h-contact">Twee manieren om te <span class="lat">beginnen</span>.</h2>
-      <p class="rust">Eerst kijken of het klikt, of meteen aan de slag met je vraag.</p>
-    </div>
-    <div class="contact-grid">
-      <div class="plan">
-        <p class="label">20 minuten · kosteloos · via video</p>
-        <h3>Kennismaking</h3>
-        <p>Je stelt je vraag en we kijken of het klikt.</p>
-        <p><a class="knop leeg" href="/kennismaken/">Plan een kennismaking <span aria-hidden="true">→</span></a></p>
+    <div class="slot">
+      <div>
+        <p class="kicker">Beginnen</p>
+        <h2 id="h-slot" style="margin-top:12px">Begin met een gesprek van twintig <span class="lat">minuten</span>.</h2>
+        <a class="knop vol" href="/kennismaken/">Plan een kennismaking (gratis) <span aria-hidden="true">→</span></a>
       </div>
-      <div class="plan">
-        <p class="label">Alleen 90 minuten · €395 · samen 120 minuten · €495</p>
-        <h3>Het gesprek</h3>
-        <p>Je leven en je geld naast elkaar, met je levenskaart op papier.</p>
-        <p><a class="knop vol" href="/hetgesprek/">Bekijk het gesprek <span aria-hidden="true">→</span></a></p>
+      <div>
+        <ul><li>Je vertelt wat er speelt. Ik stel vooral vragen.</li><li>Aan het eind zeg ik eerlijk of een plan je verder helpt, of dat de nieuwsbrief of Ooit voorlopig genoeg is.</li><li>Via video, kosteloos en zonder verplichting.</li></ul>
+        <p class="klein">Liever zelf aan de slag, in je eigen tempo? Bij Ooit, mijn leerbedrijf, vind je online cursussen en e-books over onder meer je testament, samenwonen en je pensioen. <a href="https://nuofooit.nl/" target="_blank" rel="noopener">Naar nuofooit.nl <span aria-hidden="true">↗</span></a></p>
       </div>
     </div>
   </div>
@@ -962,21 +674,21 @@ body::before {
         <svg viewBox="-6 -6 140 112" aria-hidden="true"><g fill="none" stroke-width="6"><path stroke="#ffffff" d="M0 100L32 0L64 100M84 0V100M124 0V100"/><path stroke="#f2a93b" d="M12 62H124"/></g></svg>
         <span class="wm"><span class="naam">ARKO HOONDERT</span><span class="vak">FINANCIËLE LEVENSPLANNING</span></span>
       </a>
-      <p>Financiële levensplanning in Zeeland en online. Eerst je leven, dan je geld.</p>
-      <p class="klein">De Perponcherpolderweg 5, 4471 RX Wolphaartsdijk<br>KvK 85352012 · btw-id NL004086452B40<br><a href="mailto:arko@hoondert.me">arko@hoondert.me</a> · <a href="tel:+31651739714">06 51 73 97 14</a></p>
+      <p>Financiële levensplanning in Zeeland en online. Eerst je leven, dan je geld. Ik verkoop geen producten en ontvang geen provisie.</p>
+      <p class="klein">KvK 85352012 · btw-id NL004086452B40</p>
     </div>
-    <nav aria-label="Praktijk">
-      <p class="voet-kop">Praktijk</p>
-      <ul><li><a href="/werkwijze/">Werkwijze</a></li><li><a href="/hetgesprek/">Het gesprek</a></li><li><a href="/kennismaken/">Kennismaken</a></li></ul>
+    <nav aria-label="Pagina's">
+      <p class="voet-kop">Pagina's</p>
+      <ul><li><a href="/levensplan/">Wat is een levensplan</a></li><li><a href="/werkwijze/">Werkwijze en prijzen</a></li><li><a href="/waarvoor-doe-je-het/">Edities</a></li><li><a href="/over/">Over mij</a></li></ul>
     </nav>
-    <nav aria-label="Lezen">
-      <p class="voet-kop">Lezen</p>
-      <ul><li><a href="/waarvoor-doe-je-het/">Alle edities</a></li><li><a href="/waarvoor-doe-je-het/laatste/">Nieuwste editie</a></li><li><a href="/over/">Over mij</a></li></ul>
+    <nav aria-label="Begin hier">
+      <p class="voet-kop">Begin hier</p>
+      <ul><li><a href="/nieuwsbrief/">De nieuwsbrief</a></li><li><a href="/kennismaken/">Kennismaken</a></li><li><a href="/hetgesprek/">Het gesprek</a></li><li><a href="https://nuofooit.nl/" target="_blank" rel="noopener">Ooit, cursussen en e-books ↗</a></li></ul>
     </nav>
-    <nav aria-label="Regels">
-      <p class="voet-kop">Regels</p>
-      <ul><li><a href="/algemene-voorwaarden-arko-hoondert.pdf" target="_blank" rel="noopener">Algemene voorwaarden</a></li><li><a href="/privacyverklaring-arko-hoondert.pdf" target="_blank" rel="noopener">Privacyverklaring</a></li><li><a href="https://www.linkedin.com/in/arkohoondert/" target="_blank" rel="noopener">LinkedIn</a></li></ul>
-    </nav>
+    <div>
+      <p class="voet-kop">Contact</p>
+      <ul><li><a href="mailto:arko@hoondert.me">arko@hoondert.me</a></li><li><a href="tel:+31651739714">06 51 73 97 14</a></li><li>De Perponcherpolderweg 5<br>4471 RX Wolphaartsdijk</li><li><a href="/algemene-voorwaarden-arko-hoondert.pdf" target="_blank" rel="noopener">Voorwaarden</a> · <a href="/privacyverklaring-arko-hoondert.pdf" target="_blank" rel="noopener">Privacy</a> · <a href="https://www.linkedin.com/in/arkohoondert/" target="_blank" rel="noopener">LinkedIn</a></li></ul>
+    </div>
   </div>
   <div class="wrap voet-onder">
     <p class="klein">Alles op deze website is algemene informatie en geen persoonlijk advies. Persoonlijk werk begint pas met een opdrachtbevestiging. Ik heb geen vergunning op grond van de Wet op het financieel toezicht: ik adviseer niet over specifieke financiële producten en bemiddel er niet in.</p>
@@ -1019,7 +731,7 @@ body::before {
         10: 'Een 10. Dat geef je niet zomaar. Wat maakt het zo goed? En wat bracht je toch naar deze pagina?'
       };
       vervolg.innerHTML = teksten[n];
-      tafelkop.textContent = n === 1 ? 'Eerst jij' : 'Vragen die bij een ' + n + ' kunnen spelen';
+      if (tafelkop) tafelkop.textContent = n === 1 ? 'Eerst jij' : 'Vragen die bij een ' + n + ' kunnen spelen';
       tafellijst.innerHTML = tafel[n].map(function (v) { return '<li>' + v + '</li>'; }).join('');
     });
   });

@@ -2,6 +2,9 @@
 
 User-agent: *
 Allow: /
+# Bronbestanden voor het bouwscript, geen pagina's
+Disallow: /_
+Disallow: /*/_
 
 # AI-zoekdiensten en taalmodellen, expliciet toegestaan
 User-agent: GPTBot

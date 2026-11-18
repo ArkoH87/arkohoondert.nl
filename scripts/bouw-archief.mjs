@@ -19,6 +19,7 @@ const PAD = '/waarvoor-doe-je-het/';
 
 // Kit-formulier voor aanmelden per mail. Leeg = de aanmeldknop van LinkedIn.
 const KIT_FORM_URL = process.env.KIT_FORM_URL || 'https://app.kit.com/forms/10201840/subscriptions';
+const KENNISMAKING_URL = 'https://calendar.app.google/uK1NGzYM1U4datPM6';
 const LINKEDIN_VOLGEN = 'https://www.linkedin.com/build-relation/newsletter-follow?entityUrn=7479311765558960129';
 
 const MAANDEN = ['januari', 'februari', 'maart', 'april', 'mei', 'juni', 'juli', 'augustus', 'september', 'oktober', 'november', 'december'];
@@ -72,6 +73,15 @@ export function markdownNaarHtml(md) {
 const LOCKUP = `<svg viewBox="-6 -6 140 112" aria-hidden="true"><g fill="none" stroke-width="6"><path stroke="#183026" d="M0 100L32 0L64 100M84 0V100M124 0V100"/><path stroke="#f2a93b" d="M12 62H124"/></g></svg>
       <span class="wm"><span class="naam">ARKO HOONDERT</span><span class="vak">FINANCIËLE LEVENSPLANNING</span></span>`;
 
+// Kop en voet komen uit _schil.html, zodat alle pagina's hetzelfde menu en dezelfde voet hebben.
+function kopUitSchil(canoniek) {
+  const pad = canoniek.replace(SITE, '');
+  const actief = pad.startsWith(PAD) ? PAD : pad === '/hetgesprek/' ? '/werkwijze/' : pad;
+  return schil().match(/<header class="balk">[\s\S]*?<\/header>/)[0]
+    .replace(`<a class="lnk" href="${actief}">`, `<a class="lnk" href="${actief}" aria-current="page">`);
+}
+const voetUitSchil = () => schil().match(/<footer class="voet donker">[\s\S]*?<\/footer>/)[0];
+
 function pagina({ titel, beschrijving, canoniek, ogType = 'website', jsonld, inhoud }) {
   return `<!doctype html>
 <html lang="nl">
@@ -97,73 +107,35 @@ function pagina({ titel, beschrijving, canoniek, ogType = 'website', jsonld, inh
 </head>
 <body>
 <a class="sr" href="#inhoud">Naar de inhoud</a>
-<header class="balk">
-  <div class="wrap">
-    <a class="lockup" href="/" aria-label="Arko Hoondert, financiële levensplanning, naar de homepage">
-      ${LOCKUP}
-    </a>
-    <nav class="nav" aria-label="Hoofdmenu">
-      <a class="lnk" href="/werkwijze/">Werkwijze</a>
-      <a class="lnk" href="/hetgesprek/">Het gesprek</a>
-      <a class="lnk" href="/waarvoor-doe-je-het/">Edities</a>
-      <a class="lnk" href="/over/">Over mij</a>
-      <a class="knop vol" href="/kennismaken/">Plan een kennismaking</a>
-    </nav>
-  </div>
-</header>
+${kopUitSchil(canoniek)}
 <main id="inhoud">
 ${inhoud}
 </main>
-<footer class="voet donker">
-  <div class="wrap voet-kolommen">
-    <div class="voet-wie">
-      <a class="lockup" href="/" aria-label="Arko Hoondert, naar de homepage">
-        <svg viewBox="-6 -6 140 112" aria-hidden="true"><g fill="none" stroke-width="6"><path stroke="#ffffff" d="M0 100L32 0L64 100M84 0V100M124 0V100"/><path stroke="#f2a93b" d="M12 62H124"/></g></svg>
-        <span class="wm"><span class="naam">ARKO HOONDERT</span><span class="vak">FINANCIËLE LEVENSPLANNING</span></span>
-      </a>
-      <p>Financiële levensplanning in Zeeland en online. Eerst je leven, dan je geld.</p>
-      <p class="klein">De Perponcherpolderweg 5, 4471 RX Wolphaartsdijk<br>KvK 85352012 · btw-id NL004086452B40<br><a href="mailto:arko@hoondert.me">arko@hoondert.me</a> · <a href="tel:+31651739714">06 51 73 97 14</a></p>
-    </div>
-    <nav aria-label="Praktijk">
-      <p class="voet-kop">Praktijk</p>
-      <ul><li><a href="/werkwijze/">Werkwijze</a></li><li><a href="/hetgesprek/">Het gesprek</a></li><li><a href="/kennismaken/">Kennismaken</a></li></ul>
-    </nav>
-    <nav aria-label="Lezen">
-      <p class="voet-kop">Lezen</p>
-      <ul><li><a href="/waarvoor-doe-je-het/">Alle edities</a></li><li><a href="/waarvoor-doe-je-het/laatste/">Nieuwste editie</a></li><li><a href="/over/">Over mij</a></li></ul>
-    </nav>
-    <nav aria-label="Regels">
-      <p class="voet-kop">Regels</p>
-      <ul><li><a href="/algemene-voorwaarden-arko-hoondert.pdf" target="_blank" rel="noopener">Algemene voorwaarden</a></li><li><a href="/privacyverklaring-arko-hoondert.pdf" target="_blank" rel="noopener">Privacyverklaring</a></li><li><a href="https://www.linkedin.com/in/arkohoondert/" target="_blank" rel="noopener">LinkedIn</a></li></ul>
-    </nav>
-  </div>
-  <div class="wrap voet-onder">
-    <p class="klein">Alles op deze website is algemene informatie en geen persoonlijk advies. Persoonlijk werk begint pas met een opdrachtbevestiging. Ik heb geen vergunning op grond van de Wet op het financieel toezicht: ik adviseer niet over specifieke financiële producten en bemiddel er niet in.</p>
-    <p class="klein">Deze website plaatst geen cookies en meet niets. © ${new Date().getFullYear()} Arko Hoondert.</p>
-  </div>
-</footer>
+${voetUitSchil()}
 </body>
 </html>
 `;
 }
 
 function aanmelden() {
-  const actie = KIT_FORM_URL
-    ? `<form class="aanmeld" action="${esc(KIT_FORM_URL)}" method="post">
-        <label class="sr" for="email">E-mailadres</label>
-        <input id="email" name="email_address" type="email" autocomplete="email" required placeholder="je@voorbeeld.nl">
-        <button class="knop vol" type="submit">Aanmelden</button>
-      </form>
-      <p class="klein">Je krijgt eerst een mail om je aanmelding te bevestigen. Afmelden kan onder elke mail.</p>`
-    : `<p><a class="knop vol" href="${LINKEDIN_VOLGEN}" target="_blank" rel="noopener">Abonneren op LinkedIn <span aria-hidden="true">↗</span></a></p>`;
   return `<section class="klei aanmelden" id="aanmelden">
   <div class="wrap smal">
     <p class="kicker">Elke zondag</p>
     <h2>Waarvoor doe je het?</h2>
     <p class="rust">Eén vraag, één inzicht en één stap. Om in een paar minuten te lezen, met je koffie erbij.</p>
-    ${actie}
+    ${aanmeldBlok('onder')}
   </div>
 </section>`;
+}
+
+// Halverwege een lange editie een formulier, na een alinea en nooit vlak voor een tussenkop.
+function halverwege(html) {
+  const delen = html.split(/(?<=<\/p>)\n?/);
+  if (delen.length < 8) return html;
+  let i = Math.floor(delen.length / 2);
+  while (i < delen.length - 2 && /^\s*<h[23]/.test(delen[i])) i++;
+  const blok = `<aside class="halverwege" aria-label="Nieuwsbrief"><p class="halverwege-kop">Krijg de volgende editie in je mail.</p>${aanmeldBlok('half')}</aside>`;
+  return [...delen.slice(0, i), blok, ...delen.slice(i)].join('\n');
 }
 
 function editiePagina(e, vorige, volgende) {
@@ -179,8 +151,9 @@ function editiePagina(e, vorige, volgende) {
     ${e.ondertitel ? `<p class="rust onder">${esc(e.ondertitel)}</p>` : ''}
     <p class="klein meta"><time datetime="${e.datum}">${datumNL(e.datum)}</time> · Arko Hoondert${e.linkedin ? ` · <a href="${e.linkedin}" target="_blank" rel="noopener">Ook op LinkedIn</a>` : ''}</p>
     <div class="tekst-editie">
-${markdownNaarHtml(e.body)}
+${halverwege(markdownNaarHtml(e.body))}
     </div>
+    <p class="naar-gesprek">Speelt deze vraag bij jou? In een <a href="/kennismaken/">kennismaking van twintig minuten</a> kijken we of een plan je verder helpt.</p>
     <p class="klein peil">Geschreven op ${datumNL(e.datum)}. Algemene informatie, geen persoonlijk advies. Regels en bedragen kunnen sindsdien zijn veranderd.</p>
     <nav class="buren" aria-label="Andere edities">${nav}</nav>
   </div>
@@ -208,31 +181,8 @@ const ONDERWERPEN = [
   ['Ruimte', 'wat is genoeg?'],
 ];
 
-// Lezers: LinkedIn-abonnees plus mailabonnees, uit _lezers.json.
-function lezersTekst() {
-  const pad = join(MAP, '_lezers.json');
-  if (!existsSync(pad)) return '';
-  const l = JSON.parse(readFileSync(pad, 'utf8'));
-  const totaal = (Number(l.linkedin) || 0) + (Number(l.mail) || 0);
-  if (totaal <= 0) return '';
-  // Afgerond naar beneden op honderdtallen ("700+"), zodat de tekst niet elke week verandert.
-  const getal = totaal >= 100 ? `${(Math.floor(totaal / 100) * 100).toLocaleString('nl-NL')}+` : String(totaal);
-  return `samen met ${getal} anderen`;
-}
-
 function aanmeldRegel() {
-  const samen = lezersTekst();
-  const knop = samen ? `Schrijf je in, ${samen}` : 'Schrijf je in';
-  if (KIT_FORM_URL) {
-    return `<form class="aanmeld regel" action="${esc(KIT_FORM_URL)}" method="post">
-      <label class="sr" for="email-kop">E-mailadres</label>
-      <input id="email-kop" name="email_address" type="email" autocomplete="email" required placeholder="Je e-mailadres">
-      <button class="knop vol" type="submit">${knop}</button>
-    </form>
-    <p class="klein">Elke zondag, gratis. Je bevestigt eerst per mail, afmelden kan onder elke mail.</p>`;
-  }
-  return `<p><a class="knop vol" href="${LINKEDIN_VOLGEN}" target="_blank" rel="noopener">${knop} <span aria-hidden="true">↗</span></a></p>
-    <p class="klein">Elke zondag, gratis, via LinkedIn.</p>`;
+  return aanmeldBlok('kop');
 }
 
 function overzicht(edities) {
@@ -304,35 +254,155 @@ function overzicht(edities) {
   });
 }
 
-// ---------- Werkwijze en Kennismaken: pagina's in de schil van de homepage ----------
-// De homepage (index.html) is de bron voor kop, stijl, voet en scripts. De inhoud staat in _sectie.html.
-function vanHome({ map, titel, beschrijving, extra = '' }) {
+// ---------- Bouwstenen, gedeeld door de homepage en de pagina's ----------
+// _schil.html is de bron voor kop, stijl, voet en scripts; _home.html en de _sectie.html-bestanden bevatten de inhoud.
+// Plekhouders in die bestanden: <!--@aanmeld:id-->, <!--@verschil-->, <!--@voorbeelden-->, <!--@slot-->,
+// <!--@bestgelezen-->, <!--@fragmenten--> en {{KENNISMAKING_URL}}.
+const schil = () => readFileSync(join(ROOT, '_schil.html'), 'utf8');
+const EERSTE_MAILEDITIE = '2027-01-03';
+
+// Lezers, uit _lezers.json: precies zeggen wat we tellen. Afgerond naar beneden op honderdtallen.
+function lezersZin() {
+  const pad = join(MAP, '_lezers.json');
+  if (!existsSync(pad)) return '';
+  const l = JSON.parse(readFileSync(pad, 'utf8'));
+  const li = Number(l.linkedin) || 0, mail = Number(l.mail) || 0, totaal = li + mail;
+  if (totaal <= 0) return '';
+  const getal = totaal >= 100 ? `ruim ${(Math.floor(totaal / 100) * 100).toLocaleString('nl-NL')}` : String(totaal);
+  return mail > 0 ? `Je leest mee met ${getal} anderen, op LinkedIn en per mail.` : `Je leest mee met ${getal} anderen, nu nog via LinkedIn.`;
+}
+
+function aanmeldBlok(id = 'a') {
+  const voorMail = new Date().toISOString().slice(0, 10) < EERSTE_MAILEDITIE;
+  const zin = lezersZin();
+  return `<form class="aanmeld" action="${esc(KIT_FORM_URL)}" method="post">
+          <label for="mail-${id}">Je e-mailadres</label>
+          <div class="rij"><input id="mail-${id}" name="email_address" type="email" autocomplete="email" required><button class="knop vol" type="submit">Stuur mij de nieuwsbrief</button></div>
+          <p class="hulp">Elke zondag één vraag over je leven en je geld. Gratis, afmelden kan onder elke mail.${voorMail ? ' Per mail vanaf 3 januari.' : ''}</p>
+          ${zin ? `<p class="bewijs">${zin}</p>` : ''}
+        </form>`;
+}
+
+const VERSCHIL = `<div class="verschil" role="table" aria-label="Verschil tussen een gewoon financieel plan en een financieel levensplan">
+        <div role="row" style="display:contents"><div role="columnheader"></div><div class="kopje" role="columnheader">Gewoon financieel plan</div><div class="kopje" role="columnheader" style="color:var(--polder)">Financieel levensplan</div></div>
+        <div role="row" style="display:contents"><div class="kopje" role="rowheader">Begint bij</div><div role="cell">Je cijfers</div><div class="wij" role="cell">Je leven: waar je voor leeft</div></div>
+        <div role="row" style="display:contents"><div class="kopje" role="rowheader">De vraag</div><div role="cell">Hoeveel heb je?</div><div class="wij" role="cell">Waarvoor wil je het, en is het genoeg?</div></div>
+        <div role="row" style="display:contents"><div class="kopje" role="rowheader">Uitkomst</div><div role="cell">Een overzicht</div><div class="wij" role="cell">Keuzes die standhouden, ook als het leven anders loopt</div></div>
+      </div>`;
+
+// Drie voorbeeldpagina's uit de samengestelde casus van Ingrid en Paul.
+const VOORBEELDEN = `<div class="voorbeelden">
+      <div>
+        <div class="vb" aria-label="Voorbeeld van een levenskaart">
+          <span class="label">Voorbeeld</span>
+          <p class="titel">Levenskaart</p><p class="sub">Ingrid en Paul · na Het gesprek</p>
+          <div class="vier">
+            <span style="border-top-color:var(--groen)"><b>Lang leven</b>Rond tot op hoge leeftijd</span>
+            <span style="border-top-color:var(--vonk)"><b>Kort leven</b>Testament verouderd</span>
+            <span style="border-top-color:var(--rood)"><b>Rot leven</b>Zeven maanden vangnet</span>
+            <span style="border-top-color:var(--groen)"><b>Apart leven</b>Uitgesproken</span>
+          </div>
+          <p class="regel"><b>Drie volgende stappen</b></p>
+          <ol><li>Vierde vrije dag van Paul inplannen</li><li>Testament laten nakijken</li><li>Vangnet van Ingrid bespreken met een adviseur</li></ol>
+        </div>
+        <p class="vb-onder">Waar je staat, op één vel</p>
+        <p class="klein">Groen staat goed, oranje vraagt aandacht, rood is nog niet geregeld.</p>
+      </div>
+      <div>
+        <div class="vb" aria-label="Voorbeeld van een plan op één A4">
+          <span class="label">Voorbeeld</span>
+          <p class="titel">Plan op één A4</p>
+          <p class="doel">“We willen over vijf jaar minder werken en onze dochter helpen met een huis, zonder dat het onze rust kost.”</p>
+          <p class="regel"><b>Wat genoeg is</b>Het huidige leven, met één vrije dag meer.</p>
+          <p class="regel"><b>Onze keuzes</b>Paul vier dagen vanaf 62. Een bedrag voor het huis van onze dochter. Testament en vangnet vóór de zomer.</p>
+          <p class="regel"><b>Elk jaar</b>In januari samen het plan doorlopen.</p>
+        </div>
+        <p class="vb-onder">Je doel in één zin, je keuzes eronder</p>
+        <p class="klein">Zodat je in één oogopslag ziet waar je voor koos.</p>
+      </div>
+      <div>
+        <div class="vb" aria-label="Voorbeeld van een pagina uit het naslagwerk">
+          <span class="label">Voorbeeld</span>
+          <p class="titel">Naslagwerk</p><p class="sub">Per keuze de regel en de reden</p>
+          <p class="regel"><b>Testament</b>Van voor de geboorte van jullie dochter. Wat het nu regelt, en wat je de notaris vraagt.</p>
+          <p class="regel"><b>Schenking aan jullie dochter</b>Wat de wet zegt, wat het kost en waarom dit bedrag past in het plan.</p>
+          <p class="regel"><b>Vangnet</b>Welk soort vangnet past, en welke vragen je een adviseur stelt.</p>
+        </div>
+        <p class="vb-onder">Voor jou, je naasten en je notaris</p>
+        <p class="klein">Zodat ook later iemand begrijpt waarom je koos wat je koos.</p>
+      </div>
+    </div>`;
+
+const SLOT = `<section aria-labelledby="h-slot">
+  <div class="wrap">
+    <div class="slot">
+      <div>
+        <p class="kicker">Beginnen</p>
+        <h2 id="h-slot" style="margin-top:12px">Begin met een gesprek van twintig <span class="lat">minuten</span>.</h2>
+        <a class="knop vol" href="/kennismaken/">Plan een kennismaking (gratis) <span aria-hidden="true">→</span></a>
+      </div>
+      <div>
+        <ul><li>Je vertelt wat er speelt. Ik stel vooral vragen.</li><li>Aan het eind zeg ik eerlijk of een plan je verder helpt, of dat de nieuwsbrief of Ooit voorlopig genoeg is.</li><li>Via video, kosteloos en zonder verplichting.</li></ul>
+        <p class="klein">Liever zelf aan de slag, in je eigen tempo? Bij Ooit, mijn leerbedrijf, vind je online cursussen en e-books over onder meer je testament, samenwonen en je pensioen. <a href="https://nuofooit.nl/" target="_blank" rel="noopener">Naar nuofooit.nl <span aria-hidden="true">↗</span></a></p>
+      </div>
+    </div>
+  </div>
+</section>`;
+
+const BEST_GELEZEN = ['de-drie-levens', 'de-acht-stenen', 'minder-ballen'];
+function bestGelezen(edities) {
+  const rij = (e) => `<li><a href="${PAD}${e.slug}/"><span class="t"><span class="titel">${esc(e.titel)}</span><time datetime="${e.datum}">${datumNL(e.datum)}</time></span>${e.kort ? `<span class="kort">${esc(e.kort)}</span>` : ''}</a></li>`;
+  const lijst = BEST_GELEZEN.map((s) => edities.find((e) => e.slug === s)).filter(Boolean);
+  return `<ul class="rijen">${(lijst.length ? lijst : edities.slice(0, 3)).map(rij).join('')}</ul>`;
+}
+function fragmenten(edities) {
+  return edities.slice(0, 3).map((e) => `<p class="fragment">${esc(e.kort || e.ondertitel || e.titel)}<span><a href="${PAD}${e.slug}/">${esc(e.titel)}</a> · ${datumNL(e.datum)}</span></p>`).join('\n    ');
+}
+function vulIn(html, edities = []) {
+  return html
+    .replace(/<!--@aanmeld:([a-z0-9-]+)-->/g, (_, id) => aanmeldBlok(id))
+    .replace(/<!--@verschil-->/g, VERSCHIL)
+    .replace(/<!--@voorbeelden-->/g, VOORBEELDEN)
+    .replace(/<!--@slot-->/g, SLOT)
+    .replace(/<!--@bestgelezen-->/g, bestGelezen(edities))
+    .replace(/<!--@fragmenten-->/g, fragmenten(edities))
+    .replace(/\{\{KENNISMAKING_URL\}\}/g, KENNISMAKING_URL);
+}
+
+// Pagina's in de schil van de homepage.
+function vanHome({ map, titel, beschrijving, extra = '', kaal = false, jsonld = null, robots = null, edities = [] }) {
   const bron = join(ROOT, map, '_sectie.html');
   if (!existsSync(bron)) return null;
-  const home = readFileSync(join(ROOT, 'index.html'), 'utf8');
-  const a = home.indexOf('<main id="inhoud">') + '<main id="inhoud">'.length;
-  const b = home.indexOf('</main>');
-  let kop = home.slice(0, a);
   const url = `${SITE}/${map}/`;
-  kop = kop.replace(/<title>[\s\S]*?<\/title>/, `<title>${esc(titel)}</title>`)
+  let s = schil();
+  s = s.replace(/<title>[\s\S]*?<\/title>/, `<title>${esc(titel)}</title>`)
     .replace(/<meta name="description" content="[^"]*">/, `<meta name="description" content="${esc(beschrijving)}">`)
     .replace(/<link rel="canonical" href="[^"]*">/, `<link rel="canonical" href="${url}">`)
     .replace(/<meta property="og:url" content="[^"]*">/, `<meta property="og:url" content="${url}">`)
     .replace(/<meta property="og:title" content="[^"]*">/, `<meta property="og:title" content="${esc(titel)}">`)
     .replace(/<meta property="og:description" content="[^"]*">/, `<meta property="og:description" content="${esc(beschrijving)}">`)
-    .replace(/<script type="application\/ld\+json">[\s\S]*?<\/script>/, `<script type="application/ld+json">${JSON.stringify({ '@context': 'https://schema.org', '@type': 'WebPage', name: titel, url, inLanguage: 'nl', isPartOf: { '@type': 'WebSite', url: SITE } })}</script>`)
+    .replace(/<script type="application\/ld\+json">[\s\S]*?<\/script>/, `<script type="application/ld+json">${JSON.stringify(jsonld || { '@context': 'https://schema.org', '@type': 'WebPage', name: titel, url, inLanguage: 'nl', isPartOf: { '@type': 'WebSite', url: SITE } })}</script>`)
     .replace(/<link rel="preload" as="image"[^>]*>\n?/, '')
     .replace(/href="(favicon\.svg|fonts\/|arko-hoondert)/g, 'href="/$1')
     .replace(/src="(arko-hoondert|fonts\/)/g, 'src="/$1')
     .replace(/url\((['"]?)fonts\//g, 'url($1/fonts/')
-    .replace(`<a class="lnk" href="/${map}/">`, `<a class="lnk" href="/${map}/" aria-current="page">`);
-  const voet = home.slice(b);
-  return `${kop}\n${readFileSync(bron, 'utf8')}${extra}\n${voet}`;
+    .replace(`<a class="lnk" href="/${map}/">`, `<a class="lnk" href="/${map}/" aria-current="page">`)
+    .replace(`<a class="knop leeg" href="/${map}/">`, `<a class="knop leeg" href="/${map}/" aria-current="page">`);
+  if (kaal) s = s.replace('<header class="balk">', '<header class="balk kaal">');
+  if (robots) s = s.replace(/<meta name="robots" content="[^"]*">/, `<meta name="robots" content="${robots}">`);
+  return s.replace('<!--@inhoud-->', vulIn(readFileSync(bron, 'utf8'), edities) + extra);
 }
-function beginnenBlok() {
-  const home = readFileSync(join(ROOT, 'index.html'), 'utf8');
-  const m = home.match(/<section class="contact" id="contact"[\s\S]*?<\/section>\n/);
-  return m ? `\n${m[0]}` : '';
+function bouwHome(edities) {
+  const home = schil().replace('<!--@inhoud-->', vulIn(readFileSync(join(ROOT, '_home.html'), 'utf8'), edities));
+  writeFileSync(join(ROOT, 'index.html'), home);
+}
+// Veelgestelde vragen op een pagina als FAQPage, uit de details-blokken.
+function faqJsonld(map, naam) {
+  const html = readFileSync(join(ROOT, map, '_sectie.html'), 'utf8');
+  const vragen = [...html.matchAll(/<details><summary>([\s\S]*?)<\/summary><div class="antwoord">([\s\S]*?)<\/div><\/details>/g)]
+    .map(([, v, a]) => ({ '@type': 'Question', name: v.replace(/<[^>]+>/g, '').trim(), acceptedAnswer: { '@type': 'Answer', text: a.replace(/<[^>]+>/g, '').replace(/\s+/g, ' ').trim() } }));
+  const url = `${SITE}/${map}/`;
+  return { '@context': 'https://schema.org', '@graph': [{ '@type': 'WebPage', name: naam, url, inLanguage: 'nl', isPartOf: { '@type': 'WebSite', url: SITE } }, { '@type': 'FAQPage', url, mainEntity: vragen }] };
 }
 
 // ---------- Het gesprek (/hetgesprek/) uit hetgesprek/_tekst.md ----------
@@ -340,7 +410,6 @@ function beginnenBlok() {
 const BOEK_ALLEEN_URL = 'https://calendar.google.com/calendar/appointments/schedules/AcZssZ26gBiVdJDFRYG7vXqGGpwhdmHwSfb-5njB06bf7MlQMze9MYmZuUA_tUR_HfDnM62u9WUhBmNA';
 const BOEK_SAMEN_URL = 'https://calendar.google.com/calendar/appointments/schedules/AcZssZ1sH--h7cynaZ1LdYQ7NS4rTDNZCiq2hwpSC3W9ucFylcZ07MxuxLNMk8wucgCs0owXXHk4mgUc';
 // Kosteloze kennismaking van 20 minuten (afsprakenpagina in Google Agenda).
-const KENNISMAKING_URL = 'https://calendar.app.google/uK1NGzYM1U4datPM6';
 function gesprekPagina() {
   const pad = join(ROOT, 'hetgesprek', '_tekst.md');
   if (!existsSync(pad)) return null;
@@ -407,6 +476,7 @@ function overPagina() {
   const inhoud = `<section class="over-mij">
   <div class="wrap smal">
     <h1>Hoi, ik ben Arko Hoondert.</h1>
+    <p class="rust intro">Financieel levensplanner in Zeeland. Ik help mensen rond en na hun veertigste hun leven opnieuw inrichten, en reken uit of het klopt.</p>
     <figure class="foto"><img src="/arko-hoondert-over-mij.webp" alt="Arko Hoondert in een grijs overhemd" width="1400" height="1044" loading="eager"></figure>
     <h2>De versie van twintig seconden</h2>
     <ol class="tijdlijn">
@@ -417,12 +487,29 @@ function overPagina() {
     <h2>De versie van twintig minuten</h2>
     <div class="tekst">
       <p>Die vertel ik je liever zelf, en dan wil ik vooral jouw verhaal horen. In een kennismaking van twintig minuten via video stel je je vraag en kijken we samen of het klikt. Het kost niets.</p>
-      <p><a class="knop" href="${KENNISMAKING_URL}">Plan een kennismaking</a></p>
+      <p><a class="knop leeg" href="/kennismaken/">Plan een kennismaking</a></p>
     </div>
+    <h2>Waar ik voor sta</h2>
+    <ol class="credo">
+      <li>Liever écht zijn dan lijken.</li>
+      <li>Eerst je leven, dan je geld.</li>
+      <li>Ik zeg wat ik zie. De keuze blijft van jou.</li>
+      <li>Ik verkoop geen financiële producten. Daardoor kan ik ook zeggen dat je iets niet moet doen.</li>
+      <li>Een plan moet vier levens overleven: lang, kort, rot en apart.</li>
+      <li>Afspraken regel je als de zon schijnt.</li>
+      <li>Je weet vooraf wat het kost.</li>
+    </ol>
+    <h2>Achtergrond</h2>
+    <ul class="achtergrond">
+      <li><b>CFP in opleiding</b><span>Lindenhaeghe. Ik voer de titel pas na certificering.</span></li>
+      <li><b>MBA</b><span>Quantic School of Business and Technology</span></li>
+      <li><b>Vijftien jaar fondsenwerving</b><span>Oprichter van PeerWorks, voormalig hoofd fondsenwerving en MT-lid bij KWF</span></li>
+      <li><b>Grote giften en nalatenschappen</b><span>Adviseur bij Het Zeeuwse Landschap, naast mijn praktijk</span></li>
+    </ul>
     <div class="over-aanmelden">
       <h2>Elke zondag één vraag</h2>
       <p class="rust">Eén vraag, één inzicht en één stap. Over geld, werk en de keuzes die je ooit nog wilt maken.</p>
-      ${aanmeldRegel()}
+      ${aanmeldBlok('over')}
     </div>
   </div>
 </section>`;
@@ -478,18 +565,27 @@ function bouw() {
   writeFileSync(join(MAP, 'laatste', 'index.html'), laatste(edities[0]));
   const over = overPagina();
   if (over) writeFileSync(join(ROOT, 'over', 'index.html'), over);
-  const werk = vanHome({ map: 'werkwijze', titel: 'Werkwijze · Arko Hoondert', beschrijving: 'Van kennismaking tot een financieel levensplan met een vaste prijs, vooraf op papier. Zo werk ik, en wat ik niet doe.', extra: beginnenBlok() });
-  if (werk) writeFileSync(join(ROOT, 'werkwijze', 'index.html'), werk);
-  const kennis = vanHome({ map: 'kennismaken', titel: 'Kennismaken · Arko Hoondert', beschrijving: 'Plan een kosteloze kennismaking van 20 minuten via video, of bel of mail. Daarna weet je of het klikt.' });
-  if (kennis) writeFileSync(join(ROOT, 'kennismaken', 'index.html'), kennis);
+  bouwHome(edities);
+  const paginas = [
+    { map: 'levensplan', titel: 'Wat is een levensplan? · Arko Hoondert', beschrijving: 'Een financieel levensplan begint bij hoe je wilt leven en rekent daarna uit wat dat betekent voor je geld. Met een voorbeeld van begin tot eind.', extra: SLOT },
+    { map: 'werkwijze', titel: 'Werkwijze en prijzen · Arko Hoondert', beschrijving: 'Van kennismaking tot levensplan: de stappen, wat je krijgt en wat het kost. €3.500 tot €8.500 inclusief btw, vast vooraf.', extra: SLOT, jsonld: faqJsonld('werkwijze', 'Werkwijze en prijzen') },
+    { map: 'kennismaken', titel: 'Kennismaken · Arko Hoondert', beschrijving: 'Plan een kosteloze kennismaking van 20 minuten via video. Daarna weet je of een plan je verder helpt.' },
+    { map: 'nieuwsbrief', titel: 'Waarvoor doe je het? · De nieuwsbrief van Arko Hoondert', beschrijving: 'Elke zondag één vraag over je leven en je geld. Gratis, afmelden kan onder elke mail.', kaal: true },
+    { map: 'zeeland', titel: 'Financiële planning in Zeeland · Arko Hoondert', beschrijving: 'Financiële levensplanning in Zeeland, bij je thuis, buiten of via video. Geen producten, geen provisie, vaste prijs vooraf.', extra: SLOT },
+    { map: 'bedankt', titel: 'Bijna klaar · Arko Hoondert', beschrijving: 'Bevestig je inschrijving voor Waarvoor doe je het?.', robots: 'noindex, follow' },
+    { map: 'bevestigd', titel: 'Gelukt · Arko Hoondert', beschrijving: 'Je inschrijving voor Waarvoor doe je het? is bevestigd.', robots: 'noindex, follow' },
+  ];
+  for (const p of paginas) {
+    const html = vanHome({ ...p, edities });
+    if (html) writeFileSync(join(ROOT, p.map, 'index.html'), html);
+  }
   const gesprek = gesprekPagina();
   if (gesprek) writeFileSync(join(ROOT, 'hetgesprek', 'index.html'), gesprek);
 
   const vandaag = new Date().toISOString().slice(0, 10);
   const urls = [
-    `  <url><loc>${SITE}/</loc><lastmod>2026-10-19</lastmod></url>`,
-    `  <url><loc>${SITE}/werkwijze/</loc><lastmod>${vandaag}</lastmod></url>`,
-    `  <url><loc>${SITE}/kennismaken/</loc><lastmod>${vandaag}</lastmod></url>`,
+    `  <url><loc>${SITE}/</loc><lastmod>${vandaag}</lastmod></url>`,
+    ...['levensplan', 'werkwijze', 'kennismaken', 'nieuwsbrief', 'zeeland'].map((m) => `  <url><loc>${SITE}/${m}/</loc><lastmod>${vandaag}</lastmod></url>`),
     ...(existsSync(join(ROOT, 'hetgesprek', '_tekst.md')) ? [`  <url><loc>${SITE}/hetgesprek/</loc><lastmod>${vandaag}</lastmod></url>`] : []),
     ...(existsSync(join(ROOT, 'over', '_tekst.md')) ? [`  <url><loc>${SITE}/over/</loc><lastmod>${vandaag}</lastmod></url>`] : []),
     `  <url><loc>${SITE}${PAD}</loc><lastmod>${edities[0]?.datum || vandaag}</lastmod></url>`,

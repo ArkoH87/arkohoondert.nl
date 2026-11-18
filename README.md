@@ -1,6 +1,6 @@
 # arkohoondert.nl
 
-De website van Arko Hoondert, financieel planner in Zeeland. Eén statische pagina, gehost op GitHub Pages.
+De website van Arko Hoondert, financieel levensplanner in Zeeland. Eén statische pagina, gehost op GitHub Pages.
 
 ## Bestanden
 
@@ -24,7 +24,7 @@ De website van Arko Hoondert, financieel planner in Zeeland. Eén statische pagi
 - HTTPS via GitHub Pages, met HTTPS afgedwongen.
 
 ### Vindbaarheid in zoekmachines (SEO)
-- Titel: "Arko Hoondert · Financieel planner in Zeeland". Beschrijving onder 160 tekens met vak, regio en de drie kernvragen.
+- Titel: "Arko Hoondert · Financieel levensplanner in Zeeland". Beschrijving onder 160 tekens met vak, regio en de drie kernvragen.
 - De h1 bevat naam, vak en regio, plus de vraag "Waar leef je eigenlijk voor?".
 - Eén canonieke URL: https://arkohoondert.nl/ (zonder www).
 - Gestructureerde gegevens (schema.org, JSON-LD): WebSite, ProfessionalService en FinancialService (adres, telefoon, werkgebied Zeeland en Nederland, diensten, KvK, btw), Person (Arko, met LinkedIn) en FAQPage. De FAQPage wordt automatisch gevuld met de zichtbare vragen, zodat tekst en gegevens altijd gelijk zijn.

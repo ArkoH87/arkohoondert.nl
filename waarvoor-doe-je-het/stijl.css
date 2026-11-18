@@ -209,3 +209,38 @@ section.klei { background: var(--klei); }
 .voet-onder .klein + .klein { margin-top: 8px; }
 @media (max-width: 860px) { .voet-kolommen { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); } .voet-wie { grid-column: 1 / -1; } }
 @media (max-width: 420px) { .voet-kolommen { grid-template-columns: minmax(0, 1fr); } }
+
+/* Opzet november 2026: zelfde menu, formulier en voet als de homepage */
+body { font-size: 18px; }
+.klein { font-size: 15px; }
+.nav { gap: 24px; }
+.nav a.lnk { padding-block: 4px; border-bottom: 2px solid transparent; }
+.nav a.lnk:hover { text-decoration: none; border-bottom-color: var(--polder-200); }
+.nav a.lnk[aria-current="page"] { border-bottom-color: var(--vonk); color: var(--polder); }
+.nav .knop.leeg { min-height: 44px; padding: 11px 16px; font-size: 14.5px; color: var(--polder); }
+.nav .knop.leeg:hover { text-decoration: none; }
+@media (max-width: 1040px) { .nav .lnk { display: none; } }
+@media (max-width: 420px) { .nav .knop { padding: 10px 12px; font-size: 13.5px; } }
+.aanmeld, .aanmeld.regel { display: grid !important; gap: 8px; max-width: 540px; margin: 0; }
+.aanmelden .aanmeld { margin-top: 26px; }
+.aanmeld label { font-weight: 600; color: var(--polder); font-size: 15px; }
+.aanmeld .rij { display: flex; gap: 8px; flex-wrap: wrap; }
+.aanmeld input { flex: 1 1 220px; min-height: 52px; padding: 12px 14px; font: 400 18px/1.2 var(--sans); border: 1px solid var(--polder-500); border-radius: 4px; background: var(--wit); color: var(--polder-900); }
+.aanmeld .knop { min-height: 52px; font-size: 16px; }
+.aanmeld .hulp, .aanmeld .bewijs { margin: 0 !important; font-size: 15px; color: var(--polder-500); }
+.aanmeld .bewijs { color: var(--polder-800); }
+@media (max-width: 600px) { .aanmeld .knop { width: 100%; justify-content: center; } }
+.essays .aanmeld { margin-top: 28px; }
+.halverwege { margin: 36px 0; padding: 24px; background: var(--wit); box-shadow: 0 0 0 1px var(--lijn); border-radius: 8px; display: grid; gap: 12px; }
+.halverwege-kop { font-weight: 600; color: var(--polder); margin: 0 !important; font-family: var(--sans) !important; font-size: 17px !important; }
+.naar-gesprek { margin-top: 32px; padding: 20px 24px; background: var(--klei); border-radius: 8px; }
+.over-mij .intro { font-size: clamp(20px, 2.3vw, 24px); line-height: 1.35; margin-top: 16px; max-width: 40ch; }
+.credo { list-style: none; counter-reset: c; margin: 0; padding: 0; border-top: 1px solid var(--polder); }
+.credo li { counter-increment: c; display: grid; grid-template-columns: 40px minmax(0, 1fr); padding: 14px 0; border-bottom: 1px solid var(--lijn); font: 300 21px/1.4 var(--serif); color: var(--polder); }
+.credo li::before { content: counter(c); font: 600 14px/2 var(--sans); color: var(--polder-500); }
+.achtergrond { list-style: none; margin: 0; padding: 0; border-top: 1px solid var(--polder); }
+.achtergrond li { display: grid; gap: 2px; padding-block: 14px; border-bottom: 1px solid var(--lijn); }
+.achtergrond b { color: var(--polder); } .achtergrond span { font-size: 15.5px; color: var(--polder-500); }
+.voet.donker li { font-size: 16px; }
+.halverwege .aanmeld p, .halverwege .aanmeld label { font-family: var(--sans) !important; font-size: 15px !important; line-height: 1.45 !important; font-weight: 400; }
+.halverwege .aanmeld label { font-weight: 600 !important; color: var(--polder) !important; }
