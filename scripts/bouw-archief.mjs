@@ -18,7 +18,7 @@ const SITE = 'https://arkohoondert.nl';
 const PAD = '/waarvoor-doe-je-het/';
 
 // Kit-formulier voor aanmelden per mail. Leeg = de aanmeldknop van LinkedIn.
-const KIT_FORM_URL = process.env.KIT_FORM_URL || '';
+const KIT_FORM_URL = process.env.KIT_FORM_URL ?? 'https://app.kit.com/forms/10201840/subscriptions';
 const LINKEDIN_VOLGEN = 'https://www.linkedin.com/build-relation/newsletter-follow?entityUrn=7479311765558960129';
 
 const MAANDEN = ['januari', 'februari', 'maart', 'april', 'mei', 'juni', 'juli', 'augustus', 'september', 'oktober', 'november', 'december'];
