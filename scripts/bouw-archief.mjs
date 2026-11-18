@@ -213,7 +213,10 @@ function lezersTekst() {
   if (!existsSync(pad)) return '';
   const l = JSON.parse(readFileSync(pad, 'utf8'));
   const totaal = (Number(l.linkedin) || 0) + (Number(l.mail) || 0);
-  return totaal > 0 ? `samen met ${totaal.toLocaleString('nl-NL')} anderen` : '';
+  if (totaal <= 0) return '';
+  // Afgerond naar beneden op honderdtallen ("700+"), zodat de tekst niet elke week verandert.
+  const getal = totaal >= 100 ? `${(Math.floor(totaal / 100) * 100).toLocaleString('nl-NL')}+` : String(totaal);
+  return `samen met ${getal} anderen`;
 }
 
 function aanmeldRegel() {
