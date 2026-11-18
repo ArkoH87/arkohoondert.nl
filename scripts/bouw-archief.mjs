@@ -266,10 +266,10 @@ function lezersZin() {
   const pad = join(MAP, '_lezers.json');
   if (!existsSync(pad)) return '';
   const l = JSON.parse(readFileSync(pad, 'utf8'));
-  const li = Number(l.linkedin) || 0, mail = Number(l.mail) || 0, totaal = li + mail;
+  const totaal = (Number(l.linkedin) || 0) + (Number(l.mail) || 0);
   if (totaal <= 0) return '';
   const getal = totaal >= 100 ? `ruim ${(Math.floor(totaal / 100) * 100).toLocaleString('nl-NL')}` : String(totaal);
-  return mail > 0 ? `Je leest mee met ${getal} anderen, op LinkedIn en per mail.` : `Je leest mee met ${getal} anderen, nu nog via LinkedIn.`;
+  return `Je leest mee met ${getal} anderen.`;
 }
 
 function aanmeldBlok(id = 'a') {
