@@ -2,6 +2,8 @@
 nummer: 11
 titel: Wie ben jij, los van je werk?
 datum: 2026-09-20
+onderwerp: Richting
+kort: Wie samenvalt met zijn rol, staat op een wankele basis.
 beschrijving: Voor ondernemers die samenvallen met hun bedrijf. Wie ben jij zonder functie of bedrijfsnaam? Waarom wie samenvalt met zijn rol op een wankele basis staat.
 linkedin: https://www.linkedin.com/pulse/wie-ben-jij-los-van-je-werk-arko-hoondert--aw64e
 ---

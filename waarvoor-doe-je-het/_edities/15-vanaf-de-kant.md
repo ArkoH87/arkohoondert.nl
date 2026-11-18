@@ -2,6 +2,8 @@
 nummer: 15
 titel: Vanaf de kant
 datum: 2026-10-18
+onderwerp: Rust
+kort: Wat er met je bedrijf gebeurt als jij het moment niet kiest.
 beschrijving: Voor ondernemers die ooit willen stoppen of verkopen. Wat gebeurt er met je bedrijf als jij het moment niet kiest? Waarom een exitplan drie eindes moet dekken.
 linkedin: https://www.linkedin.com/pulse/vanaf-de-kant-arko-hoondert--jakxe
 ---

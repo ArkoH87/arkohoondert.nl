@@ -2,6 +2,8 @@
 nummer: 5
 titel: Wanneer is het genoeg?
 datum: 2026-08-09
+onderwerp: Ruimte
+kort: Genoeg is geen bedrag dat vanzelf verschijnt. Het is een besluit.
 beschrijving: Voor ondernemers die nog één jaar willen doorgroeien. Wanneer is het genoeg? Waarom genoeg een besluit is en geen bedrag dat vanzelf in beeld komt.
 linkedin: https://www.linkedin.com/pulse/wanneer-het-genoeg-arko-hoondert--vudse
 ---

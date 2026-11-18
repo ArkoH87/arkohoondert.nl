@@ -2,6 +2,8 @@
 nummer: 1
 titel: Lang leven, kort leven, rot leven
 datum: 2026-07-12
+onderwerp: Rust
+kort: Elk plan moet tegen drie levens kunnen. De meeste kunnen er maar één aan.
 beschrijving: Voor ondernemers die plannen alsof alles doorgaat zoals nu. Kan jouw plan tegen alle drie de levens? De drieslag waar elk financieel plan tegen moet kunnen.
 linkedin: https://www.linkedin.com/pulse/lang-leven-kort-rot-arko-hoondert--pgcve
 ---
@@ -31,6 +33,6 @@ Financiële planning gaat niet over cijfers. Het gaat over de vraag waarvoor je 
 
 ## Eén stap voor deze week
 
-Beantwoord de lang-leven-vraag, in drie zinnen: _stel, je wordt vijfennegentig: waar woon je dan, met wie, en waarvan leef je?_
+Beantwoord de lang-leven-vraag, in drie zinnen: *stel, je wordt vijfennegentig: waar woon je dan, met wie, en waarvan leef je?*
 
 Drie zinnen op papier is genoeg. Je hoeft niets uit te rekenen en niets te regelen. Maar je zult merken: wie deze vraag serieus beantwoordt, kijkt daarna anders naar elke financiële keuze die volgt.

@@ -88,6 +88,23 @@ async function main() {
     nieuw++;
   }
   console.log(`${nieuw} nieuwe editie(s).`);
+  await telMaillezers();
+}
+
+// Aantal mailabonnees met toestemming voor deze nieuwsbrief, voor de teller op de editiepagina.
+// LinkedIn-abonnees zet Arko met de hand in _lezers.json; daar is geen koppeling voor.
+const TAG_TOESTEMMING = 25950077;
+async function telMaillezers() {
+  const r = await kit(`/tags/${TAG_TOESTEMMING}/subscribers?status=active&per_page=1&include_total_count=true`);
+  const aantal = r?.pagination?.total_count;
+  if (typeof aantal !== 'number') { console.warn('Aantal maillezers niet gevonden'); return; }
+  const pad = join(BRON, '..', '_lezers.json');
+  const lezers = JSON.parse(readFileSync(pad, 'utf8'));
+  lezers.mail = aantal;
+  lezers.mail_peildatum = new Date().toISOString().slice(0, 10);
+  if (DROOG) { console.log('Maillezers:', aantal); return; }
+  writeFileSync(pad, JSON.stringify(lezers, null, 2) + '\n');
+  console.log(`Maillezers: ${aantal}`);
 }
 
 main().catch((e) => { console.error(e); process.exit(1); });

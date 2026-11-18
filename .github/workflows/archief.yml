@@ -10,6 +10,7 @@ on:
     paths:
       - 'waarvoor-doe-je-het/_edities/**'
       - 'scripts/bouw-archief.mjs'
+      - 'waarvoor-doe-je-het/_lezers.json'
 
 permissions:
   contents: write

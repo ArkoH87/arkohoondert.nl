@@ -110,3 +110,84 @@ section.klei { background: var(--klei); }
 .voet .juridisch a { font-weight: 600; font-size: 15px; }
 .voet .klein + .klein { margin-top: 8px; }
 @media (max-width: 760px) { .voet-grid { grid-template-columns: minmax(0, 1fr); } }
+
+/* Overzicht in de vorm van een essaylijst */
+.essays { padding: 72px 0 96px; }
+.essays h1 { font-size: clamp(38px, 6vw, 56px); line-height: 1.05; margin: 0 0 16px; }
+.essays > .wrap > .rust { max-width: 34em; margin: 0 0 24px; }
+.aanmeld.regel { display: flex; flex-wrap: wrap; gap: 8px; max-width: 560px; margin: 0; }
+.aanmeld.regel + .klein { margin: 8px 0 0; }
+.zoekbalk { display: flex; gap: 16px; align-items: center; margin: 56px 0 8px; border-bottom: 1px solid var(--polder-200); }
+.zoekbalk input { flex: 1; min-height: 48px; border: 0; background: transparent; font: 400 16px/1.2 var(--sans); color: var(--polder-900); padding: 0; }
+.zoekbalk input:focus { outline: none; }
+.zoekbalk select { border: 0; background: transparent; font: 500 14px/1 var(--sans); color: var(--polder); padding: 12px 0; cursor: pointer; max-width: 45%; }
+.rijen { list-style: none; margin: 0; padding: 0; }
+.rijen li a { display: block; padding: 22px 0; text-decoration: none; color: inherit; }
+.rijen .rij-kop { display: flex; justify-content: space-between; align-items: baseline; gap: 16px; }
+.rijen .titel { font-family: var(--serif); font-weight: 300; font-size: 22px; line-height: 1.25; color: var(--polder-900); }
+.rijen time { flex: none; font-size: 13px; color: var(--polder-500); }
+.rijen .kort { display: block; margin-top: 4px; color: var(--polder-700, #2d4a3e); font-size: 16px; line-height: 1.5; }
+.rijen li a:hover .titel { text-decoration: underline; text-decoration-color: var(--vonk); text-underline-offset: 4px; }
+.pager { display: flex; justify-content: space-between; align-items: center; margin-top: 32px; }
+.pager .lnk { background: none; border: 0; font: 500 15px/1 var(--sans); color: var(--polder); cursor: pointer; padding: 10px 0; }
+.pager .lnk:disabled { visibility: hidden; }
+.geen { margin-top: 24px; }
+@media (max-width: 560px) {
+  .rijen .rij-kop { flex-direction: column; gap: 4px; }
+  .rijen time { order: -1; }
+  .zoekbalk { flex-direction: column; align-items: stretch; gap: 0; }
+  .zoekbalk select { max-width: none; border-top: 1px solid var(--polder-200); }
+}
+
+/* Over mij */
+.over-mij { padding: 72px 0 96px; }
+.over-mij h1 { font-size: clamp(36px, 6vw, 56px); line-height: 1.05; margin: 0 0 32px; }
+.over-mij h2 { font-family: var(--serif); font-weight: 300; font-size: 26px; line-height: 1.2; margin: 56px 0 20px; color: var(--polder-900); }
+.over-mij .foto { margin: 0; }
+.over-mij .foto img { width: 100%; height: auto; display: block; border-radius: 4px; }
+.tijdlijn { list-style: none; margin: 0; padding: 0; border-top: 1px solid var(--polder-200); }
+.tijdlijn li { display: grid; grid-template-columns: 9.5em 1fr; gap: 16px; padding: 14px 0; border-bottom: 1px solid var(--polder-200); line-height: 1.5; }
+.tijdlijn .jaar { font-size: 14px; color: var(--polder-500); padding-top: 2px; }
+.over-mij .tekst p { font-family: var(--serif); font-weight: 300; font-size: 19px; line-height: 1.7; margin: 0 0 1.1em; color: var(--polder-900); }
+.over-aanmelden { margin-top: 64px; padding-top: 8px; border-top: 1px solid var(--polder-200); }
+.over-aanmelden .rust { margin: 0 0 20px; }
+@media (max-width: 560px) { .tijdlijn li { grid-template-columns: 1fr; gap: 2px; } }
+
+/* Het gesprek */
+.gesprek { padding: 56px 0 96px; }
+.boekkaart { background: var(--wit); box-shadow: 0 0 0 1px var(--polder-200); border-radius: 6px; padding: 32px 32px 24px; }
+.boekkaart h1 { font-size: clamp(36px, 6vw, 56px); line-height: 1.05; margin: 10px 0 14px; }
+.boekkaart .rust { margin: 0 0 24px; font-size: 18px; line-height: 1.6; }
+.prijs { display: flex; gap: 40px; margin: 0 0 20px; }
+.prijs dt { font-size: 13px; color: var(--polder-500); }
+.prijs dd { margin: 2px 0 0; font-weight: 600; color: var(--polder-900); }
+.knop.breed { width: 100%; justify-content: space-between; }
+.boekkaart .klein { margin: 12px 0 0; }
+.gesprek h2 { font-family: var(--serif); font-weight: 300; font-size: 28px; line-height: 1.2; margin: 56px 0 16px; color: var(--polder-900); }
+.gesprek .tekst p, .gesprek .tekst li { font-family: var(--serif); font-weight: 300; font-size: 19px; line-height: 1.7; color: var(--polder-900); }
+.gesprek .tekst p { margin: 0 0 1em; }
+.stappen ol { list-style: none; counter-reset: stap; padding: 0; margin: 0; }
+.stappen li { counter-increment: stap; position: relative; padding: 14px 0 14px 3em; border-top: 1px solid var(--polder-200); }
+.stappen li::before { content: "0" counter(stap); position: absolute; left: 0; top: 14px; font: 600 14px/2.2 var(--sans); color: var(--polder-500); }
+.stappen li strong { font-weight: 600; }
+.vragen details { border-top: 1px solid var(--polder-200); padding: 16px 0; }
+.vragen details:last-child { border-bottom: 1px solid var(--polder-200); }
+.vragen summary { cursor: pointer; font-weight: 600; color: var(--polder-900); list-style: none; display: flex; justify-content: space-between; gap: 16px; }
+.vragen summary::after { content: "+"; color: var(--polder-500); font-weight: 400; }
+.vragen details[open] summary::after { content: "−"; }
+.vragen details p { margin: 12px 0 0; line-height: 1.6; }
+.terug { margin-top: 32px; }
+@media (max-width: 560px) { .boekkaart { padding: 24px 20px 20px; } .prijs { gap: 28px; } }
+
+.eerst { margin-top: 20px; padding-top: 18px; border-top: 1px solid var(--polder-200); display: flex; flex-wrap: wrap; gap: 12px 20px; align-items: center; justify-content: space-between; }
+.eerst p { margin: 0; flex: 1 1 260px; line-height: 1.5; }
+
+.voet .sitelinks { margin-bottom: 12px; }
+.voet .sitelinks a { font-weight: 500; }
+.boekknoppen { display: grid; gap: 10px; }
+.over-mij .foto img { display: block; width: 100%; height: auto; border-radius: 8px; }
+.over-mij .duo { margin: 40px 0 8px; }
+.over-mij .duo img { display: block; width: 100%; height: auto; }
+.over-kort { display: grid; grid-template-columns: 96px minmax(0, 1fr); gap: 20px; align-items: start; }
+.over-kort .avatar { width: 96px; height: 96px; border-radius: 50%; object-fit: cover; margin-top: 44px; }
+@media (max-width: 560px) { .over-kort { grid-template-columns: minmax(0, 1fr); } .over-kort .avatar { margin-top: 24px; } }

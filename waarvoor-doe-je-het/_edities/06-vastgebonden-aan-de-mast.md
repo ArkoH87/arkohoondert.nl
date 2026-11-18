@@ -2,6 +2,8 @@
 nummer: 6
 titel: Vastgebonden aan de mast
 datum: 2026-08-16
+onderwerp: Richting
+kort: Waarom je de beste besluiten neemt voordat het gaat stormen.
 beschrijving: Voor wie het op papier goed heeft maar de koers kwijt is. Waar vaar je naartoe? Waarom een plan een besluit is dat je neemt voordat het gaat stormen.
 linkedin: https://www.linkedin.com/pulse/vastgebonden-aan-de-mast-arko-hoondert--mxfhe
 ---

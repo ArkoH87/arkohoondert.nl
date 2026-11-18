@@ -18,7 +18,7 @@ const SITE = 'https://arkohoondert.nl';
 const PAD = '/waarvoor-doe-je-het/';
 
 // Kit-formulier voor aanmelden per mail. Leeg = de aanmeldknop van LinkedIn.
-const KIT_FORM_URL = process.env.KIT_FORM_URL || '';
+const KIT_FORM_URL = process.env.KIT_FORM_URL || 'https://app.kit.com/forms/10201840/subscriptions';
 const LINKEDIN_VOLGEN = 'https://www.linkedin.com/build-relation/newsletter-follow?entityUrn=7479311765558960129';
 
 const MAANDEN = ['januari', 'februari', 'maart', 'april', 'mei', 'juni', 'juli', 'augustus', 'september', 'oktober', 'november', 'december'];
@@ -89,7 +89,7 @@ function pagina({ titel, beschrijving, canoniek, ogType = 'website', jsonld, inh
 <meta property="og:url" content="${canoniek}">
 <meta property="og:title" content="${esc(titel)}">
 <meta property="og:description" content="${esc(beschrijving)}">
-<meta property="og:image" content="${SITE}/arko-hoondert-polder.jpg">
+<meta property="og:image" content="${SITE}/arko-hoondert-og.jpg">
 <link rel="preload" href="/fonts/instrument-sans-700.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="/fonts/literata-300.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="/waarvoor-doe-je-het/stijl.css">
@@ -103,9 +103,11 @@ function pagina({ titel, beschrijving, canoniek, ogType = 'website', jsonld, inh
       ${LOCKUP}
     </a>
     <nav class="nav" aria-label="Hoofdmenu">
-      <a class="lnk" href="/waarvoor-doe-je-het/">Alle edities</a>
-      <a class="lnk" href="/#werkwijze">Werkwijze</a>
-      <a class="knop vol" href="/#contact">Kennismaken</a>
+      <a class="lnk" href="/werkwijze/">Werkwijze</a>
+      <a class="lnk" href="/hetgesprek/">Het gesprek</a>
+      <a class="lnk" href="/waarvoor-doe-je-het/">Edities</a>
+      <a class="lnk" href="/over/">Over mij</a>
+      <a class="knop vol" href="/kennismaken/">Plan een kennismaking</a>
     </nav>
   </div>
 </header>
@@ -121,6 +123,13 @@ ${inhoud}
       <p class="klein" style="margin-top: 18px;">De Perponcherpolderweg 5, 4471 RX Wolphaartsdijk<br>KvK 85352012 · btw-id NL004086452B40<br><a href="mailto:arko@hoondert.me">arko@hoondert.me</a> · <a href="tel:+31651739714">06 51 73 97 14</a></p>
     </div>
     <div>
+      <nav class="juridisch sitelinks" aria-label="Praktijk">
+        <a href="/werkwijze/">Werkwijze</a>
+        <a href="/hetgesprek/">Het gesprek</a>
+        <a href="/kennismaken/">Kennismaken</a>
+        <a href="/waarvoor-doe-je-het/">Edities</a>
+        <a href="/over/">Over mij</a>
+      </nav>
       <nav class="juridisch" aria-label="Juridisch">
         <a href="/algemene-voorwaarden-arko-hoondert.pdf" target="_blank" rel="noopener">Algemene voorwaarden</a>
         <a href="/privacyverklaring-arko-hoondert.pdf" target="_blank" rel="noopener">Privacyverklaring</a>
@@ -191,36 +200,235 @@ ${aanmelden()}`;
   });
 }
 
+const ONDERWERPEN = [
+  ['Richting', 'waar leef je voor?'],
+  ['Rust', 'wat als het tegenzit?'],
+  ['Ritme', 'wat doe je elke maand?'],
+  ['Ruimte', 'wat is genoeg?'],
+];
+
+// Lezers: LinkedIn-abonnees plus mailabonnees, uit _lezers.json.
+function lezersTekst() {
+  const pad = join(MAP, '_lezers.json');
+  if (!existsSync(pad)) return '';
+  const l = JSON.parse(readFileSync(pad, 'utf8'));
+  const totaal = (Number(l.linkedin) || 0) + (Number(l.mail) || 0);
+  return totaal > 0 ? `samen met ${totaal.toLocaleString('nl-NL')} anderen` : '';
+}
+
+function aanmeldRegel() {
+  const samen = lezersTekst();
+  const knop = samen ? `Schrijf je in, ${samen}` : 'Schrijf je in';
+  if (KIT_FORM_URL) {
+    return `<form class="aanmeld regel" action="${esc(KIT_FORM_URL)}" method="post">
+      <label class="sr" for="email-kop">E-mailadres</label>
+      <input id="email-kop" name="email_address" type="email" autocomplete="email" required placeholder="Je e-mailadres">
+      <button class="knop vol" type="submit">${knop}</button>
+    </form>
+    <p class="klein">Elke zondag, gratis. Je bevestigt eerst per mail, afmelden kan onder elke mail.</p>`;
+  }
+  return `<p><a class="knop vol" href="${LINKEDIN_VOLGEN}" target="_blank" rel="noopener">${knop} <span aria-hidden="true">↗</span></a></p>
+    <p class="klein">Elke zondag, gratis, via LinkedIn.</p>`;
+}
+
 function overzicht(edities) {
-  const lijst = edities.map((e) => `<li>
-      <a href="${PAD}${e.slug}/">
-        <span class="klein">Editie ${e.nummer} · <time datetime="${e.datum}">${datumNL(e.datum)}</time></span>
-        <span class="titel">${esc(e.titel)}</span>
-        ${e.beschrijving ? `<span class="besch">${esc(e.beschrijving)}</span>` : ''}
-      </a>
-    </li>`).join('\n    ');
-  const inhoud = `<section class="archief-kop">
+  const rijen = edities.map((e) => {
+    const zoek = [e.titel, e.kort, e.beschrijving, e.onderwerp].filter(Boolean).join(' ').toLowerCase();
+    return `<li data-onderwerp="${esc(e.onderwerp || '')}" data-zoek="${esc(zoek)}">
+        <a href="${PAD}${e.slug}/">
+          <span class="rij-kop"><span class="titel">${esc(e.titel)}</span><time datetime="${e.datum}">${datumNL(e.datum)}</time></span>
+          ${e.kort || e.ondertitel ? `<span class="kort">${esc(e.kort || e.ondertitel)}</span>` : ''}
+        </a>
+      </li>`;
+  }).join('\n      ');
+  const opties = ONDERWERPEN.map(([r, v]) => `<option value="${r}">${r}: ${v}</option>`).join('');
+  const inhoud = `<section class="essays">
   <div class="wrap smal">
-    <p class="kicker">Nieuwsbrief</p>
-    <h1>Waarvoor doe je het?</h1>
+    <h1>Edities</h1>
     <p class="rust">Elke zondag één vraag, één inzicht en één stap. Over geld, werk en de keuzes die je ooit nog wilt maken.</p>
-    <p><a class="knop vol" href="#aanmelden">Elke zondag ontvangen</a> <a class="knop leeg" href="${PAD}laatste/">Lees de nieuwste editie</a></p>
+    ${aanmeldRegel()}
+    <div class="zoekbalk" role="search">
+      <label class="sr" for="zoek">Zoek in de edities</label>
+      <input id="zoek" type="search" placeholder="Zoek in de edities" autocomplete="off">
+      <label class="sr" for="onderwerp">Filter op onderwerp</label>
+      <select id="onderwerp"><option value="">Alle onderwerpen</option>${opties}</select>
+    </div>
+    <ul class="rijen" id="rijen">
+      ${rijen}
+    </ul>
+    <p class="geen klein" id="geen" hidden>Geen editie gevonden. Probeer een ander woord.</p>
+    <nav class="pager" id="pager" aria-label="Pagina's" hidden>
+      <button class="lnk" type="button" id="nieuwer">← Nieuwere edities</button>
+      <span class="klein" id="paginanr"></span>
+      <button class="lnk" type="button" id="ouder">Oudere edities →</button>
+    </nav>
   </div>
 </section>
-<section class="archief">
-  <div class="wrap smal">
-    <h2 class="sr">Alle edities</h2>
-    <ol class="edities" reversed>
-    ${lijst}
-    </ol>
-  </div>
-</section>
-${aanmelden()}`;
+<script>
+(() => {
+  const PER = 10;
+  const rijen = [...document.querySelectorAll('#rijen > li')];
+  const zoek = document.getElementById('zoek'), ond = document.getElementById('onderwerp');
+  const pager = document.getElementById('pager'), nr = document.getElementById('paginanr');
+  const ouder = document.getElementById('ouder'), nieuwer = document.getElementById('nieuwer'), geen = document.getElementById('geen');
+  let pagina = 1;
+  function toon() {
+    const q = zoek.value.trim().toLowerCase(), r = ond.value;
+    const passend = rijen.filter((li) => (!r || li.dataset.onderwerp === r) && (!q || li.dataset.zoek.includes(q)));
+    const totaal = Math.max(1, Math.ceil(passend.length / PER));
+    pagina = Math.min(pagina, totaal);
+    rijen.forEach((li) => { li.hidden = true; });
+    passend.slice((pagina - 1) * PER, pagina * PER).forEach((li) => { li.hidden = false; });
+    geen.hidden = passend.length > 0;
+    pager.hidden = totaal < 2;
+    nr.textContent = 'Pagina ' + pagina + ' van ' + totaal;
+    nieuwer.disabled = pagina === 1; ouder.disabled = pagina === totaal;
+  }
+  zoek.addEventListener('input', () => { pagina = 1; toon(); });
+  ond.addEventListener('change', () => { pagina = 1; toon(); });
+  ouder.addEventListener('click', () => { pagina++; toon(); document.getElementById('rijen').scrollIntoView({ behavior: 'smooth' }); });
+  nieuwer.addEventListener('click', () => { pagina--; toon(); document.getElementById('rijen').scrollIntoView({ behavior: 'smooth' }); });
+  toon();
+})();
+</script>`;
   return pagina({
-    titel: 'Waarvoor doe je het? · Alle edities · Arko Hoondert',
+    titel: 'Edities · Waarvoor doe je het? · Arko Hoondert',
     beschrijving: 'Alle edities van Waarvoor doe je het?, de nieuwsbrief van Arko Hoondert. Elke zondag één vraag, één inzicht en één stap.',
     canoniek: `${SITE}${PAD}`,
     jsonld: { '@context': 'https://schema.org', '@type': 'CollectionPage', name: 'Waarvoor doe je het?', url: `${SITE}${PAD}`, inLanguage: 'nl', author: { '@type': 'Person', name: 'Arko Hoondert' } },
+    inhoud,
+  });
+}
+
+// ---------- Werkwijze en Kennismaken: pagina's in de schil van de homepage ----------
+// De homepage (index.html) is de bron voor kop, stijl, voet en scripts. De inhoud staat in _sectie.html.
+function vanHome({ map, titel, beschrijving, extra = '' }) {
+  const bron = join(ROOT, map, '_sectie.html');
+  if (!existsSync(bron)) return null;
+  const home = readFileSync(join(ROOT, 'index.html'), 'utf8');
+  const a = home.indexOf('<main id="inhoud">') + '<main id="inhoud">'.length;
+  const b = home.indexOf('</main>');
+  let kop = home.slice(0, a);
+  const url = `${SITE}/${map}/`;
+  kop = kop.replace(/<title>[\s\S]*?<\/title>/, `<title>${esc(titel)}</title>`)
+    .replace(/<meta name="description" content="[^"]*">/, `<meta name="description" content="${esc(beschrijving)}">`)
+    .replace(/<link rel="canonical" href="[^"]*">/, `<link rel="canonical" href="${url}">`)
+    .replace(/<meta property="og:url" content="[^"]*">/, `<meta property="og:url" content="${url}">`)
+    .replace(/<meta property="og:title" content="[^"]*">/, `<meta property="og:title" content="${esc(titel)}">`)
+    .replace(/<meta property="og:description" content="[^"]*">/, `<meta property="og:description" content="${esc(beschrijving)}">`)
+    .replace(/<script type="application\/ld\+json">[\s\S]*?<\/script>/, `<script type="application/ld+json">${JSON.stringify({ '@context': 'https://schema.org', '@type': 'WebPage', name: titel, url, inLanguage: 'nl', isPartOf: { '@type': 'WebSite', url: SITE } })}</script>`)
+    .replace(/<link rel="preload" as="image"[^>]*>\n?/, '')
+    .replace(/href="(favicon\.svg|fonts\/|arko-hoondert)/g, 'href="/$1')
+    .replace(/src="(arko-hoondert|fonts\/)/g, 'src="/$1')
+    .replace(/url\((['"]?)fonts\//g, 'url($1/fonts/')
+    .replace(`<a class="lnk" href="/${map}/">`, `<a class="lnk" href="/${map}/" aria-current="page">`);
+  const voet = home.slice(b);
+  return `${kop}\n${readFileSync(bron, 'utf8')}${extra}\n${voet}`;
+}
+function beginnenBlok() {
+  const home = readFileSync(join(ROOT, 'index.html'), 'utf8');
+  const m = home.match(/<section class="contact" id="contact"[\s\S]*?<\/section>\n/);
+  return m ? `\n${m[0]}` : '';
+}
+
+// ---------- Het gesprek (/hetgesprek/) uit hetgesprek/_tekst.md ----------
+// Betaalde afsprakenpagina's in Google Agenda (aangemaakt 18 november 2026, betaling via Stripe).
+const BOEK_ALLEEN_URL = 'https://calendar.google.com/calendar/appointments/schedules/AcZssZ26gBiVdJDFRYG7vXqGGpwhdmHwSfb-5njB06bf7MlQMze9MYmZuUA_tUR_HfDnM62u9WUhBmNA';
+const BOEK_SAMEN_URL = 'https://calendar.google.com/calendar/appointments/schedules/AcZssZ1sH--h7cynaZ1LdYQ7NS4rTDNZCiq2hwpSC3W9ucFylcZ07MxuxLNMk8wucgCs0owXXHk4mgUc';
+// Kosteloze kennismaking van 20 minuten (afsprakenpagina in Google Agenda).
+const KENNISMAKING_URL = 'https://calendar.app.google/uK1NGzYM1U4datPM6';
+function gesprekPagina() {
+  const pad = join(ROOT, 'hetgesprek', '_tekst.md');
+  if (!existsSync(pad)) return null;
+  const delen = {};
+  for (const blok of readFileSync(pad, 'utf8').split(/^## /m).filter(Boolean)) {
+    const i = blok.indexOf('\n');
+    delen[blok.slice(0, i).trim()] = blok.slice(i + 1).trim();
+  }
+  const [kicker, titel, intro] = delen['Kop'].split('\n');
+  const vragen = delen['Veelgestelde vragen'].split(/^### /m).filter(Boolean).map((v) => {
+    const i = v.indexOf('\n');
+    return `<details><summary>${esc(v.slice(0, i).trim())}</summary>${markdownNaarHtml(v.slice(i + 1).trim())}</details>`;
+  }).join('\n      ');
+  const boek = `<div class="boekknoppen">
+        <a class="knop vol breed" href="${BOEK_ALLEEN_URL}" target="_blank" rel="noopener">Alleen · kies een moment <span aria-hidden="true">↗</span></a>
+        <a class="knop vol breed" href="${BOEK_SAMEN_URL}" target="_blank" rel="noopener">Samen · kies een moment <span aria-hidden="true">↗</span></a>
+      </div>`;
+  const sectie = (kop) => `<h2>${esc(kop)}</h2>\n    <div class="tekst">${markdownNaarHtml(delen[kop])}</div>`;
+  const inhoud = `<section class="gesprek">
+  <div class="wrap smal">
+    <div class="boekkaart" id="boeken">
+      <p class="kicker">${esc(kicker)}</p>
+      <h1>Het gesprek</h1>
+      <p class="rust">${esc(titel)}. ${esc(intro)}</p>
+      <dl class="prijs"><div><dt>Alleen</dt><dd>90 minuten · €395</dd></div><div><dt>Samen met je partner</dt><dd>120 minuten · €495</dd></div></dl>
+      <p class="klein">Prijzen inclusief btw.</p>
+      ${boek}
+      <p class="klein">Start je binnen drie maanden een traject, dan trekken we het bedrag af van de vaste prijs.</p>
+      <div class="eerst">
+        <p><b>Eerst kijken of het klikt?</b> Plan een kennismaking van 20 minuten, kosteloos en via video.</p>
+        <a class="knop leeg" href="/kennismaken/">Plan een kennismaking <span aria-hidden="true">→</span></a>
+      </div>
+    </div>
+    ${sectie('Wat je kunt verwachten')}
+    <div class="over-kort"><img class="avatar" src="/arko-hoondert-vierkant.webp" width="800" height="800" loading="lazy" decoding="async" alt="Arko Hoondert"><div>${sectie('Over mij')}</div></div>
+    <h2>Zo werkt het</h2>
+    <div class="tekst stappen">${markdownNaarHtml(delen['Zo werkt het'])}</div>
+    ${sectie('Wat het niet is')}
+    <h2>Veelgestelde vragen</h2>
+    <div class="vragen">
+      ${vragen}
+    </div>
+    <p class="terug"><a href="#boeken">Terug naar boeken ↑</a></p>
+  </div>
+</section>`;
+  return pagina({
+    titel: 'Het gesprek · Arko Hoondert',
+    beschrijving: 'Een persoonlijk gesprek over je leven en je geld: alleen 90 minuten voor €395, samen met je partner 120 minuten voor €495, inclusief btw. Verrekend als je een traject start.',
+    canoniek: `${SITE}/hetgesprek/`,
+    jsonld: { '@context': 'https://schema.org', '@type': 'Service', name: 'Het gesprek', provider: { '@type': 'Person', name: 'Arko Hoondert' }, areaServed: 'NL', offers: [{ '@type': 'Offer', name: 'Alleen, 90 minuten', price: '395', priceCurrency: 'EUR' }, { '@type': 'Offer', name: 'Samen met je partner, 120 minuten', price: '495', priceCurrency: 'EUR' }], url: `${SITE}/hetgesprek/` },
+    inhoud,
+  });
+}
+
+// ---------- Over mij (/over/) uit over/_tekst.md ----------
+function overPagina() {
+  const pad = join(ROOT, 'over', '_tekst.md');
+  if (!existsSync(pad)) return null;
+  const t = readFileSync(pad, 'utf8');
+  const tijdlijn = (t.match(/## Tijdlijn\n([\s\S]*?)\n## /) || [])[1] || '';
+  const verhaal = (t.match(/## Verhaal\n([\s\S]*)$/) || [])[1] || '';
+  const regels = tijdlijn.trim().split('\n').map((r) => r.split('|').map((x) => x.trim()))
+    .map(([j, w]) => `<li><span class="jaar">${esc(j)}</span><span>${inline(w)}</span></li>`).join('\n        ');
+  const inhoud = `<section class="over-mij">
+  <div class="wrap smal">
+    <h1>Hoi, ik ben Arko Hoondert.</h1>
+    <figure class="foto"><img src="/arko-hoondert-over-mij.webp" alt="Arko Hoondert in een grijs overhemd" width="1400" height="1044" loading="eager"></figure>
+    <h2>De versie van twintig seconden</h2>
+    <ol class="tijdlijn">
+        ${regels}
+    </ol>
+    <figure class="duo"><img src="/arko-hoondert-duo-polaroids.webp" alt="Twee polaroids van Arko Hoondert, in een grijs overhemd en in het bos" width="1600" height="1195" loading="lazy" decoding="async"></figure>
+    <h2>De versie van twee minuten</h2>
+    <div class="tekst">${markdownNaarHtml(verhaal.trim())}</div>
+    <h2>De versie van twintig minuten</h2>
+    <div class="tekst">
+      <p>Die vertel ik je liever zelf, en dan wil ik vooral jouw verhaal horen. In een kennismaking van twintig minuten via video stel je je vraag en kijken we samen of het klikt. Het kost niets.</p>
+      <p><a class="knop" href="${KENNISMAKING_URL}">Plan een kennismaking</a></p>
+    </div>
+    <div class="over-aanmelden">
+      <h2>Elke zondag één vraag</h2>
+      <p class="rust">Eén vraag, één inzicht en één stap. Over geld, werk en de keuzes die je ooit nog wilt maken.</p>
+      ${aanmeldRegel()}
+    </div>
+  </div>
+</section>`;
+  return pagina({
+    titel: 'Over mij · Arko Hoondert',
+    beschrijving: 'Rugbyinternational, tien jaar fondsenwerving, opgebrand, opnieuw begonnen. Nu financieel levensplanner in Zeeland. Het verhaal van Arko Hoondert.',
+    canoniek: `${SITE}/over/`,
+    ogType: 'profile',
+    jsonld: { '@context': 'https://schema.org', '@type': 'ProfilePage', url: `${SITE}/over/`, inLanguage: 'nl', mainEntity: { '@type': 'Person', name: 'Arko Hoondert', jobTitle: 'Financieel levensplanner', url: SITE } },
     inhoud,
   });
 }
@@ -265,10 +473,22 @@ function bouw() {
   writeFileSync(join(MAP, 'index.html'), overzicht(edities));
   mkdirSync(join(MAP, 'laatste'), { recursive: true });
   writeFileSync(join(MAP, 'laatste', 'index.html'), laatste(edities[0]));
+  const over = overPagina();
+  if (over) writeFileSync(join(ROOT, 'over', 'index.html'), over);
+  const werk = vanHome({ map: 'werkwijze', titel: 'Werkwijze · Arko Hoondert', beschrijving: 'Van kennismaking tot een financieel levensplan met een vaste prijs, vooraf op papier. Zo werk ik, en wat ik niet doe.', extra: beginnenBlok() });
+  if (werk) writeFileSync(join(ROOT, 'werkwijze', 'index.html'), werk);
+  const kennis = vanHome({ map: 'kennismaken', titel: 'Kennismaken · Arko Hoondert', beschrijving: 'Plan een kosteloze kennismaking van 20 minuten via video, of bel of mail. Daarna weet je of het klikt.' });
+  if (kennis) writeFileSync(join(ROOT, 'kennismaken', 'index.html'), kennis);
+  const gesprek = gesprekPagina();
+  if (gesprek) writeFileSync(join(ROOT, 'hetgesprek', 'index.html'), gesprek);
 
   const vandaag = new Date().toISOString().slice(0, 10);
   const urls = [
     `  <url><loc>${SITE}/</loc><lastmod>2026-10-19</lastmod></url>`,
+    `  <url><loc>${SITE}/werkwijze/</loc><lastmod>${vandaag}</lastmod></url>`,
+    `  <url><loc>${SITE}/kennismaken/</loc><lastmod>${vandaag}</lastmod></url>`,
+    ...(existsSync(join(ROOT, 'hetgesprek', '_tekst.md')) ? [`  <url><loc>${SITE}/hetgesprek/</loc><lastmod>${vandaag}</lastmod></url>`] : []),
+    ...(existsSync(join(ROOT, 'over', '_tekst.md')) ? [`  <url><loc>${SITE}/over/</loc><lastmod>${vandaag}</lastmod></url>`] : []),
     `  <url><loc>${SITE}${PAD}</loc><lastmod>${edities[0]?.datum || vandaag}</lastmod></url>`,
     ...edities.map((e) => `  <url><loc>${SITE}${PAD}${e.slug}/</loc><lastmod>${e.datum}</lastmod></url>`),
   ];

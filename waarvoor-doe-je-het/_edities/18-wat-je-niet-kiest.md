@@ -2,6 +2,8 @@
 nummer: 18
 titel: Wat je niet kiest
 datum: 2026-11-08
+onderwerp: Rust
+kort: Geen testament is ook een testament. Alleen heeft de wet het geschreven.
 beschrijving: Voor wie het testament al jaren op het lijstje heeft staan. Weet jij wie er nu erft? Waarom geen testament ook een testament is, alleen door de wet geschreven.
 linkedin: https://www.linkedin.com/pulse/wat-je-niet-kiest-arko-hoondert-mba-swpve
 ---

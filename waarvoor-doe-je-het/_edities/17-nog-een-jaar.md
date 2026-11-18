@@ -3,6 +3,8 @@ nummer: 17
 titel: Nog één jaar
 ondertitel: Over de streep die steeds een jaar opschuift.
 datum: 2026-11-01
+onderwerp: Ruimte
+kort: De streep die elk jaar een jaar opschuift.
 beschrijving: Voor ondernemers en professionals die hun stopdatum steeds een jaar opschuiven. Waar ligt jouw streep? Waarom nog één jaar zelden een rekensom is.
 linkedin: https://www.linkedin.com/pulse/nog-%C3%A9%C3%A9n-jaar-arko-hoondert-mba-s3nme
 ---

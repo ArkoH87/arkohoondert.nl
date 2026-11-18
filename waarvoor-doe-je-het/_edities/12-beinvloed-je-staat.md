@@ -2,6 +2,8 @@
 nummer: 12
 titel: Beïnvloed je staat
 datum: 2026-09-27
+onderwerp: Rust
+kort: Ben je nu de juiste persoon om dit te besluiten?
 beschrijving: Voor ondernemers en leidinggevenden met grote keuzes. Ben jij nu de juiste persoon om dit te besluiten? Waarom je staat de kwaliteit van je besluit bepaalt.
 linkedin: https://www.linkedin.com/pulse/be%C3%AFnvloed-je-staat-arko-hoondert--tnwye
 ---

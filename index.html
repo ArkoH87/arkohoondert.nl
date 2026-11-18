@@ -13,13 +13,13 @@
 <link rel="alternate" type="text/plain" title="Samenvatting voor taalmodellen" href="/llms.txt">
 <link rel="preload" href="fonts/instrument-sans-700.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="fonts/literata-300.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="preload" href="arko-hoondert-polder.jpg" as="image" fetchpriority="high">
+<link rel="preload" as="image" href="arko-hoondert-polder-1200.webp" imagesrcset="arko-hoondert-polder-mobiel.webp 900w, arko-hoondert-polder-1200.webp 1200w, arko-hoondert-polder-1920.webp 1920w" imagesizes="(max-width: 880px) 100vw, 42vw" fetchpriority="high">
 <meta property="og:type" content="website">
 <meta property="og:locale" content="nl_NL">
 <meta property="og:url" content="https://arkohoondert.nl/">
 <meta property="og:title" content="Arko Hoondert · Financieel planner in Zeeland">
 <meta property="og:description" content="Het gesprek begint bij waar je voor leeft. Daarna rekenen we uit of het klopt, ook als het leven anders loopt.">
-<meta property="og:image" content="https://arkohoondert.nl/arko-hoondert-polder.jpg">
+<meta property="og:image" content="https://arkohoondert.nl/arko-hoondert-og.jpg">
 <meta name="twitter:card" content="summary_large_image">
 <title>Arko Hoondert · Financieel planner in Zeeland</title>
 <meta name="description" content="Financieel planner in Zeeland en online. Voor wie rond en na zijn veertigste wil weten: wanneer kan ik stoppen, wat doe ik met mijn bedrijf, wat laat ik na?">
@@ -153,6 +153,10 @@ body::before {
 .nieuwsbrief { margin-top: 28px; padding: 18px 20px; background: var(--wit); box-shadow: 0 0 0 1px var(--lijn); border-radius: 4px; display: flex; flex-wrap: wrap; align-items: center; gap: 14px 24px; max-width: 620px; }
 .nieuwsbrief p { flex: 1 1 260px; min-width: 0; font-size: 15px; line-height: 1.45; }
 .nieuwsbrief b { color: var(--polder); }
+.mailform { display: flex; flex-wrap: wrap; gap: 8px; flex: 1 1 100%; }
+.mailform input { flex: 1 1 220px; min-height: 46px; padding: 10px 14px; font: 400 16px/1.2 var(--sans); color: var(--polder-900); background: var(--wit); border: 1px solid var(--polder-200); border-radius: 4px; }
+.mailform input:focus { outline: 2px solid var(--polder); outline-offset: 1px; }
+.nieuwsbrief .klein { flex: 1 1 100%; }
 .nieuwsbrief .label { display: block; margin-bottom: 4px; font-size: 12px; font-weight: 600; letter-spacing: 0.16em; text-transform: uppercase; color: var(--polder); }
 .libutton {
   display: flex; flex-direction: column; justify-content: center; flex: none;
@@ -308,7 +312,8 @@ body::before {
 .contact { background: var(--polder); color: var(--polder-200); position: relative; overflow: hidden; }
 .contact .watermerk { position: absolute; right: -120px; bottom: -80px; width: min(620px, 80vw); height: auto; opacity: 0.07; pointer-events: none; }
 .contact .wrap { position: relative; }
-.contact h2, .contact h3 { color: var(--wit); }
+.contact h1, .contact h2, .contact h3 { color: var(--wit); }
+.contact .kop h1 { font-size: clamp(34px, 5vw, 56px); line-height: 1.05; }
 .contact .kicker { color: var(--polder-200); }
 .contact .rust { color: var(--polder-200); }
 .contact a { color: var(--wit); }
@@ -344,15 +349,19 @@ body::before {
 .voet .juridisch { display: flex; flex-wrap: wrap; gap: 10px 24px; }
 .voet .juridisch a { font-weight: 600; font-size: 15px; }
 .voet .klein + .klein { margin-top: 8px; }
+.voet .sitelinks { margin-bottom: 12px; }
+.voet .sitelinks a { font-weight: 500; }
+.kop h1 { font-size: clamp(34px, 5vw, 56px); line-height: 1.05; }
 @media (max-width: 760px) { .voet-grid { grid-template-columns: minmax(0, 1fr); } }
 
 .sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
 
 /* Foto's */
 .gezicht img.foto, #over img.portret { display: block; border-radius: 8px; width: 100%; height: auto; padding: 0; border: 0; object-fit: cover; background: var(--klei); }
-.gezicht img.foto { aspect-ratio: 4 / 5; object-position: 74% 40%; }
-#over img.portret { aspect-ratio: 4 / 5; object-position: 53% 40%; }
-@media (max-width: 880px) { .gezicht img.foto { aspect-ratio: 4 / 3; object-position: 70% 35%; } #over img.portret { aspect-ratio: 3 / 2; } }
+.gezicht img.foto { aspect-ratio: 4 / 5; object-position: 63% 40%; }
+.contact .avatar { width: 96px; height: 96px; border-radius: 50%; object-fit: cover; margin-bottom: 18px; border: 3px solid var(--wit); }
+#over img.portret { aspect-ratio: 4 / 5; object-position: 50% 30%; margin-top: 32px; }
+@media (max-width: 880px) { .gezicht img.foto { aspect-ratio: 4 / 3; object-position: 50% 22%; } #over img.portret { aspect-ratio: 3 / 2; } }
 </style>
 <script type="application/ld+json">
 {
@@ -377,7 +386,7 @@ body::before {
    "name": "Arko Hoondert Financiële Levensplanning",
    "url": "https://arkohoondert.nl/",
    "logo": "https://arkohoondert.nl/favicon.svg",
-   "image": "https://arkohoondert.nl/arko-hoondert-polder.jpg",
+   "image": "https://arkohoondert.nl/arko-hoondert-og.jpg",
    "description": "Financiële levensplanning in Zeeland en online, voor mensen rond en na hun veertigste die hun leven opnieuw inrichten: stoppen of minder werken, de kinderen helpen, het bedrijf verkopen, nalaten. Het gesprek begint bij waar je voor leeft; daarna wordt doorgerekend of het klopt bij een lang, kort, rot of apart leven.",
    "email": "arko@hoondert.me",
    "telephone": "+31651739714",
@@ -421,7 +430,7 @@ body::before {
      "itemOffered": {
       "@type": "Service",
       "name": "Financieel levensplan",
-      "description": "Eerste contact, kennismaking, inventarisatie, visiegesprek, uitgebreid plan en naslagwerk, servicegesprek. Vaste prijs vooraf."
+      "description": "Kennismaking, het gesprek, inventarisatie, visiegesprek, uitgebreid plan en naslagwerk, servicegesprek. Vaste prijs vooraf."
      }
     },
     {
@@ -431,7 +440,18 @@ body::before {
      "itemOffered": {
       "@type": "Service",
       "name": "Kosteloze kennismaking",
-      "description": "Begint met een eerste contact van twintig minuten om je vraag te stellen, in te plannen via https://calendar.app.google/uK1NGzYM1U4datPM6. Daarna volgt een kennismaking die zo lang duurt als nodig."
+      "description": "Een kennismaking van 20 minuten om je vraag te stellen, in te plannen via https://calendar.app.google/uK1NGzYM1U4datPM6."
+     }
+    },
+    {
+     "@type": "Offer",
+     "price": "395",
+     "priceCurrency": "EUR",
+     "url": "https://arkohoondert.nl/hetgesprek/",
+     "itemOffered": {
+      "@type": "Service",
+      "name": "Het gesprek",
+      "description": "Een persoonlijk gesprek over je leven en je geld: alleen 90 minuten voor €395, samen met je partner 120 minuten voor €495, met een schriftelijke samenvatting. Verrekend als je binnen drie maanden een traject start."
      }
     }
    ],
@@ -451,7 +471,7 @@ body::before {
    "name": "Arko Hoondert",
    "jobTitle": "Financieel planner",
    "description": "Financieel planner in Zeeland, CFP in opleiding. Vijftien jaar fondsenwerving, onder meer als hoofd fondsenwerving en MT-lid bij KWF. Oprichter van PeerWorks. Adviseur grote giften en nalatenschappen bij Het Zeeuwse Landschap. Rugbycoach.",
-   "image": "https://arkohoondert.nl/arko-hoondert-polder.jpg",
+   "image": "https://arkohoondert.nl/arko-hoondert-og.jpg",
    "url": "https://arkohoondert.nl/",
    "email": "arko@hoondert.me",
    "telephone": "+31651739714",
@@ -516,7 +536,7 @@ body::before {
      "name": "Wat kost het?",
      "acceptedAnswer": {
       "@type": "Answer",
-      "text": "De kennismaking kost niets. Voor een traject spreken we vooraf een vaste prijs af, inclusief btw, vastgelegd in de opdrachtbevestiging."
+      "text": "De kennismaking kost niets. Het gesprek kost €395 als je alleen komt (90 minuten) en €495 als jullie samen komen (120 minuten), inclusief btw. Start je binnen drie maanden een traject, dan trekken we dat bedrag af van de vaste prijs. Die prijs spreken we vooraf af, inclusief btw, vastgelegd in de opdrachtbevestiging."
      }
     },
     {
@@ -524,7 +544,7 @@ body::before {
      "name": "Hoe lang duurt een traject?",
      "acceptedAnswer": {
       "@type": "Answer",
-      "text": "Een traject begint met een eerste contact van twintig minuten. Daarna volgen een kosteloze kennismaking, een inventarisatie en een visiegesprek. Daarna krijg je je plan en naslagwerk, en als je wilt volgt twee weken later een servicegesprek. Vanaf de kennismaking duren de gesprekken zo lang als nodig: soms een uur, soms drie. Hoe snel ze elkaar opvolgen, hangt af van je agenda en van hoe snel de gegevens er zijn. De planning leggen we samen vast."
+      "text": "Een traject begint met een kennismaking van 20 minuten. Daarna volgen het gesprek, een inventarisatie en een visiegesprek. Daarna krijg je je plan en naslagwerk, en als je wilt volgt twee weken later een servicegesprek. Na het gesprek duren de gesprekken zo lang als nodig: soms een uur, soms drie. Hoe snel ze elkaar opvolgen, hangt af van je agenda en van hoe snel de gegevens er zijn. De planning leggen we samen vast."
      }
     },
     {
@@ -587,16 +607,16 @@ body::before {
 <body>
 <header class="balk">
   <div class="wrap">
-    <a class="lockup" href="#top" aria-label="Arko Hoondert, financiële levensplanning, naar boven">
+    <a class="lockup" href="/" aria-label="Arko Hoondert, financiële levensplanning, naar de homepage">
       <svg viewBox="-6 -6 140 112" aria-hidden="true"><g fill="none" stroke-width="6"><path stroke="#183026" d="M0 100L32 0L64 100M84 0V100M124 0V100"/><path stroke="#f2a93b" d="M12 62H124"/></g></svg>
       <span class="wm"><span class="naam">ARKO HOONDERT</span><span class="vak">FINANCIËLE LEVENSPLANNING</span></span>
     </a>
     <nav class="nav" aria-label="Hoofdmenu">
-      <a class="lnk" href="#levens">Vier levens</a>
-      <a class="lnk" href="#poorten">4R-model</a>
-      <a class="lnk" href="#over">Over mij</a>
-      <a class="lnk" href="#werkwijze">Werkwijze</a>
-      <a class="knop vol" href="#contact">Kennismaken</a>
+      <a class="lnk" href="/werkwijze/">Werkwijze</a>
+      <a class="lnk" href="/hetgesprek/">Het gesprek</a>
+      <a class="lnk" href="/waarvoor-doe-je-het/">Edities</a>
+      <a class="lnk" href="/over/">Over mij</a>
+      <a class="knop vol" href="/kennismaken/">Plan een kennismaking</a>
     </nav>
   </div>
 </header>
@@ -609,18 +629,25 @@ body::before {
       <h1 id="h1"><span class="kicker">Arko Hoondert · financieel planner in Zeeland</span> <span class="h1-tekst">Waar leef je eigenlijk <span class="lat">voor</span>?</span></h1>
       <p class="rust">De meeste financiële gesprekken beginnen bij wat je hebt. Dit gesprek begint bij waar je voor leeft. Daarna rekenen we uit of het klopt, ook als het leven anders loopt.</p>
       <div class="acties">
-        <a class="knop vol" href="#contact">Plan een gesprek <span aria-hidden="true">→</span></a>
-        <a class="knop leeg" href="#werkwijze">Zo werk ik</a>
+        <a class="knop vol" href="/kennismaken/">Plan een kennismaking <span aria-hidden="true">→</span></a>
+        <a class="knop leeg" href="/werkwijze/">Zo werk ik</a>
       </div>
       <div class="nieuwsbrief">
-        <p><span class="label">Wekelijkse nieuwsbrief</span><b>Waarvoor doe je het?</b> Elke zondag één vraag, één inzicht en één stap, gratis op LinkedIn.</p>
-        <a class="libutton" href="https://www.linkedin.com/build-relation/newsletter-follow?entityUrn=7479311765558960129" target="_blank" rel="noopener">Gratis abonneren</a>
-        <a class="klein" href="/waarvoor-doe-je-het/">Lees eerdere edities <span aria-hidden="true">→</span></a>
+        <p><span class="label">Wekelijkse nieuwsbrief</span><b>Waarvoor doe je het?</b> Elke zondag één vraag, één inzicht en één stap, gratis in je mailbox.</p>
+        <form class="mailform" action="https://app.kit.com/forms/10201840/subscriptions" method="post">
+          <label class="sr" for="email-top">E-mailadres</label>
+          <input id="email-top" name="email_address" type="email" autocomplete="email" required placeholder="Je e-mailadres">
+          <button class="knop vol" type="submit">Schrijf je in</button>
+        </form>
+        <p class="klein">Je bevestigt eerst per mail; afmelden kan onder elke mail. <a href="/waarvoor-doe-je-het/">Lees eerdere edities <span aria-hidden="true">→</span></a></p>
       </div>
       <p class="klein waar">Gesprekken in de buitenlucht, bij je thuis, in Wolphaartsdijk of online.</p>
     </div>
     <figure class="gezicht">
-      <img class="foto" src="arko-hoondert-polder.jpg" fetchpriority="high" decoding="async" width="1800" height="1208" alt="Arko Hoondert in de polder bij Wolphaartsdijk, in avondlicht">
+      <picture>
+        <source media="(max-width: 880px)" srcset="arko-hoondert-polder-mobiel.webp" width="900" height="1122">
+        <img class="foto" src="arko-hoondert-polder-1200.webp" srcset="arko-hoondert-polder-1200.webp 1200w, arko-hoondert-polder-1920.webp 1920w" sizes="42vw" fetchpriority="high" decoding="async" width="1200" height="805" alt="Arko Hoondert in de polder bij Wolphaartsdijk, in avondlicht">
+      </picture>
       <figcaption><b>Arko Hoondert</b><span>Financieel planner, CFP in opleiding.</span></figcaption>
     </figure>
   </div>
@@ -735,14 +762,16 @@ body::before {
         <p class="kicker">Over mij</p>
         <h2 id="h-over">Ik zeg wat ik zie. De keuze blijft van <span class="lat">jou</span>.</h2>
       </div>
+      <img class="portret" src="arko-hoondert-portret-groen.webp" loading="lazy" decoding="async" width="1400" height="1044" alt="Arko Hoondert in een groene trui">
     </div>
     <div>
       <div class="tekst">
         <p class="opener">Onmacht omzetten in kracht.</p>
         <p>Dat heb ik jarenlang mogelijk gemaakt. Eerst bij Stichting KiKa. Daarna met een eigen adviesbureau, dat ik na vier jaar verkocht. Ik werkte voor doelen in binnen- en buitenland, van dierenwelzijn tot zelfmoordpreventie, van het Wereld Natuur Fonds tot Greenpeace België. En toen bij KWF, in het managementteam van het grootste goede doel van Nederland. Ik zat aan veel keukentafels waar het ging over geven en nalaten.</p>
         <p>Ik had een mooi appartement in Amsterdam Oud-West, speelde voor het nationale rugbyteam en had een goed salaris. En van binnen was ik een lege huls. Eén vraag duwde ik steeds weg: waarvoor doe je dit?</p>
-        <p>In 2023 ging ik terug naar Zeeland, om voor mijn oma te zorgen. In diezelfde tijd stond ik met een camera in de verloskamer toen mijn neefje werd geboren. Het rijke, volle leven van mijn oma. Het prille leven van mijn neefje. En alles daartussen. Toen wist ik het: het leven zit niet in wat je hebt, maar in waar je voor leeft.</p>
+        <p>In 2025 ging ik terug naar Zeeland, om voor mijn oma te zorgen. In diezelfde tijd stond ik met een camera in de verloskamer toen mijn neefje werd geboren. Het rijke, volle leven van mijn oma. Het prille leven van mijn neefje. En alles daartussen. Toen wist ik het: het leven zit niet in wat je hebt, maar in waar je voor leeft.</p>
         <p>Nu woon ik weer in de polder waar ik geboren ben en coach ik jonge mannen bij de rugbyclub waar ik zelf begon. Daar leer ik elke week opnieuw: je wint zelden met het mooiste gameplan, wel met spelers die weten wat ze doen als het tegenzit. Met geld werkt het net zo.</p>
+        <p><a href="/over/">Het hele verhaal →</a></p>
       </div>
       <div class="belofte">
         <p class="kicker">Mijn credo</p>
@@ -764,65 +793,6 @@ body::before {
   </div>
 </section>
 
-<section class="klei" id="werkwijze" aria-labelledby="h-werk">
-  <div class="wrap twee">
-    <div class="plak">
-      <div class="kop">
-        <p class="kicker">Werkwijze</p>
-        <h2 id="h-werk">Je weet vooraf wat het <span class="lat">kost</span>.</h2>
-        <p class="rust">Van kennismaking tot een plan dat je kunt volhouden.</p>
-      </div>
-      <div class="prijsregel">
-        <p><b>Een vaste prijs, vooraf op papier.</b> In euro's, inclusief btw, in de opdrachtbevestiging.</p>
-        <p class="klein">Ik werk alleen voor jou. Ik verkoop geen producten en ontvang van niemand provisie.</p>
-      </div>
-      <div class="verwachten">
-        <p class="label">Wat je van mij mag verwachten</p>
-        <ul>
-          <li>We beginnen bij je leven, niet bij je geld.</li>
-          <li>Ik vraag naar alle vier: lang, kort, rot en apart.</li>
-          <li>Ik ben eerlijk, ook als dat schuurt.</li>
-          <li>Ik blijf naast je staan, ook als het tegenzit.</li>
-        </ul>
-      </div>
-      <p><a class="knop leeg" href="#contact">Plan een gesprek</a></p>
-    </div>
-    <div>
-    <ol class="stappen">
-      <li>
-        <h3>Eerste contact</h3>
-        <p class="meta">Twintig minuten · kosteloos · via video</p>
-        <p>Je stelt je eerste vraag en krijgt een gevoel bij mij. Klikt het, dan plannen we de kennismaking. Je kiest zelf een moment in mijn agenda.</p>
-      </li>
-      <li>
-        <h3>Kennismaking</h3>
-        <p class="meta">Zo lang als nodig · kosteloos · tijdens een wandeling, telefonisch of online</p>
-        <p>We kijken samen of je vraag bij mijn werk past. Past het, dan krijg je een opdrachtbevestiging met inhoud, planning en vaste prijs, samen met mijn algemene voorwaarden en privacyverklaring. Past het niet, dan zeg ik dat en wijs ik je waar mogelijk de weg.</p>
-      </li>
-      <li>
-        <h3>Inventarisatie</h3>
-        <p class="meta">Zo lang als nodig · samen met je partner als dat speelt</p>
-        <p>We beginnen bij wat je wilt met je leven. Daarna brengen we je inkomen, vermogen, pensioen, wonen en wat er al geregeld is in kaart.</p>
-      </li>
-      <li>
-        <h3>Visiegesprek</h3>
-        <p class="meta">Hier maak je de laatste keuzes</p>
-        <p>Ik laat zien waar je staat en wat er gebeurt bij een lang, kort, rot of apart leven. Samen maken we de laatste keuzes: wat is genoeg, wat mag er nu al en wat regel je.</p>
-      </li>
-      <li>
-        <h3>Je plan en naslagwerk</h3>
-        <p class="meta">Uitgebreid, op papier · gelezen door een tweede gecertificeerd planner</p>
-        <p>Waar je staat, wat er gebeurt in elk scenario, welke keuzes je maakte en wat je gaat regelen. Een naslagwerk om op terug te vallen. Jij beslist en voert uit; waar een product nodig is, verwijs ik naar een adviseur met vergunning.</p>
-      </li>
-      <li>
-        <h3>Servicegesprek</h3>
-        <p class="meta">Als je wilt · twee weken na het plan</p>
-        <p>Wat leeft er nog? We nemen je vragen bij het plan door en kijken hoe de eerste stappen gaan.</p>
-      </li>
-    </ol>
-    </div>
-  </div>
-</section>
 
 <section id="voor-wie" aria-labelledby="h-wie">
   <div class="wrap twee">
@@ -842,15 +812,7 @@ body::before {
         <li>Je hebt een erfenis ontvangen, of denkt na over wat je zelf nalaat.</li>
         <li>Jullie leven gaat een andere kant op, samen of apart.</li>
       </ul>
-      <div class="niet">
-        <h3>Wat ik niet doe, en wat wel</h3>
-        <p>Ik ben een gesprekspartner die altijd jouw leven op één zet. Ook als een ander het uitvoert, help ik je je vraag helder te krijgen en af te stemmen op jouw leven.</p>
-        <ul>
-          <li>Je zoekt een hypotheek, verzekering of belegging. Daarvoor verwijs ik je naar een adviseur met vergunning. Ik bereid het gesprek met je voor.</li>
-          <li>Je wilt vooral het hoogste rendement. Ik beheer geen vermogen en geef geen beleggingsadvies. Wel helpen we samen helder te krijgen wat je vermogen voor je leven moet doen, zodat je het juiste gesprek voert met je vermogensbeheerder.</li>
-          <li>Je zoekt iemand die je aangifte doet of je testament opstelt. Dat doen je fiscalist en notaris. Ik zorg dat je weet wat je hen vraagt, en dat het past bij het leven dat je wilt.</li>
-        </ul>
-      </div>
+      <p style="margin-top: 24px;"><a href="/werkwijze/#niet">Wat ik niet doe, en wat wel <span aria-hidden="true">→</span></a></p>
     </div>
   </div>
 </section>
@@ -866,30 +828,30 @@ body::before {
       <article class="manier">
         <p class="kicker">Zelf lezen</p>
         <h3>Eén vraag per week</h3>
-        <p>Elke zondag schrijf ik <i>Waarvoor doe je het?</i>, mijn nieuwsbrief op LinkedIn: één vraag, één inzicht, één stap voor die week. Daarnaast doe ik de eindredactie van <i>Goed Geregeld op Zaterdag</i>, de nieuwsbrief van Maurice van den Hemel.</p>
+        <p>Elke zondag schrijf ik <i>Waarvoor doe je het?</i>, mijn nieuwsbrief per mail en op LinkedIn: één vraag, één inzicht, één stap voor die week. Daarnaast doe ik de eindredactie van <i>Goed Geregeld op Zaterdag</i>, de nieuwsbrief van Maurice van den Hemel.</p>
         <div class="links">
-          <a class="knop vol" href="https://www.linkedin.com/build-relation/newsletter-follow?entityUrn=7479311765558960129" target="_blank" rel="noopener">Abonneren op LinkedIn <span aria-hidden="true">↗</span></a>
+          <a class="knop vol" href="/#top">Schrijf je in per mail <span aria-hidden="true">↑</span></a>
           <a href="/waarvoor-doe-je-het/">Alle edities lezen <span aria-hidden="true">→</span></a>
-          <a href="https://goedgeregeldopzaterdag.nl/" target="_blank" rel="noopener">Goed Geregeld op Zaterdag <span aria-hidden="true">↗</span></a>
         </div>
       </article>
       <article class="manier">
-        <p class="kicker">Samen met anderen</p>
-        <h3>Programma's voor groepen</h3>
-        <p>Een groep leert de vier R's zelf hanteren, in een paar weken en met één R per week. Ik ontwerp ze ook voor organisaties die dit hun ondernemers, leden of medewerkers willen bieden.</p>
+        <p class="kicker">Eén op één · vanaf €395</p>
+        <h3>Het gesprek</h3>
+        <p>Anderhalf uur alleen of twee uur samen met je partner over je leven en je geld. Binnen een week krijg je je levenskaart: waar je staat en je drie volgende stappen.</p>
         <div class="links">
-          <a href="mailto:arko@hoondert.me?subject=Wachtlijst%20programma">Geef je interesse aan voor een programma (wachtlijst) <span aria-hidden="true">→</span></a>
+          <a href="/hetgesprek/">Bekijk het gesprek <span aria-hidden="true">→</span></a>
         </div>
       </article>
       <article class="manier een">
         <p class="kicker">Eén op één</p>
         <h3>Je financieel levensplan</h3>
-        <p>Van kennismaking tot visiegesprek, met een uitgebreid plan en naslagwerk voor privé, onderneming en vermogen samen.</p>
+        <p>Van het gesprek tot visiegesprek, met een uitgebreid plan en naslagwerk voor privé, onderneming en vermogen samen.</p>
         <div class="links">
-          <a href="#werkwijze">Zo verloopt een traject <span aria-hidden="true">→</span></a>
+          <a href="/werkwijze/">Zo verloopt een traject <span aria-hidden="true">→</span></a>
         </div>
       </article>
     </div>
+    <p class="klein" style="margin-top: 24px;">Programma's voor groepen en organisaties: <a href="mailto:arko@hoondert.me?subject=Wachtlijst%20programma">zet je op de wachtlijst</a>.</p>
   </div>
 </section>
 
@@ -918,11 +880,11 @@ body::before {
       </details>
       <details>
         <summary>Wat kost het?</summary>
-        <div class="antwoord"><p>De kennismaking kost niets. Voor een traject spreken we vooraf een vaste prijs af, inclusief btw, vastgelegd in de opdrachtbevestiging.</p></div>
+        <div class="antwoord"><p>De kennismaking kost niets. Het gesprek kost €395 als je alleen komt (90 minuten) en €495 als jullie samen komen (120 minuten), inclusief btw. Start je binnen drie maanden een traject, dan trekken we dat bedrag af van de vaste prijs. Die prijs spreken we vooraf af, inclusief btw, vastgelegd in de opdrachtbevestiging.</p></div>
       </details>
       <details>
         <summary>Hoe lang duurt een traject?</summary>
-        <div class="antwoord"><p>Een traject begint met een eerste contact van twintig minuten. Daarna volgen een kosteloze kennismaking, een inventarisatie en een visiegesprek. Daarna krijg je je plan en naslagwerk, en als je wilt volgt twee weken later een servicegesprek. Vanaf de kennismaking duren de gesprekken zo lang als nodig: soms een uur, soms drie. Hoe snel ze elkaar opvolgen, hangt af van je agenda en van hoe snel de gegevens er zijn. De planning leggen we samen vast.</p></div>
+        <div class="antwoord"><p>Een traject begint met een kennismaking van 20 minuten. Daarna volgen het gesprek, een inventarisatie en een visiegesprek. Daarna krijg je je plan en naslagwerk, en als je wilt volgt twee weken later een servicegesprek. Na het gesprek duren de gesprekken zo lang als nodig: soms een uur, soms drie. Hoe snel ze elkaar opvolgen, hangt af van je agenda en van hoe snel de gegevens er zijn. De planning leggen we samen vast.</p></div>
       </details>
       <details>
         <summary>Ben je CFP?</summary>
@@ -952,51 +914,22 @@ body::before {
   <svg class="watermerk" viewBox="-6 -6 140 112" aria-hidden="true"><g fill="none" stroke="#ffffff" stroke-width="5"><path d="M0 100L32 0L64 100M84 0V100M124 0V100M12 62H124"/></g></svg>
   <div class="wrap">
     <div class="kop">
-      <p class="kicker">Kennismaken</p>
-      <h2 id="h-contact">Eén gesprek. Daarna weet je of het <span class="lat">klikt</span>.</h2>
-      <p class="rust">Kies zelf een moment in mijn agenda: twintig minuten, kosteloos. Liever eerst bellen of mailen? Dat kan ook.</p>
+      <p class="kicker">Beginnen</p>
+      <h2 id="h-contact">Twee manieren om te <span class="lat">beginnen</span>.</h2>
+      <p class="rust">Eerst kijken of het klikt, of meteen aan de slag met je vraag.</p>
     </div>
     <div class="contact-grid">
       <div class="plan">
-        <h3>Plan een gesprek</h3>
-        <dl class="afspraak">
-          <div><dt>Wanneer</dt><dd>Maandagochtend of donderdagmiddag</dd></div>
-          <div><dt>Hoe</dt><dd>Via video. Liever aan je keukentafel of buiten? Dat spreken we daarna af.</dd></div>
-          <div><dt>Kosten</dt><dd>Geen</dd></div>
-        </dl>
-        <p><a class="knop vol" href="https://calendar.app.google/uK1NGzYM1U4datPM6" target="_blank" rel="noopener">Kies een moment <span aria-hidden="true">→</span></a></p>
-        <p class="klein">Je boekt via Google Agenda en krijgt meteen een bevestiging met de videolink. Samen met je partner? Nodig hem of haar uit in die bevestiging.</p>
-        <div class="vooraf">
-          <p class="label">Om vooraf over na te denken</p>
-          <ol>
-            <li>De vraag die je het langst voor je uit schuift.</li>
-            <li>Of je alleen komt of samen met je partner.</li>
-            <li>Een datum die meetelt: een verkoop, een verhuizing, een stopdatum.</li>
-          </ol>
-        </div>
+        <p class="label">20 minuten · kosteloos · via video</p>
+        <h3>Kennismaking</h3>
+        <p>Je stelt je vraag en we kijken of het klikt.</p>
+        <p><a class="knop leeg" href="/kennismaken/">Plan een kennismaking <span aria-hidden="true">→</span></a></p>
       </div>
-      <div>
-        <div class="kanaal">
-          <p class="label">Telefoon</p>
-          <div class="rij"><a class="waarde" href="tel:+31651739714">06 51 73 97 14</a></div>
-        </div>
-        <div class="kanaal">
-          <p class="label">E-mail</p>
-          <div class="rij">
-            <span class="waarde" id="mail">arko@hoondert.me</span>
-            <button class="knop leeg" type="button" id="kopieer">Kopieer adres</button>
-            <span class="status" id="kopieer-status" role="status" aria-live="polite"></span>
-          </div>
-          <p class="klein" style="color: var(--polder-200);">Stuur geen burgerservicenummer, gezondheidsgegevens of financiële documenten per e-mail. Daar is in een traject een beveiligde weg voor.</p>
-        </div>
-        <div class="kanaal">
-          <p class="label">LinkedIn</p>
-          <div class="rij"><a class="waarde" href="https://www.linkedin.com/in/arkohoondert/" target="_blank" rel="noopener">linkedin.com/in/arkohoondert</a></div>
-        </div>
-        <div class="kanaal">
-          <p class="label">Waar</p>
-          <p>Gesprekken in de buitenlucht, bij je thuis, bij mij in Wolphaartsdijk of via video. Binnen 30 kilometer reken ik geen reiskosten.</p>
-        </div>
+      <div class="plan">
+        <p class="label">Alleen 90 minuten · €395 · samen 120 minuten · €495</p>
+        <h3>Het gesprek</h3>
+        <p>Je leven en je geld naast elkaar, met je levenskaart op papier.</p>
+        <p><a class="knop vol" href="/hetgesprek/">Bekijk het gesprek <span aria-hidden="true">→</span></a></p>
       </div>
     </div>
   </div>
@@ -1007,16 +940,23 @@ body::before {
 <footer class="voet">
   <div class="wrap voet-grid">
     <div>
-      <a class="lockup" href="#top" aria-label="Arko Hoondert, naar boven">
+      <a class="lockup" href="/" aria-label="Arko Hoondert, naar de homepage">
         <svg viewBox="-6 -6 140 112" aria-hidden="true"><g fill="none" stroke-width="6"><path stroke="#183026" d="M0 100L32 0L64 100M84 0V100M124 0V100"/><path stroke="#f2a93b" d="M12 62H124"/></g></svg>
         <span class="wm"><span class="naam">ARKO HOONDERT</span><span class="vak">FINANCIËLE LEVENSPLANNING</span></span>
       </a>
       <p class="klein" style="margin-top: 18px;">De Perponcherpolderweg 5, 4471 RX Wolphaartsdijk<br>KvK 85352012 · btw-id NL004086452B40<br><a href="mailto:arko@hoondert.me">arko@hoondert.me</a> · <a href="tel:+31651739714">06 51 73 97 14</a></p>
     </div>
     <div>
+      <nav class="juridisch sitelinks" aria-label="Praktijk">
+        <a href="/werkwijze/">Werkwijze</a>
+        <a href="/hetgesprek/">Het gesprek</a>
+        <a href="/kennismaken/">Kennismaken</a>
+        <a href="/waarvoor-doe-je-het/">Edities</a>
+        <a href="/over/">Over mij</a>
+      </nav>
       <nav class="juridisch" aria-label="Juridisch">
-        <a href="algemene-voorwaarden-arko-hoondert.pdf" target="_blank" rel="noopener">Algemene voorwaarden</a>
-        <a href="privacyverklaring-arko-hoondert.pdf" target="_blank" rel="noopener">Privacyverklaring</a>
+        <a href="/algemene-voorwaarden-arko-hoondert.pdf" target="_blank" rel="noopener">Algemene voorwaarden</a>
+        <a href="/privacyverklaring-arko-hoondert.pdf" target="_blank" rel="noopener">Privacyverklaring</a>
         <a href="/waarvoor-doe-je-het/">Nieuwsbrief</a>
         <a href="https://www.linkedin.com/in/arkohoondert/" target="_blank" rel="noopener">LinkedIn</a>
       </nav>
@@ -1049,7 +989,7 @@ body::before {
       var n = parseInt(b.textContent, 10);
       knoppen.forEach(function (k) { k.setAttribute('aria-pressed', k === b ? 'true' : 'false'); });
       var teksten = {
-        1: 'Een 1. Dan is het nu heel zwaar, en dat verdient meer dan een website. Praat er vandaag met iemand over: je huisarts, of 113 (gratis via 0800 0113) als je aan de dood denkt. Als er daarna dingen geregeld moeten worden, <a href="#contact">sta ik naast je</a>.',
+        1: 'Een 1. Dan is het nu heel zwaar, en dat verdient meer dan een website. Praat er vandaag met iemand over: je huisarts, of 113 (gratis via 0800 0113) als je aan de dood denkt. Als er daarna dingen geregeld moeten worden, <a href="/kennismaken/">sta ik naast je</a>.',
         2: 'Een 2. Het leven zit je nu niet mee, en dat mag je hardop zeggen. Wat is het eerste dat moet veranderen om weer op een voldoende te komen? Dat hoef je niet alleen uit te zoeken.',
         3: 'Een 3. Er weegt veel tegelijk. Vaak is er één ding dat de rest meetrekt. Wat heb jij nodig om weer op een voldoende te komen?',
         4: 'Een 4. Op school kreeg je met een 4 een herkansing. Die krijg je in je leven ook. Wat heb jij nodig om er een voldoende van te maken?',

@@ -2,6 +2,8 @@
 nummer: 9
 titel: Vrijheid is het hoogste dividend
 datum: 2026-09-06
+onderwerp: Ruimte
+kort: De grootste opbrengst van geld is geen spul. Het is tijd.
 beschrijving: Voor ondernemers die begonnen voor de vrijheid en nu vastzitten. Wat doe je met één vrije middag per week? Waarom tijd het hoogste dividend van geld is.
 linkedin: https://www.linkedin.com/pulse/vrijheid-het-hoogste-dividend-arko-hoondert--mpgke
 ---
