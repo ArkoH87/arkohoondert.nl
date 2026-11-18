@@ -412,7 +412,6 @@ function overPagina() {
     <ol class="tijdlijn">
         ${regels}
     </ol>
-    <figure class="duo"><img src="/arko-hoondert-duo-polaroids.webp" alt="Twee polaroids van Arko Hoondert, in een grijs overhemd en in het bos" width="1600" height="1195" loading="lazy" decoding="async"></figure>
     <h2>De versie van twee minuten</h2>
     <div class="tekst">${markdownNaarHtml(verhaal.trim())}</div>
     <h2>De versie van twintig minuten</h2>
