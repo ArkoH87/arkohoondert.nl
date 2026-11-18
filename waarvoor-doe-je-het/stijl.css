@@ -191,3 +191,21 @@ section.klei { background: var(--klei); }
 .over-kort { display: grid; grid-template-columns: 96px minmax(0, 1fr); gap: 20px; align-items: start; }
 .over-kort .avatar { width: 96px; height: 96px; border-radius: 50%; object-fit: cover; margin-top: 44px; }
 @media (max-width: 560px) { .over-kort { grid-template-columns: minmax(0, 1fr); } .over-kort .avatar { margin-top: 24px; } }
+
+/* Voet: donker, vier kolommen (gelijk op alle pagina's) */
+.voet.donker { background: #183026; color: #bfccc2; padding-block: 56px 40px; border-top: 1px solid rgba(255, 255, 255, 0.12); }
+.voet.donker p { color: #bfccc2; }
+.voet.donker a { color: #f6f2ea; text-decoration: none; }
+.voet.donker a:hover { text-decoration: underline; text-underline-offset: 3px; }
+.voet.donker .lockup .naam { color: #f6f2ea; }
+.voet.donker .lockup .vak { color: #bfccc2; }
+.voet-kolommen { display: grid; grid-template-columns: minmax(0, 1.6fr) repeat(3, minmax(0, 1fr)); gap: 32px; }
+.voet-wie p { margin: 16px 0 0; max-width: 36ch; }
+.voet-kop { margin: 4px 0 12px; color: #f6f2ea !important; font-size: 13px; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; }
+.voet.donker ul { list-style: none; margin: 0; padding: 0; }
+.voet.donker li { margin-bottom: 8px; }
+.voet-onder { margin-top: 40px; padding-top: 24px; border-top: 1px solid rgba(255, 255, 255, 0.15); }
+.voet-onder .klein { max-width: 90ch; }
+.voet-onder .klein + .klein { margin-top: 8px; }
+@media (max-width: 860px) { .voet-kolommen { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); } .voet-wie { grid-column: 1 / -1; } }
+@media (max-width: 420px) { .voet-kolommen { grid-template-columns: minmax(0, 1fr); } }

@@ -361,6 +361,24 @@ body::before {
 .contact .avatar { width: 96px; height: 96px; border-radius: 50%; object-fit: cover; margin-bottom: 18px; border: 3px solid var(--wit); }
 #over img.portret { aspect-ratio: 4 / 5; object-position: 50% 30%; margin-top: 32px; }
 @media (max-width: 880px) { .gezicht img.foto { aspect-ratio: 4 / 3; object-position: 50% 22%; } #over img.portret { aspect-ratio: 3 / 2; } }
+
+/* Voet: donker, vier kolommen (gelijk op alle pagina's) */
+.voet.donker { background: #183026; color: #bfccc2; padding-block: 56px 40px; border-top: 1px solid rgba(255, 255, 255, 0.12); }
+.voet.donker p { color: #bfccc2; }
+.voet.donker a { color: #f6f2ea; text-decoration: none; }
+.voet.donker a:hover { text-decoration: underline; text-underline-offset: 3px; }
+.voet.donker .lockup .naam { color: #f6f2ea; }
+.voet.donker .lockup .vak { color: #bfccc2; }
+.voet-kolommen { display: grid; grid-template-columns: minmax(0, 1.6fr) repeat(3, minmax(0, 1fr)); gap: 32px; }
+.voet-wie p { margin: 16px 0 0; max-width: 36ch; }
+.voet-kop { margin: 4px 0 12px; color: #f6f2ea !important; font-size: 13px; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; }
+.voet.donker ul { list-style: none; margin: 0; padding: 0; }
+.voet.donker li { margin-bottom: 8px; }
+.voet-onder { margin-top: 40px; padding-top: 24px; border-top: 1px solid rgba(255, 255, 255, 0.15); }
+.voet-onder .klein { max-width: 90ch; }
+.voet-onder .klein + .klein { margin-top: 8px; }
+@media (max-width: 860px) { .voet-kolommen { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); } .voet-wie { grid-column: 1 / -1; } }
+@media (max-width: 420px) { .voet-kolommen { grid-template-columns: minmax(0, 1fr); } }
 </style>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebPage","name":"Werkwijze · Arko Hoondert","url":"https://arkohoondert.nl/werkwijze/","inLanguage":"nl","isPartOf":{"@type":"WebSite","url":"https://arkohoondert.nl"}}</script>
 
@@ -502,32 +520,32 @@ body::before {
 
 </main>
 
-<footer class="voet">
-  <div class="wrap voet-grid">
-    <div>
+<footer class="voet donker">
+  <div class="wrap voet-kolommen">
+    <div class="voet-wie">
       <a class="lockup" href="/" aria-label="Arko Hoondert, naar de homepage">
-        <svg viewBox="-6 -6 140 112" aria-hidden="true"><g fill="none" stroke-width="6"><path stroke="#183026" d="M0 100L32 0L64 100M84 0V100M124 0V100"/><path stroke="#f2a93b" d="M12 62H124"/></g></svg>
+        <svg viewBox="-6 -6 140 112" aria-hidden="true"><g fill="none" stroke-width="6"><path stroke="#ffffff" d="M0 100L32 0L64 100M84 0V100M124 0V100"/><path stroke="#f2a93b" d="M12 62H124"/></g></svg>
         <span class="wm"><span class="naam">ARKO HOONDERT</span><span class="vak">FINANCIËLE LEVENSPLANNING</span></span>
       </a>
-      <p class="klein" style="margin-top: 18px;">De Perponcherpolderweg 5, 4471 RX Wolphaartsdijk<br>KvK 85352012 · btw-id NL004086452B40<br><a href="mailto:arko@hoondert.me">arko@hoondert.me</a> · <a href="tel:+31651739714">06 51 73 97 14</a></p>
+      <p>Financiële levensplanning in Zeeland en online. Eerst je leven, dan je geld.</p>
+      <p class="klein">De Perponcherpolderweg 5, 4471 RX Wolphaartsdijk<br>KvK 85352012 · btw-id NL004086452B40<br><a href="mailto:arko@hoondert.me">arko@hoondert.me</a> · <a href="tel:+31651739714">06 51 73 97 14</a></p>
     </div>
-    <div>
-      <nav class="juridisch sitelinks" aria-label="Praktijk">
-        <a href="/werkwijze/">Werkwijze</a>
-        <a href="/hetgesprek/">Het gesprek</a>
-        <a href="/kennismaken/">Kennismaken</a>
-        <a href="/waarvoor-doe-je-het/">Edities</a>
-        <a href="/over/">Over mij</a>
-      </nav>
-      <nav class="juridisch" aria-label="Juridisch">
-        <a href="/algemene-voorwaarden-arko-hoondert.pdf" target="_blank" rel="noopener">Algemene voorwaarden</a>
-        <a href="/privacyverklaring-arko-hoondert.pdf" target="_blank" rel="noopener">Privacyverklaring</a>
-        <a href="/waarvoor-doe-je-het/">Nieuwsbrief</a>
-        <a href="https://www.linkedin.com/in/arkohoondert/" target="_blank" rel="noopener">LinkedIn</a>
-      </nav>
-      <p class="klein" style="margin-top: 18px;">Alles op deze website is algemene informatie en geen persoonlijk advies. Persoonlijk werk begint pas met een opdrachtbevestiging. Ik heb geen vergunning op grond van de Wet op het financieel toezicht: ik adviseer niet over specifieke financiële producten en bemiddel er niet in.</p>
-      <p class="klein">Deze website plaatst geen cookies en meet niets. © 2026 Arko Hoondert.</p>
-    </div>
+    <nav aria-label="Praktijk">
+      <p class="voet-kop">Praktijk</p>
+      <ul><li><a href="/werkwijze/">Werkwijze</a></li><li><a href="/hetgesprek/">Het gesprek</a></li><li><a href="/kennismaken/">Kennismaken</a></li></ul>
+    </nav>
+    <nav aria-label="Lezen">
+      <p class="voet-kop">Lezen</p>
+      <ul><li><a href="/waarvoor-doe-je-het/">Alle edities</a></li><li><a href="/waarvoor-doe-je-het/laatste/">Nieuwste editie</a></li><li><a href="/over/">Over mij</a></li></ul>
+    </nav>
+    <nav aria-label="Regels">
+      <p class="voet-kop">Regels</p>
+      <ul><li><a href="/algemene-voorwaarden-arko-hoondert.pdf" target="_blank" rel="noopener">Algemene voorwaarden</a></li><li><a href="/privacyverklaring-arko-hoondert.pdf" target="_blank" rel="noopener">Privacyverklaring</a></li><li><a href="https://www.linkedin.com/in/arkohoondert/" target="_blank" rel="noopener">LinkedIn</a></li></ul>
+    </nav>
+  </div>
+  <div class="wrap voet-onder">
+    <p class="klein">Alles op deze website is algemene informatie en geen persoonlijk advies. Persoonlijk werk begint pas met een opdrachtbevestiging. Ik heb geen vergunning op grond van de Wet op het financieel toezicht: ik adviseer niet over specifieke financiële producten en bemiddel er niet in.</p>
+    <p class="klein">Deze website plaatst geen cookies en meet niets. © 2026 Arko Hoondert.</p>
   </div>
 </footer>
 
