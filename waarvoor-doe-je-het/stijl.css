@@ -185,3 +185,9 @@ section.klei { background: var(--klei); }
 .voet .sitelinks { margin-bottom: 12px; }
 .voet .sitelinks a { font-weight: 500; }
 .boekknoppen { display: grid; gap: 10px; }
+.over-mij .foto img { display: block; width: 100%; height: auto; border-radius: 8px; }
+.over-mij .duo { margin: 40px 0 8px; }
+.over-mij .duo img { display: block; width: 100%; height: auto; }
+.over-kort { display: grid; grid-template-columns: 96px minmax(0, 1fr); gap: 20px; align-items: start; }
+.over-kort .avatar { width: 96px; height: 96px; border-radius: 50%; object-fit: cover; margin-top: 44px; }
+@media (max-width: 560px) { .over-kort { grid-template-columns: minmax(0, 1fr); } .over-kort .avatar { margin-top: 24px; } }

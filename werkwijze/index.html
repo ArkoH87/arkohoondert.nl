@@ -13,13 +13,12 @@
 <link rel="alternate" type="text/plain" title="Samenvatting voor taalmodellen" href="/llms.txt">
 <link rel="preload" href="/fonts/instrument-sans-700.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="/fonts/literata-300.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="preload" href="/arko-hoondert-polder.jpg" as="image" fetchpriority="high">
 <meta property="og:type" content="website">
 <meta property="og:locale" content="nl_NL">
 <meta property="og:url" content="https://arkohoondert.nl/werkwijze/">
 <meta property="og:title" content="Werkwijze · Arko Hoondert">
 <meta property="og:description" content="Van kennismaking tot een financieel levensplan met een vaste prijs, vooraf op papier. Zo werk ik, en wat ik niet doe.">
-<meta property="og:image" content="https://arkohoondert.nl/arko-hoondert-polder.jpg">
+<meta property="og:image" content="https://arkohoondert.nl/arko-hoondert-og.jpg">
 <meta name="twitter:card" content="summary_large_image">
 <title>Werkwijze · Arko Hoondert</title>
 <meta name="description" content="Van kennismaking tot een financieel levensplan met een vaste prijs, vooraf op papier. Zo werk ik, en wat ik niet doe.">
@@ -312,7 +311,8 @@ body::before {
 .contact { background: var(--polder); color: var(--polder-200); position: relative; overflow: hidden; }
 .contact .watermerk { position: absolute; right: -120px; bottom: -80px; width: min(620px, 80vw); height: auto; opacity: 0.07; pointer-events: none; }
 .contact .wrap { position: relative; }
-.contact h2, .contact h3 { color: var(--wit); }
+.contact h1, .contact h2, .contact h3 { color: var(--wit); }
+.contact .kop h1 { font-size: clamp(34px, 5vw, 56px); line-height: 1.05; }
 .contact .kicker { color: var(--polder-200); }
 .contact .rust { color: var(--polder-200); }
 .contact a { color: var(--wit); }
@@ -357,9 +357,10 @@ body::before {
 
 /* Foto's */
 .gezicht img.foto, #over img.portret { display: block; border-radius: 8px; width: 100%; height: auto; padding: 0; border: 0; object-fit: cover; background: var(--klei); }
-.gezicht img.foto { aspect-ratio: 4 / 5; object-position: 74% 40%; }
-#over img.portret { aspect-ratio: 4 / 5; object-position: 53% 40%; }
-@media (max-width: 880px) { .gezicht img.foto { aspect-ratio: 4 / 3; object-position: 70% 35%; } #over img.portret { aspect-ratio: 3 / 2; } }
+.gezicht img.foto { aspect-ratio: 4 / 5; object-position: 63% 40%; }
+.contact .avatar { width: 96px; height: 96px; border-radius: 50%; object-fit: cover; margin-bottom: 18px; border: 3px solid var(--wit); }
+#over img.portret { aspect-ratio: 4 / 5; object-position: 50% 30%; margin-top: 32px; }
+@media (max-width: 880px) { .gezicht img.foto { aspect-ratio: 4 / 3; object-position: 50% 22%; } #over img.portret { aspect-ratio: 3 / 2; } }
 </style>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebPage","name":"Werkwijze · Arko Hoondert","url":"https://arkohoondert.nl/werkwijze/","inLanguage":"nl","isPartOf":{"@type":"WebSite","url":"https://arkohoondert.nl"}}</script>
 

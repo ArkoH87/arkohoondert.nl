@@ -13,13 +13,13 @@
 <link rel="alternate" type="text/plain" title="Samenvatting voor taalmodellen" href="/llms.txt">
 <link rel="preload" href="fonts/instrument-sans-700.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="fonts/literata-300.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="preload" href="arko-hoondert-polder.jpg" as="image" fetchpriority="high">
+<link rel="preload" as="image" href="arko-hoondert-polder-1200.webp" imagesrcset="arko-hoondert-polder-mobiel.webp 900w, arko-hoondert-polder-1200.webp 1200w, arko-hoondert-polder-1920.webp 1920w" imagesizes="(max-width: 880px) 100vw, 42vw" fetchpriority="high">
 <meta property="og:type" content="website">
 <meta property="og:locale" content="nl_NL">
 <meta property="og:url" content="https://arkohoondert.nl/">
 <meta property="og:title" content="Arko Hoondert · Financieel planner in Zeeland">
 <meta property="og:description" content="Het gesprek begint bij waar je voor leeft. Daarna rekenen we uit of het klopt, ook als het leven anders loopt.">
-<meta property="og:image" content="https://arkohoondert.nl/arko-hoondert-polder.jpg">
+<meta property="og:image" content="https://arkohoondert.nl/arko-hoondert-og.jpg">
 <meta name="twitter:card" content="summary_large_image">
 <title>Arko Hoondert · Financieel planner in Zeeland</title>
 <meta name="description" content="Financieel planner in Zeeland en online. Voor wie rond en na zijn veertigste wil weten: wanneer kan ik stoppen, wat doe ik met mijn bedrijf, wat laat ik na?">
@@ -312,7 +312,8 @@ body::before {
 .contact { background: var(--polder); color: var(--polder-200); position: relative; overflow: hidden; }
 .contact .watermerk { position: absolute; right: -120px; bottom: -80px; width: min(620px, 80vw); height: auto; opacity: 0.07; pointer-events: none; }
 .contact .wrap { position: relative; }
-.contact h2, .contact h3 { color: var(--wit); }
+.contact h1, .contact h2, .contact h3 { color: var(--wit); }
+.contact .kop h1 { font-size: clamp(34px, 5vw, 56px); line-height: 1.05; }
 .contact .kicker { color: var(--polder-200); }
 .contact .rust { color: var(--polder-200); }
 .contact a { color: var(--wit); }
@@ -357,9 +358,10 @@ body::before {
 
 /* Foto's */
 .gezicht img.foto, #over img.portret { display: block; border-radius: 8px; width: 100%; height: auto; padding: 0; border: 0; object-fit: cover; background: var(--klei); }
-.gezicht img.foto { aspect-ratio: 4 / 5; object-position: 74% 40%; }
-#over img.portret { aspect-ratio: 4 / 5; object-position: 53% 40%; }
-@media (max-width: 880px) { .gezicht img.foto { aspect-ratio: 4 / 3; object-position: 70% 35%; } #over img.portret { aspect-ratio: 3 / 2; } }
+.gezicht img.foto { aspect-ratio: 4 / 5; object-position: 63% 40%; }
+.contact .avatar { width: 96px; height: 96px; border-radius: 50%; object-fit: cover; margin-bottom: 18px; border: 3px solid var(--wit); }
+#over img.portret { aspect-ratio: 4 / 5; object-position: 50% 30%; margin-top: 32px; }
+@media (max-width: 880px) { .gezicht img.foto { aspect-ratio: 4 / 3; object-position: 50% 22%; } #over img.portret { aspect-ratio: 3 / 2; } }
 </style>
 <script type="application/ld+json">
 {
@@ -384,7 +386,7 @@ body::before {
    "name": "Arko Hoondert Financiële Levensplanning",
    "url": "https://arkohoondert.nl/",
    "logo": "https://arkohoondert.nl/favicon.svg",
-   "image": "https://arkohoondert.nl/arko-hoondert-polder.jpg",
+   "image": "https://arkohoondert.nl/arko-hoondert-og.jpg",
    "description": "Financiële levensplanning in Zeeland en online, voor mensen rond en na hun veertigste die hun leven opnieuw inrichten: stoppen of minder werken, de kinderen helpen, het bedrijf verkopen, nalaten. Het gesprek begint bij waar je voor leeft; daarna wordt doorgerekend of het klopt bij een lang, kort, rot of apart leven.",
    "email": "arko@hoondert.me",
    "telephone": "+31651739714",
@@ -469,7 +471,7 @@ body::before {
    "name": "Arko Hoondert",
    "jobTitle": "Financieel planner",
    "description": "Financieel planner in Zeeland, CFP in opleiding. Vijftien jaar fondsenwerving, onder meer als hoofd fondsenwerving en MT-lid bij KWF. Oprichter van PeerWorks. Adviseur grote giften en nalatenschappen bij Het Zeeuwse Landschap. Rugbycoach.",
-   "image": "https://arkohoondert.nl/arko-hoondert-polder.jpg",
+   "image": "https://arkohoondert.nl/arko-hoondert-og.jpg",
    "url": "https://arkohoondert.nl/",
    "email": "arko@hoondert.me",
    "telephone": "+31651739714",
@@ -627,7 +629,7 @@ body::before {
       <h1 id="h1"><span class="kicker">Arko Hoondert · financieel planner in Zeeland</span> <span class="h1-tekst">Waar leef je eigenlijk <span class="lat">voor</span>?</span></h1>
       <p class="rust">De meeste financiële gesprekken beginnen bij wat je hebt. Dit gesprek begint bij waar je voor leeft. Daarna rekenen we uit of het klopt, ook als het leven anders loopt.</p>
       <div class="acties">
-        <a class="knop vol" href="/kennismaken/">Plan een gesprek <span aria-hidden="true">→</span></a>
+        <a class="knop vol" href="/kennismaken/">Plan een kennismaking <span aria-hidden="true">→</span></a>
         <a class="knop leeg" href="/werkwijze/">Zo werk ik</a>
       </div>
       <div class="nieuwsbrief">
@@ -642,7 +644,10 @@ body::before {
       <p class="klein waar">Gesprekken in de buitenlucht, bij je thuis, in Wolphaartsdijk of online.</p>
     </div>
     <figure class="gezicht">
-      <img class="foto" src="arko-hoondert-polder.jpg" fetchpriority="high" decoding="async" width="1800" height="1208" alt="Arko Hoondert in de polder bij Wolphaartsdijk, in avondlicht">
+      <picture>
+        <source media="(max-width: 880px)" srcset="arko-hoondert-polder-mobiel.webp" width="900" height="1122">
+        <img class="foto" src="arko-hoondert-polder-1200.webp" srcset="arko-hoondert-polder-1200.webp 1200w, arko-hoondert-polder-1920.webp 1920w" sizes="42vw" fetchpriority="high" decoding="async" width="1200" height="805" alt="Arko Hoondert in de polder bij Wolphaartsdijk, in avondlicht">
+      </picture>
       <figcaption><b>Arko Hoondert</b><span>Financieel planner, CFP in opleiding.</span></figcaption>
     </figure>
   </div>
@@ -757,6 +762,7 @@ body::before {
         <p class="kicker">Over mij</p>
         <h2 id="h-over">Ik zeg wat ik zie. De keuze blijft van <span class="lat">jou</span>.</h2>
       </div>
+      <img class="portret" src="arko-hoondert-portret-groen.webp" loading="lazy" decoding="async" width="1400" height="1044" alt="Arko Hoondert in een groene trui">
     </div>
     <div>
       <div class="tekst">

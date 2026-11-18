@@ -89,7 +89,7 @@ function pagina({ titel, beschrijving, canoniek, ogType = 'website', jsonld, inh
 <meta property="og:url" content="${canoniek}">
 <meta property="og:title" content="${esc(titel)}">
 <meta property="og:description" content="${esc(beschrijving)}">
-<meta property="og:image" content="${SITE}/arko-hoondert-polder.jpg">
+<meta property="og:image" content="${SITE}/arko-hoondert-og.jpg">
 <link rel="preload" href="/fonts/instrument-sans-700.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="/fonts/literata-300.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="/waarvoor-doe-je-het/stijl.css">
@@ -317,6 +317,7 @@ function vanHome({ map, titel, beschrijving, extra = '' }) {
     .replace(/<meta property="og:title" content="[^"]*">/, `<meta property="og:title" content="${esc(titel)}">`)
     .replace(/<meta property="og:description" content="[^"]*">/, `<meta property="og:description" content="${esc(beschrijving)}">`)
     .replace(/<script type="application\/ld\+json">[\s\S]*?<\/script>/, `<script type="application/ld+json">${JSON.stringify({ '@context': 'https://schema.org', '@type': 'WebPage', name: titel, url, inLanguage: 'nl', isPartOf: { '@type': 'WebSite', url: SITE } })}</script>`)
+    .replace(/<link rel="preload" as="image"[^>]*>\n?/, '')
     .replace(/href="(favicon\.svg|fonts\/|arko-hoondert)/g, 'href="/$1')
     .replace(/src="(arko-hoondert|fonts\/)/g, 'src="/$1')
     .replace(/url\((['"]?)fonts\//g, 'url($1/fonts/')
@@ -370,7 +371,7 @@ function gesprekPagina() {
       </div>
     </div>
     ${sectie('Wat je kunt verwachten')}
-    ${sectie('Over mij')}
+    <div class="over-kort"><img class="avatar" src="/arko-hoondert-vierkant.webp" width="800" height="800" loading="lazy" decoding="async" alt="Arko Hoondert"><div>${sectie('Over mij')}</div></div>
     <h2>Zo werkt het</h2>
     <div class="tekst stappen">${markdownNaarHtml(delen['Zo werkt het'])}</div>
     ${sectie('Wat het niet is')}
@@ -402,11 +403,12 @@ function overPagina() {
   const inhoud = `<section class="over-mij">
   <div class="wrap smal">
     <h1>Hoi, ik ben Arko Hoondert.</h1>
-    <figure class="foto"><img src="/arko-hoondert-polder.jpg" alt="Arko Hoondert in de polder bij Wolphaartsdijk" width="1800" height="1208" loading="eager"></figure>
+    <figure class="foto"><img src="/arko-hoondert-over-mij.webp" alt="Arko Hoondert in een grijs overhemd" width="1400" height="1044" loading="eager"></figure>
     <h2>De versie van twintig seconden</h2>
     <ol class="tijdlijn">
         ${regels}
     </ol>
+    <figure class="duo"><img src="/arko-hoondert-duo-polaroids.webp" alt="Twee polaroids van Arko Hoondert, in een grijs overhemd en in het bos" width="1600" height="1195" loading="lazy" decoding="async"></figure>
     <h2>De versie van twee minuten</h2>
     <div class="tekst">${markdownNaarHtml(verhaal.trim())}</div>
     <h2>De versie van twintig minuten</h2>
