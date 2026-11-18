@@ -89,7 +89,7 @@ function pagina({ titel, beschrijving, canoniek, ogType = 'website', jsonld, inh
 <meta property="og:url" content="${canoniek}">
 <meta property="og:title" content="${esc(titel)}">
 <meta property="og:description" content="${esc(beschrijving)}">
-<meta property="og:image" content="${SITE}/arko-hoondert-polder.jpg">
+<meta property="og:image" content="${SITE}/arko-hoondert-polder-2026.jpg">
 <link rel="preload" href="/fonts/instrument-sans-700.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="/fonts/literata-300.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="/waarvoor-doe-je-het/stijl.css">
