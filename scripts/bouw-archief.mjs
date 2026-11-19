@@ -261,25 +261,27 @@ function overzicht(edities) {
 const schil = () => readFileSync(join(ROOT, '_schil.html'), 'utf8');
 const EERSTE_MAILEDITIE = '2027-01-03';
 
-// Lezers, uit _lezers.json: precies zeggen wat we tellen. Afgerond naar beneden op honderdtallen.
-function lezersZin() {
+// Lezers, uit _lezers.json: LinkedIn plus mail, afgerond naar beneden op honderdtallen ("700+").
+function lezersGetal() {
   const pad = join(MAP, '_lezers.json');
   if (!existsSync(pad)) return '';
   const l = JSON.parse(readFileSync(pad, 'utf8'));
   const totaal = (Number(l.linkedin) || 0) + (Number(l.mail) || 0);
   if (totaal <= 0) return '';
-  const getal = totaal >= 100 ? `ruim ${(Math.floor(totaal / 100) * 100).toLocaleString('nl-NL')}` : String(totaal);
-  return `Je leest mee met ${getal} anderen.`;
+  return totaal >= 100 ? `${(Math.floor(totaal / 100) * 100).toLocaleString('nl-NL')}+` : String(totaal);
 }
 
-function aanmeldBlok(id = 'a') {
+// Het aanmeldformulier, overal gelijk (naar Justin Welsh): veld en knop onder elkaar over de volle breedte,
+// het lezersaantal in de knop, één korte regel eronder. Het label blijft voor schermlezers.
+function aanmeldBlok(id = 'a', { intro = false } = {}) {
   const voorMail = new Date().toISOString().slice(0, 10) < EERSTE_MAILEDITIE;
-  const zin = lezersZin();
+  const getal = lezersGetal();
   return `<form class="aanmeld" action="${esc(KIT_FORM_URL)}" method="post">
-          <label for="mail-${id}">Je e-mailadres</label>
-          <div class="rij"><input id="mail-${id}" name="email_address" type="email" autocomplete="email" required><button class="knop vol" type="submit">Stuur mij de nieuwsbrief</button></div>
-          <p class="hulp">Elke zondag één vraag over je leven en je geld. Gratis, afmelden kan onder elke mail.${voorMail ? ' Per mail vanaf 3 januari.' : ''}</p>
-          ${zin ? `<p class="bewijs">${zin}</p>` : ''}
+          ${intro ? '<p class="intro">Elke zondag één vraag over je leven en je geld.</p>' : ''}
+          <label class="sr" for="mail-${id}">Je e-mailadres</label>
+          <input id="mail-${id}" name="email_address" type="email" autocomplete="email" placeholder="Je e-mailadres" required>
+          <button class="knop vol" type="submit">${getal ? `Lees mee met ${getal} anderen` : 'Lees mee'}</button>
+          <p class="hulp">${voorMail ? 'Gratis. Per mail vanaf 3 januari.' : 'Gratis. Afmelden kan altijd.'}</p>
         </form>`;
 }
 
@@ -360,7 +362,7 @@ function fragmenten(edities) {
 }
 function vulIn(html, edities = []) {
   return html
-    .replace(/<!--@aanmeld:([a-z0-9-]+)-->/g, (_, id) => aanmeldBlok(id))
+    .replace(/<!--@aanmeld:([a-z0-9-]+)-->/g, (_, id) => aanmeldBlok(id, { intro: id === 'hero' }))
     .replace(/<!--@verschil-->/g, VERSCHIL)
     .replace(/<!--@voorbeelden-->/g, VOORBEELDEN)
     .replace(/<!--@slot-->/g, SLOT)

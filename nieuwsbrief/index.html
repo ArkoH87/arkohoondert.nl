@@ -262,6 +262,15 @@ body::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-a
 .lees { font: 300 19px/1.65 var(--serif); color: var(--polder-900); max-width: var(--maat); }
 .lees p + p { margin-top: 1em; }
 
+/* Formulier naar Justin Welsh: veld en knop onder elkaar, lezersaantal in de knop */
+.aanmeld { display: grid !important; gap: 10px; max-width: 520px; }
+.aanmeld .rij { display: contents; }
+.aanmeld .intro { font: 300 clamp(19px, 2vw, 21px)/1.4 var(--serif) !important; color: var(--polder) !important; margin: 0 0 4px !important; }
+.aanmeld input { width: 100%; min-height: 54px; padding: 12px 16px; font: 400 18px/1.2 var(--sans); border: 1px solid var(--polder-200); border-radius: 4px; background: var(--wit); color: var(--polder-900); }
+.aanmeld input::placeholder { color: var(--polder-500); }
+.aanmeld .knop { width: 100%; min-height: 54px; justify-content: center; font-size: 17px; }
+.aanmeld .hulp { margin: 0 !important; font: 400 14.5px/1.4 var(--sans) !important; color: var(--polder-500) !important; }
+
 /* Voet: donker, vier kolommen */
 .voet.donker { background: #183026; color: #bfccc2; padding-block: 56px 40px; border-top: 1px solid rgba(255, 255, 255, 0.12); }
 .voet.donker p { color: #bfccc2; }
@@ -323,10 +332,11 @@ body::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-a
       <li>Ik schrijf elke mail zelf, als financieel levensplanner in Zeeland.</li>
     </ul>
     <form class="aanmeld" action="https://app.kit.com/forms/10201840/subscriptions" method="post">
-          <label for="mail-nb">Je e-mailadres</label>
-          <div class="rij"><input id="mail-nb" name="email_address" type="email" autocomplete="email" required><button class="knop vol" type="submit">Stuur mij de nieuwsbrief</button></div>
-          <p class="hulp">Elke zondag één vraag over je leven en je geld. Gratis, afmelden kan onder elke mail. Per mail vanaf 3 januari.</p>
-          <p class="bewijs">Je leest mee met ruim 700 anderen.</p>
+          
+          <label class="sr" for="mail-nb">Je e-mailadres</label>
+          <input id="mail-nb" name="email_address" type="email" autocomplete="email" placeholder="Je e-mailadres" required>
+          <button class="knop vol" type="submit">Lees mee met 700+ anderen</button>
+          <p class="hulp">Gratis. Per mail vanaf 3 januari.</p>
         </form>
     <h2 style="font-size:24px;margin:52px 0 18px">Uit recente edities</h2>
     <p class="fragment">Een tarief is geen plan. Het is het weer van dit jaar.<span><a href="/waarvoor-doe-je-het/het-weer-van-dit-jaar/">Het weer van dit jaar</a> · 15 november 2026</span></p>
