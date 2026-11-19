@@ -259,7 +259,6 @@ function overzicht(edities) {
 // Plekhouders in die bestanden: <!--@aanmeld:id-->, <!--@verschil-->, <!--@voorbeelden-->, <!--@slot-->,
 // <!--@bestgelezen-->, <!--@fragmenten--> en {{KENNISMAKING_URL}}.
 const schil = () => readFileSync(join(ROOT, '_schil.html'), 'utf8');
-const EERSTE_MAILEDITIE = '2027-01-03';
 
 // Lezers, uit _lezers.json: LinkedIn plus mail, afgerond naar beneden op honderdtallen ("700+").
 function lezersGetal() {
@@ -274,14 +273,13 @@ function lezersGetal() {
 // Het aanmeldformulier, overal gelijk (naar Justin Welsh): veld en knop onder elkaar over de volle breedte,
 // het lezersaantal in de knop, één korte regel eronder. Het label blijft voor schermlezers.
 function aanmeldBlok(id = 'a', { intro = false } = {}) {
-  const voorMail = new Date().toISOString().slice(0, 10) < EERSTE_MAILEDITIE;
   const getal = lezersGetal();
   return `<form class="aanmeld" action="${esc(KIT_FORM_URL)}" method="post">
           ${intro ? '<p class="intro">Elke zondag één vraag over je leven en je geld.</p>' : ''}
           <label class="sr" for="mail-${id}">Je e-mailadres</label>
           <input id="mail-${id}" name="email_address" type="email" autocomplete="email" placeholder="Je e-mailadres" required>
           <button class="knop vol" type="submit">${getal ? `Lees mee met ${getal} anderen` : 'Lees mee'}</button>
-          <p class="hulp">${voorMail ? 'Gratis. Per mail vanaf 3 januari.' : 'Gratis. Afmelden kan altijd.'}</p>
+          <p class="hulp">Gratis. Afmelden kan altijd.</p>
         </form>`;
 }
 
