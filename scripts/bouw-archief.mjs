@@ -501,7 +501,6 @@ function overPagina() {
     </ol>
     <h2>Achtergrond</h2>
     <ul class="achtergrond">
-      <li><b>CFP in opleiding</b><span>Lindenhaeghe. Ik voer de titel pas na certificering.</span></li>
       <li><b>MBA</b><span>Quantic School of Business and Technology</span></li>
       <li><b>Vijftien jaar fondsenwerving</b><span>Oprichter van PeerWorks, voormalig hoofd fondsenwerving en MT-lid bij KWF</span></li>
       <li><b>Grote giften en nalatenschappen</b><span>Adviseur bij Het Zeeuwse Landschap, naast mijn praktijk</span></li>
