@@ -221,6 +221,21 @@ body { font-size: 18px; }
 .nav .knop.leeg:hover { text-decoration: none; }
 @media (max-width: 1040px) { .nav .lnk { display: none; } }
 @media (max-width: 420px) { .nav .knop { padding: 10px 12px; font-size: 13.5px; } }
+/* Menu op telefoon en tablet: een uitklapmenu onder de kopbalk, zonder script */
+.menu { display: none; }
+.menu summary { list-style: none; display: inline-flex; align-items: center; gap: 8px; min-height: 44px; padding: 0 14px; border: 1px solid var(--polder); border-radius: 4px; font: 600 14.5px/1 var(--sans); color: var(--polder); cursor: pointer; user-select: none; -webkit-tap-highlight-color: transparent; }
+.menu summary::-webkit-details-marker { display: none; }
+.menu summary svg { width: 20px; height: 20px; flex: none; }
+.menu .dicht, .menu[open] .open { display: none; }
+.menu[open] .dicht { display: block; }
+.menu[open] summary { background: var(--polder); color: var(--wit); }
+.menu-paneel { position: absolute; top: 100%; left: 0; right: 0; display: grid; max-height: calc(100vh - 72px); overflow-y: auto; background: var(--kalk); border-bottom: 1px solid var(--lijn); box-shadow: 0 16px 32px rgba(15, 33, 25, 0.10); padding: 8px max(24px, env(safe-area-inset-right, 0px)) 24px max(24px, env(safe-area-inset-left, 0px)); }
+.nav .menu-paneel a { display: block; padding: 16px 0; border-bottom: 1px solid var(--lijn); font-size: 19px; font-weight: 600; color: var(--polder); text-decoration: none; }
+.nav .menu-paneel a:hover { color: var(--polder-900); }
+.nav .menu-paneel a.knop { display: flex; justify-content: center; margin-top: 20px; padding: 14px 20px; border: 1px solid var(--polder); font-size: 16px; color: var(--wit); }
+.nav .menu-paneel a.knop:hover { color: var(--wit); }
+@media (max-width: 1040px) { .menu { display: block; } }
+@media (max-width: 560px) { .nav > .knop { display: none; } .menu-paneel { padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); } }
 .aanmeld, .aanmeld.regel { display: grid !important; gap: 8px; max-width: 540px; margin: 0; }
 .aanmelden .aanmeld { margin-top: 26px; }
 .aanmeld label { font-weight: 600; color: var(--polder); font-size: 15px; }
