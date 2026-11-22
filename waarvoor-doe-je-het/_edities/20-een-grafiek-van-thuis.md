@@ -7,8 +7,6 @@ beschrijving: Voor ondernemers en DGA's bij wie de cijfers groeien en het gevoel
 linkedin:
 kit: 27160546
 ---
-Foto: Szilvia Basso via Unsplash
-
 *Over groei die niet in de jaarcijfers staat.*
 
 Het jaargesprek met de accountant. De omzet is voor het vijfde jaar op rij gegroeid, en de accountant schuift de grafiek over tafel alsof het een cadeau is.
