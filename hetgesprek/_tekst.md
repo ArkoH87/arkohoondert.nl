@@ -29,7 +29,7 @@ Voor wie rond of na zijn veertigste het leven opnieuw inricht. Wanneer kan ik st
 ### Wat is het verschil met de kennismaking?
 De kennismaking duurt 20 minuten en is kosteloos: je stelt je vraag en we kijken of het klikt. Het gesprek is het echte werk: anderhalf of twee uur, met je levenskaart op papier.
 ### Kan mijn partner mee?
-Graag. Veel keuzes maak je samen. Samen duurt het gesprek 120 minuten en kost het €495 inclusief btw, en jullie krijgen allebei de levenskaart.
+Graag. Veel keuzes maak je samen. Samen duurt het gesprek 120 minuten en kost het €550 inclusief btw, en jullie krijgen allebei de levenskaart.
 ### Wat moet ik voorbereiden?
 De levensvragen en de checklist. Op de checklist vul je alleen in wat er is, met bedragen bij benadering. Weet je iets niet, laat het dan open: dat zoeken we samen uit. Volledige cijfers en documenten komen pas in een traject, via een beveiligde weg.
 ### Waar spreken we af?

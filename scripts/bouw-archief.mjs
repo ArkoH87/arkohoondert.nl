@@ -438,7 +438,7 @@ function gesprekPagina() {
       <p class="kicker">${esc(kicker)}</p>
       <h1>Het gesprek</h1>
       <p class="rust">${esc(titel)}. ${esc(intro)}</p>
-      <dl class="prijs"><div><dt>Alleen</dt><dd>90 minuten · €395</dd></div><div><dt>Samen met je partner</dt><dd>120 minuten · €495</dd></div></dl>
+      <dl class="prijs"><div><dt>Alleen</dt><dd>90 minuten · €450</dd></div><div><dt>Samen met je partner</dt><dd>120 minuten · €550</dd></div></dl>
       <p class="klein">Prijzen inclusief btw.</p>
       ${boek}
       <p class="klein">Start je binnen drie maanden een traject, dan trekken we het bedrag af van de vaste prijs.</p>
@@ -461,9 +461,9 @@ function gesprekPagina() {
 </section>`;
   return pagina({
     titel: 'Het gesprek · Arko Hoondert',
-    beschrijving: 'Een persoonlijk gesprek over je leven en je geld: alleen 90 minuten voor €395, samen met je partner 120 minuten voor €495, inclusief btw. Verrekend als je een traject start.',
+    beschrijving: 'Een persoonlijk gesprek over je leven en je geld: alleen 90 minuten voor €450, samen met je partner 120 minuten voor €550, inclusief btw. Verrekend als je een traject start.',
     canoniek: `${SITE}/hetgesprek/`,
-    jsonld: { '@context': 'https://schema.org', '@type': 'Service', name: 'Het gesprek', provider: { '@type': 'Person', name: 'Arko Hoondert' }, areaServed: 'NL', offers: [{ '@type': 'Offer', name: 'Alleen, 90 minuten', price: '395', priceCurrency: 'EUR' }, { '@type': 'Offer', name: 'Samen met je partner, 120 minuten', price: '495', priceCurrency: 'EUR' }], url: `${SITE}/hetgesprek/` },
+    jsonld: { '@context': 'https://schema.org', '@type': 'Service', name: 'Het gesprek', provider: { '@type': 'Person', name: 'Arko Hoondert' }, areaServed: 'NL', offers: [{ '@type': 'Offer', name: 'Alleen, 90 minuten', price: '450', priceCurrency: 'EUR' }, { '@type': 'Offer', name: 'Samen met je partner, 120 minuten', price: '550', priceCurrency: 'EUR' }], url: `${SITE}/hetgesprek/` },
     inhoud,
   });
 }
@@ -571,7 +571,7 @@ function bouw() {
   bouwHome(edities);
   const paginas = [
     { map: 'levensplan', titel: 'Wat is een levensplan? · Arko Hoondert', beschrijving: 'Een financieel levensplan begint bij hoe je wilt leven en rekent daarna uit wat dat betekent voor je geld. Met een voorbeeld van begin tot eind.', extra: SLOT },
-    { map: 'werkwijze', titel: 'Werkwijze en prijzen · Arko Hoondert', beschrijving: 'Van kennismaking tot levensplan: de stappen, wat je krijgt en wat het kost. €3.500 tot €8.500 inclusief btw, vast vooraf.', extra: SLOT, jsonld: faqJsonld('werkwijze', 'Werkwijze en prijzen') },
+    { map: 'werkwijze', titel: 'Werkwijze en prijzen · Arko Hoondert', beschrijving: 'Kies waar je begint: een levensplan, je testament, geven aan een goed doel of één grote keuze. Vaste prijzen inclusief btw, vooraf op papier. Plus jaarabonnementen.', extra: SLOT, jsonld: faqJsonld('werkwijze', 'Werkwijze en prijzen') },
     { map: 'kennismaken', titel: 'Kennismaken · Arko Hoondert', beschrijving: 'Plan een kosteloze kennismaking van 20 minuten via video. Daarna weet je of een plan je verder helpt.' },
     { map: 'nieuwsbrief', titel: 'Waarvoor doe je het? · De nieuwsbrief van Arko Hoondert', beschrijving: 'Elke zondag één vraag over je leven en je geld. Gratis, afmelden kan onder elke mail.', kaal: true },
     { map: 'zeeland', titel: 'Financiële planning in Zeeland · Arko Hoondert', beschrijving: 'Financiële levensplanning in Zeeland, bij je thuis, buiten of via video. Geen producten, geen provisie, vaste prijs vooraf.', extra: SLOT },
