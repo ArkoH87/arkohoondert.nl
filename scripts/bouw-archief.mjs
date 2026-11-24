@@ -396,7 +396,9 @@ function vanHome({ map, titel, beschrijving, extra = '', kaal = false, jsonld = 
 }
 function bouwHome(edities) {
   const home = schil().replace('<!--@inhoud-->', vulIn(readFileSync(join(ROOT, '_home.html'), 'utf8'), edities));
-  writeFileSync(join(ROOT, 'index.html'), home);
+  // Taalverwijzing naar de Engelse site (alleen op de homepage, die heeft een Engelse tegenhanger op /en/).
+  const metTaal = home.replace('<link rel="canonical" href="https://arkohoondert.nl/">', '<link rel="canonical" href="https://arkohoondert.nl/">\n<link rel="alternate" hreflang="nl" href="https://arkohoondert.nl/">\n<link rel="alternate" hreflang="en" href="https://arkohoondert.nl/en/">');
+  writeFileSync(join(ROOT, 'index.html'), metTaal);
 }
 // Veelgestelde vragen op een pagina als FAQPage, uit de details-blokken.
 function faqJsonld(map, naam) {
@@ -589,6 +591,7 @@ function bouw() {
     ...['levensplan', 'werkwijze', 'kennismaken', 'nieuwsbrief', 'zeeland'].map((m) => `  <url><loc>${SITE}/${m}/</loc><lastmod>${vandaag}</lastmod></url>`),
     ...(existsSync(join(ROOT, 'hetgesprek', '_tekst.md')) ? [`  <url><loc>${SITE}/hetgesprek/</loc><lastmod>${vandaag}</lastmod></url>`] : []),
     ...(existsSync(join(ROOT, 'over', '_tekst.md')) ? [`  <url><loc>${SITE}/over/</loc><lastmod>${vandaag}</lastmod></url>`] : []),
+    ...['en/', 'en/about/', 'en/staying-for-good/', 'en/introduction/', 'en/guide/'].map((m) => `  <url><loc>${SITE}/${m}</loc><lastmod>${vandaag}</lastmod></url>`),
     `  <url><loc>${SITE}${PAD}</loc><lastmod>${edities[0]?.datum || vandaag}</lastmod></url>`,
     ...edities.map((e) => `  <url><loc>${SITE}${PAD}${e.slug}/</loc><lastmod>${e.datum}</lastmod></url>`),
   ];
