@@ -262,6 +262,7 @@
 <p style="margin: 0; font-size: 11.5px; font-weight: 600; letter-spacing: 0.16em; color: #4e6256">NU BESCHIKBAAR · GIDS · ENGELS</p>
 <h3 style="margin: 0; font-size: 19px; line-height: 1.25; font-weight: 600; color: #183026">Staying for good</h3>
 <p style="margin: 0; font-size: 15px; line-height: 1.45">Engelse gids voor internationals die in Nederland blijven wonen. Stuur hem gerust door.</p>
+<a href="/en/guide/" lang="en" style="font-size: 15px; font-weight: 600; color: #183026">Download the guide →</a>
 </div>
 </article>
 
@@ -1147,6 +1148,7 @@
 <p style="margin: 0; font-size: 11.5px; font-weight: 600; letter-spacing: 0.16em; color: #4e6256">{{ g.soort }}</p>
 <h3 style="margin: 0; font-size: 19px; line-height: 1.25; font-weight: 600; color: #183026">{{ g.titel }}</h3>
 <p style="margin: 0; font-size: 15px; line-height: 1.45">{{ g.tekst }}</p>
+<sc-if value="{{ g.link }}"><a href="{{ g.link }}" lang="en" style="font-size: 15px; font-weight: 600; color: #183026">Download the guide →</a></sc-if>
 </div>
 </article>
 </sc-for>
@@ -1384,7 +1386,7 @@
       { soort: 'BINNENKORT · WERKBLAD', titel: 'Lang, kort en rot leven op één A4', tekst: 'Wat er gebeurt als je leven lang, kort of rot loopt, en wat je nu al kunt regelen.' },
       { soort: 'BINNENKORT · CHECKLIST', titel: 'Waar ligt wat', tekst: 'Wat je naasten moeten kunnen vinden als jij er niet bent of even niet kunt.' },
       { soort: 'BINNENKORT · GIDS', titel: 'Geven met belastingvoordeel', tekst: 'De korte gids voor geven en nalaten aan het goede doel.' },
-      { soort: 'NU BESCHIKBAAR · GIDS · ENGELS', titel: 'Staying for good', tekst: 'Engelse gids voor internationals die in Nederland blijven wonen. Stuur hem gerust door.' },
+      { soort: 'NU BESCHIKBAAR · GIDS · ENGELS', titel: 'Staying for good', tekst: 'Engelse gids voor internationals die in Nederland blijven wonen. Stuur hem gerust door.', link: '/en/guide/' },
       { soort: 'BINNENKORT · BOEK', titel: 'Keuzes die standhouden', tekst: 'Het eerste hoofdstuk van mijn boek, en een plek op de wachtlijst.' }
     ];
     var vragen = [
