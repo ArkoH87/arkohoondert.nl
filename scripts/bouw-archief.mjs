@@ -91,7 +91,9 @@ function pagina({ titel, beschrijving, canoniek, ogType = 'website', jsonld, inh
 <title>${esc(titel)}</title>
 <meta name="description" content="${esc(beschrijving)}">
 <link rel="canonical" href="${canoniek}">
-<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="icon" href="/favicon.ico" sizes="48x48">
+<link rel="icon" href="/favicon-96.png" type="image/png" sizes="96x96">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
 <meta name="theme-color" content="#183026">
 <meta name="author" content="Arko Hoondert">
 <meta property="og:type" content="${ogType}">
