@@ -17,7 +17,7 @@ Ik ben Arko Hoondert, financieel levensplanner. Tien jaar lang was ik betrokken 
 
 ## Zo werkt het
 1. **Kies een moment.** Je kiest een tijd in mijn agenda, minimaal 10 dagen vooruit, en betaalt meteen, met creditcard, Apple Pay of Google Pay.
-2. **Bereid je kort voor.** Je krijgt de levensvragen en een korte checklist van wat je al hebt: inkomen, spaargeld, pensioen, hypotheek, testament, verzekeringen en eventueel een bv. Bedragen bij benadering zijn genoeg, en documenten hoef je niet te sturen.
+2. **Bereid je kort voor.** Je krijgt [de drie levensvragen](https://arkohoondert.nl/gratis/de-drie-levensvragen/) en een korte checklist van wat je al hebt: inkomen, spaargeld, pensioen, hypotheek, testament, verzekeringen en eventueel een bv. Bedragen bij benadering zijn genoeg, en documenten hoef je niet te sturen.
 3. **Het gesprek.** We spreken elkaar via video. Kom je alleen, dan duurt het 90 minuten. Kom je samen met je partner, dan nemen we 120 minuten, zodat jullie allebei aan bod komen.
 
 ## Wat het niet is
@@ -31,7 +31,7 @@ De kennismaking duurt 20 minuten en is kosteloos: je stelt je vraag en we kijken
 ### Kan mijn partner mee?
 Graag. Veel keuzes maak je samen. Samen duurt het gesprek 120 minuten en kost het €550 inclusief btw, en jullie krijgen allebei de levenskaart.
 ### Wat moet ik voorbereiden?
-De levensvragen en de checklist. Op de checklist vul je alleen in wat er is, met bedragen bij benadering. Weet je iets niet, laat het dan open: dat zoeken we samen uit. Volledige cijfers en documenten komen pas in een traject, via een beveiligde weg.
+[De drie levensvragen](https://arkohoondert.nl/gratis/de-drie-levensvragen/) en de checklist. Op de checklist vul je alleen in wat er is, met bedragen bij benadering. Weet je iets niet, laat het dan open: dat zoeken we samen uit. Volledige cijfers en documenten komen pas in een traject, via een beveiligde weg.
 ### Waar spreken we af?
 Via video. Woon je in Zeeland en wil je liever aan je keukentafel zitten? Zet het in de opmerking bij je boeking. Binnen 30 kilometer reken ik geen reiskosten.
 ### Kan ik verzetten of annuleren?
