@@ -1774,7 +1774,7 @@ body::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-a
       complexen: cxOpties.map(function (o) { return { label: o.label, pressed: o.id === cx ? 'true' : 'false', stijl: o.id === cx ? aan : uit, pick: function () { self.setState({ complex: o.id }); } }; }),
       uitleg: uitleg + ' Alle prijzen zijn inclusief btw, ook voor ondernemers: een plan voor jou en je gezin is privé.',
       starters: starters,
-      expat: { prijs: maat ? 'Custom' : hoofd(p.expat[ci]), review: hoofd(ci ? 1250 : 850), excl: zakelijk ? 'Excl. VAT. Plan ' + eur(inc(p.expat[ci])) + ' incl. VAT, review ' + eur(inc(ci ? 1250 : 850)) + ' incl. VAT.' : 'Incl. VAT. Plan ' + eur(ex(p.expat[ci])) + ' excl. VAT, review ' + eur(ex(ci ? 1250 : 850)) + ' excl. VAT.' },
+      expat: { prijs: maat ? 'Custom' : hoofd(p.expat[ci]), review: hoofd(1250), excl: zakelijk ? 'Excl. VAT. Plan ' + eur(inc(p.expat[ci])) + ' incl. VAT, review ' + eur(inc(1250)) + ' incl. VAT.' : 'Incl. VAT. Plan ' + eur(ex(p.expat[ci])) + ' excl. VAT, review ' + eur(ex(1250)) + ' excl. VAT.' },
       gratis: gratis,
       abos: abos,
       secties: secties,
