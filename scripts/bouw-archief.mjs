@@ -539,6 +539,14 @@ function laatste(e) {
 `;
 }
 
+// Gratis downloads op /gratis/<slug>/ (formulieren in Kit, aangemaakt 25 november 2026).
+const GRATIS = [
+  { slug: 'keuzes-die-standhouden', titel: 'Keuzes die standhouden: lees het voorproefje', beschrijving: 'Lees de introductie en het eerste hoofdstuk van Keuzes die standhouden, het boek van Arko Hoondert, en kom op de wachtlijst.' },
+  { slug: 'lang-kort-rot-apart', titel: 'Werkblad: lang, kort, rot en apart op één A4', beschrijving: 'Gratis werkblad: leg één keuze langs het lange, korte, rotte en aparte leven en vind je eerste stap.' },
+  { slug: 'waar-ligt-wat', titel: 'Checklist: waar ligt wat', beschrijving: 'Gratis checklist: wat je naasten moeten kunnen vinden als jij er niet bent of even niet kunt.' },
+  { slug: 'geven-met-belastingvoordeel', titel: 'Gids: geven met belastingvoordeel', beschrijving: 'Gratis gids over giftenaftrek, de periodieke gift, geven vanuit je bv en nalaten aan een goed doel. Bedragen 2026.' },
+];
+
 // ---------- bouwen ----------
 function bouw() {
   const edities = readdirSync(BRON).filter((f) => f.endsWith('.md'))
@@ -577,6 +585,12 @@ function bouw() {
     { map: 'zeeland', titel: 'Financiële planning in Zeeland · Arko Hoondert', beschrijving: 'Financiële levensplanning in Zeeland, bij je thuis, buiten of via video. Geen producten, geen provisie, vaste prijs vooraf.', extra: SLOT },
     { map: 'bedankt', titel: 'Bijna klaar · Arko Hoondert', beschrijving: 'Bevestig je inschrijving voor Waarvoor doe je het?.', robots: 'noindex, follow' },
     { map: 'bevestigd', titel: 'Gelukt · Arko Hoondert', beschrijving: 'Je inschrijving voor Waarvoor doe je het? is bevestigd.', robots: 'noindex, follow' },
+    // Gratis downloads: landingspagina's (geïndexeerd), de gedeelde inboxpagina en de downloadpagina's (niet geïndexeerd).
+    { map: '4r-scan', titel: 'De 4R-scan: houden jouw keuzes stand? · Arko Hoondert', beschrijving: 'In vijf minuten zie je welke van de vier poorten bij jou het eerst wiebelt: richting, rust, ritme of ruimte. Gratis, met de eerstvolgende stap. Je antwoorden blijven in je browser.' },
+    ...GRATIS.map((g) => ({ map: `gratis/${g.slug}`, titel: `${g.titel} · Arko Hoondert`, beschrijving: g.beschrijving })),
+    ...GRATIS.map((g) => ({ map: `gratis/${g.slug}/download`, titel: `Je download · Arko Hoondert`, beschrijving: g.beschrijving, robots: 'noindex, follow' })),
+    { map: 'gratis/4r-werkblad/download', titel: 'Je 4R-werkblad · Arko Hoondert', beschrijving: 'Download het 4R-werkblad bij de 4R-scan.', robots: 'noindex, follow' },
+    { map: 'gratis/check-je-inbox', titel: 'Kijk in je inbox · Arko Hoondert', beschrijving: 'Bevestig je e-mailadres, daarna opent je download meteen.', robots: 'noindex, follow' },
   ];
   for (const p of paginas) {
     const html = vanHome({ ...p, edities });
@@ -588,7 +602,7 @@ function bouw() {
   const vandaag = new Date().toISOString().slice(0, 10);
   const urls = [
     `  <url><loc>${SITE}/</loc><lastmod>${vandaag}</lastmod></url>`,
-    ...['levensplan', 'werkwijze', 'kennismaken', 'nieuwsbrief', 'zeeland'].map((m) => `  <url><loc>${SITE}/${m}/</loc><lastmod>${vandaag}</lastmod></url>`),
+    ...['levensplan', 'werkwijze', 'kennismaken', 'nieuwsbrief', 'zeeland', '4r-scan', ...GRATIS.map((g) => `gratis/${g.slug}`)].map((m) => `  <url><loc>${SITE}/${m}/</loc><lastmod>${vandaag}</lastmod></url>`),
     ...(existsSync(join(ROOT, 'hetgesprek', '_tekst.md')) ? [`  <url><loc>${SITE}/hetgesprek/</loc><lastmod>${vandaag}</lastmod></url>`] : []),
     ...(existsSync(join(ROOT, 'over', '_tekst.md')) ? [`  <url><loc>${SITE}/over/</loc><lastmod>${vandaag}</lastmod></url>`] : []),
     ...['en/', 'en/about/', 'en/staying-for-good/', 'en/introduction/', 'en/guide/'].map((m) => `  <url><loc>${SITE}/${m}</loc><lastmod>${vandaag}</lastmod></url>`),
