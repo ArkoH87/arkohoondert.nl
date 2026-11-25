@@ -91,8 +91,8 @@
       <p><button class="knop leeg" type="button" id="scan-kopieer">Kopieer mijn uitkomst</button> <span class="klein" id="scan-gekopieerd" aria-live="polite"></span></p>
 
       <div style="border-top:1px solid var(--lijn);margin-top:40px;padding-top:28px" id="werkblad">
-        <h3 style="font-size:22px;margin:0 0 6px">Het 4R-werkblad</h3>
-        <p style="margin:0">Per poort de vraag, de eerstvolgende stap en ruimte om op te schrijven wat je vindt. Eén A4, in te vullen op je scherm of op papier.</p>
+        <h3 style="font-size:22px;margin:0 0 6px">Begin bij richting: de drie levensvragen</h3>
+        <p style="margin:0">Welke poort bij jou ook het minst staat, een keuze houdt pas stand als je weet waarvoor je het doet. Eén cijfer en drie vragen, voor een rustige avond, in te vullen op je scherm of op papier.</p>
         <form class="aanmeld" action="https://app.kit.com/forms/10239348/subscriptions" method="post" style="margin-top:20px">
           <label for="mail-4r">Je e-mailadres</label>
           <div class="rij"><input id="mail-4r" name="email_address" type="email" autocomplete="email" placeholder="naam@voorbeeld.nl" required></div>
@@ -180,13 +180,13 @@
     document.getElementById('scan-stand-kop').textContent = 'In totaal: ' + totaal + ' van 32. ' + st[0] + '.';
     document.getElementById('scan-stand').textContent = st[1];
     var vorm = waarde('vorm'), wens = waarde('wens');
-    var werkblad = '<a class="knop vol" href="#werkblad">Stuur me het 4R-werkblad</a>';
+    var werkblad = '<a class="knop vol" href="#werkblad">Stuur me de drie levensvragen</a>';
     var nb = '<a class="knop leeg" href="/nieuwsbrief/">Lees mee met Waarvoor doe je het?</a>';
     var kennis = function (cls) { return '<a class="knop ' + cls + '" href="/kennismaken/">Plan een kennismaking van 20 minuten</a>'; };
     var gesprek = '<a class="knop vol" href="/hetgesprek/">Plan Het gesprek</a>';
     var ctas;
     if (vorm === 'planner') ctas = gesprek + kennis('leeg');
-    else if (vorm === 'klankbord' || wens === 'besluit') ctas = kennis('vol') + '<a class="knop leeg" href="#werkblad">Stuur me het 4R-werkblad</a>';
+    else if (vorm === 'klankbord' || wens === 'besluit') ctas = kennis('vol') + '<a class="knop leeg" href="#werkblad">Stuur me de drie levensvragen</a>';
     else ctas = werkblad + nb;
     document.getElementById('scan-ctas').innerHTML = ctas;
     tekst = 'Mijn 4R-scan: ' + P.map(function (q, i) { return q.naam + ' ' + score[i] + '/8 (' + stand(score[i]) + ')'; }).join(', ') + '. Totaal ' + totaal + '/32. Ik begin bij ' + p.naam + '.';
