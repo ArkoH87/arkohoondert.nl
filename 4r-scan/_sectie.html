@@ -1,0 +1,206 @@
+<style>
+.scan-poorten { display: grid; grid-template-columns: repeat(auto-fit, minmax(170px, 1fr)); gap: 12px; margin: 8px 0 36px; }
+.scan-poorten div { border-top: 3px solid var(--polder); padding-top: 10px; font-size: 16px; line-height: 1.4; }
+.scan-poorten b { display: block; color: var(--polder); font-size: 18px; }
+.scan-lijst { list-style: none; margin: 0; padding: 0; counter-reset: st; }
+.scan-lijst li { counter-increment: st; border-top: 1px solid var(--lijn); padding: 18px 0; }
+.scan-lijst li:last-child { border-bottom: 1px solid var(--lijn); }
+.scan-lijst fieldset { border: 0; margin: 0; padding: 0; min-width: 0; }
+.scan-lijst legend { padding: 0; font-size: 18px; line-height: 1.4; color: var(--polder-800); }
+.scan-lijst legend::before { content: counter(st) ". "; color: var(--polder-500); font-variant-numeric: tabular-nums; }
+.scan-opties { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 10px; }
+.scan-opties label { position: relative; }
+.scan-opties input { position: absolute; opacity: 0; inset: 0; margin: 0; cursor: pointer; }
+.scan-opties span { display: inline-flex; align-items: center; min-height: 44px; padding: 0 18px; border: 1px solid var(--polder-500); border-radius: 4px; font-size: 16px; font-weight: 500; color: var(--polder); background: var(--wit); }
+.scan-opties input:checked + span { background: var(--polder); color: var(--wit); border-color: var(--polder); }
+.scan-opties input:focus-visible + span { outline: 2px solid var(--polder); outline-offset: 2px; }
+.scan-kies { display: grid; gap: 8px; margin-top: 12px; }
+.scan-kies label { display: flex; gap: 12px; align-items: flex-start; padding: 12px 14px; border: 1px solid var(--lijn); border-radius: 4px; background: var(--wit); font-size: 16px; line-height: 1.4; cursor: pointer; }
+.scan-kies input { margin-top: 3px; accent-color: #183026; }
+.scan-voortgang { padding: 10px 0; font-size: 14px; color: var(--polder-500); }
+.scan-voortgang .balk-in { height: 4px; background: var(--lijn); border-radius: 2px; margin-top: 6px; overflow: hidden; }
+.scan-voortgang .balk-in i { display: block; height: 100%; width: 0; background: var(--polder); transition: width .2s; }
+.scan-uitkomst { margin-top: 56px; border-top: 3px solid var(--polder); padding-top: 32px; }
+.scan-meters { display: grid; gap: 14px; margin: 20px 0 32px; }
+.scan-meter { display: grid; grid-template-columns: 90px minmax(0, 1fr) 96px; gap: 12px; align-items: center; font-size: 16px; }
+.scan-meter b { color: var(--polder); }
+.scan-meter .m { height: 12px; background: var(--wit); border: 1px solid var(--lijn); border-radius: 2px; overflow: hidden; }
+.scan-meter .m i { display: block; height: 100%; background: var(--polder-500); }
+.scan-meter.laagst .m i { background: var(--polder); }
+.scan-meter.laagst b { text-decoration: underline; text-decoration-color: var(--vonk); text-decoration-thickness: 3px; text-underline-offset: 4px; }
+.scan-meter span:last-child { color: var(--polder-500); font-size: 15px; }
+.scan-stap { background: var(--klei); padding: 22px 24px; border-radius: 4px; margin: 16px 0 28px; }
+.scan-stap p { margin: 0; }
+.scan-ctas { display: flex; gap: 10px; flex-wrap: wrap; margin: 20px 0 8px; }
+@media (max-width: 520px) { .scan-meter { grid-template-columns: 74px minmax(0, 1fr); } .scan-meter span:last-child { grid-column: 2; } }
+</style>
+<section aria-labelledby="h-scan" style="padding-block:clamp(40px,6vw,88px)">
+  <div class="wrap smal">
+    <div class="kop">
+      <p class="kicker">De 4R-scan · Gratis</p>
+      <h1 id="h-scan">Houden jouw keuzes <span class="lat">stand</span>?</h1>
+      <p class="rust">In vijf minuten zie je welke van de vier poorten bij jou het eerst gaat wiebelen als het leven beweegt. Met de eerstvolgende stap, direct te doen.</p>
+    </div>
+    <div class="scan-poorten" aria-label="De vier poorten">
+      <div><b>Richting</b>Waar leef je voor, en dient deze keuze dat?</div>
+      <div><b>Rust</b>Houdt het stand als het tegenzit?</div>
+      <div><b>Ritme</b>Past het in wat je elke maand volhoudt?</div>
+      <div><b>Ruimte</b>Wat is genoeg, en wat mag er nu al?</div>
+    </div>
+    <p class="klein">Je ziet je uitkomst direct, ook als je niets achterlaat. Je antwoorden blijven in je browser: ik zie ze niet en ze worden nergens opgeslagen.</p>
+
+    <form id="scan" novalidate style="margin-top:28px">
+      <div class="scan-voortgang" aria-live="polite"><span id="scan-teller">0 van 18 beantwoord</span><div class="balk-in"><i id="scan-balk"></i></div></div>
+      <h2 style="font-size:22px;margin:24px 0 6px">Zestien stellingen</h2>
+      <p class="klein" style="margin:0 0 12px">Kies wat het meest klopt. Twijfel je, kies dan deels.</p>
+      <ol class="scan-lijst" id="scan-lijst"></ol>
+      <h2 style="font-size:22px;margin:40px 0 6px">Nog twee vragen</h2>
+      <fieldset style="border:0;padding:0;margin:0 0 28px">
+        <legend style="font-size:18px;color:var(--polder-800)">Wat zou jou op dit moment het meeste opleveren?</legend>
+        <div class="scan-kies">
+          <label><input type="radio" name="wens" value="stoppen">Weten wanneer ik kan stoppen, of minder kan gaan werken.</label>
+          <label><input type="radio" name="wens" value="genoeg">Weten wat genoeg is, in een bedrag en een jaartal.</label>
+          <label><input type="radio" name="wens" value="kinderen">Mijn kinderen of naasten kunnen helpen zonder mezelf tekort te doen.</label>
+          <label><input type="radio" name="wens" value="geregeld">Weten dat het geregeld is als er iets met mij gebeurt.</label>
+          <label><input type="radio" name="wens" value="partner">Rust in het gesprek hierover met mijn partner.</label>
+          <label><input type="radio" name="wens" value="besluit">Duidelijkheid bij een groot besluit dat financieel zwaar weegt.</label>
+        </div>
+      </fieldset>
+      <fieldset style="border:0;padding:0;margin:0">
+        <legend style="font-size:18px;color:var(--polder-800)">Welke vorm past op dit moment het best bij jou?</legend>
+        <div class="scan-kies">
+          <label><input type="radio" name="vorm" value="zelf">Ik ga liever eerst zelf aan de slag, met werkbladen en de nieuwsbrief.</label>
+          <label><input type="radio" name="vorm" value="klankbord">Een klankbord dat af en toe met me meedenkt.</label>
+          <label><input type="radio" name="vorm" value="planner">Eén vaste planner die het overziet en jaren met me meeloopt.</label>
+        </div>
+      </fieldset>
+      <p id="scan-melding" class="klein" role="alert" style="margin:20px 0 0;color:var(--polder)"></p>
+      <p style="margin-top:20px"><button class="knop vol" type="submit">Toon mijn uitkomst</button></p>
+    </form>
+
+    <div id="scan-uitkomst" class="scan-uitkomst" hidden tabindex="-1" aria-labelledby="h-uit">
+      <p class="kicker">Jouw uitkomst</p>
+      <h2 id="h-uit" style="font-size:clamp(28px,4vw,40px);line-height:1.1;margin:12px 0 0"></h2>
+      <div class="scan-meters" id="scan-meters"></div>
+      <p style="font-weight:600;color:var(--polder);margin:0">Je eerstvolgende stap</p>
+      <div class="scan-stap"><p id="scan-stap"></p></div>
+      <p class="klein" style="margin:-12px 0 28px">Doe de volgende poort pas als deze stap gedaan is.</p>
+      <p style="font-weight:600;color:var(--polder);margin:0" id="scan-stand-kop"></p>
+      <p id="scan-stand" style="margin:6px 0 28px"></p>
+      <div class="scan-ctas" id="scan-ctas"></div>
+      <p><button class="knop leeg" type="button" id="scan-kopieer">Kopieer mijn uitkomst</button> <span class="klein" id="scan-gekopieerd" aria-live="polite"></span></p>
+
+      <div style="border-top:1px solid var(--lijn);margin-top:40px;padding-top:28px" id="werkblad">
+        <h3 style="font-size:22px;margin:0 0 6px">Het 4R-werkblad</h3>
+        <p style="margin:0">Per poort de vraag, de eerstvolgende stap en ruimte om op te schrijven wat je vindt. Eén A4, in te vullen op je scherm of op papier.</p>
+        <form class="aanmeld" action="https://app.kit.com/forms/10239348/subscriptions" method="post" style="margin-top:20px">
+          <label for="mail-4r">Je e-mailadres</label>
+          <div class="rij"><input id="mail-4r" name="email_address" type="email" autocomplete="email" placeholder="naam@voorbeeld.nl" required></div>
+          <label class="vinkje" style="display:flex;gap:10px;align-items:flex-start;font-weight:400;font-size:15px;line-height:1.45;color:var(--polder-800);margin-top:6px"><input type="checkbox" required style="flex:none;width:20px;height:20px;min-height:0;margin:1px 0 0;padding:0;accent-color:#183026">Ik ontvang ook de wekelijkse nieuwsbrief Waarvoor doe je het?, elke zondag één vraag over je leven en je geld. Dat hoort bij dit gratis werkblad.</label>
+          <div><button class="knop vol" type="submit" style="margin-top:6px">Stuur me het werkblad</button></div>
+          <p class="hulp">Gratis. Je bevestigt eerst je e-mailadres, daarna opent het werkblad meteen. Je adres gebruik ik alleen voor het werkblad en de nieuwsbrief. Je antwoorden uit de scan stuur ik niet mee. Afmelden kan onder elke mail, met één klik.</p>
+        </form>
+      </div>
+    </div>
+
+    <p class="klein" style="margin-top:48px">Deze scan is een algemene oriëntatie en vervangt geen persoonlijk financieel advies. Een advies volgt pas nadat we je situatie integraal hebben besproken.</p>
+    <p class="klein">De 4R-scan is gemaakt door Arko Hoondert, financieel planner in Zeeland en schrijver van de nieuwsbrief Waarvoor doe je het?. Het model komt uit zijn boek Keuzes die standhouden.</p>
+  </div>
+</section>
+<script>
+(function () {
+  var P = [
+    { naam: 'Richting', vraag: 'waar leef je voor, en dient deze keuze dat?', stap: 'Zet een uur in je agenda en beantwoord drie vragen. Hoe zou je leven eruitzien als geld geen beperking was? Wat zou je doen als je nog vijf jaar had? Wat zou je missen als je nog één dag had? Wat overblijft, zet je in vier zinnen: zo wil ik leven, dit moet mijn geld daarvoor doen, dit mag het kosten, dit is de eerste stap.' },
+    { naam: 'Rust', vraag: 'houdt het stand als het tegenzit?', stap: 'Leg je belangrijkste keuze langs de vier levens: lang, kort, rot en apart. Per leven drie vragen: wat verandert er, wat vangt dat nu op, en wat weet ik niet? De derde vraag is het werk. Het werkblad <a href="/gratis/lang-kort-rot-apart/">Lang, kort, rot en apart op één A4</a> helpt je daarbij.' },
+    { naam: 'Ritme', vraag: 'past het in wat je elke maand volhoudt?', stap: 'Zet één automatische overboeking aan op de dag na je salaris of opname, en plan een vast half uur per week voor je geldzaken. Klein bedrag, vaste tijd.' },
+    { naam: 'Ruimte', vraag: 'wat is genoeg, en wat mag er nu al?', stap: 'Schrijf op wat genoeg is, in een bedrag en een jaartal. Kies daarna één ding dat nu al mag, en zet er een datum bij.' }
+  ];
+  // Stellingen met de poort (0 tot 3). Getoond in gemengde volgorde.
+  var S = [
+    [0, 'Ik kan in één zin zeggen waarvoor mijn geld er is.'],
+    [0, 'Ik weet welk bedrag voor mij genoeg is, in euro’s en in jaren.'],
+    [0, 'Mijn belangrijkste doelen voor de komende tien jaar staan ergens opgeschreven, niet alleen in mijn hoofd.'],
+    [0, 'Als iemand vraagt waarom ik werk zoals ik werk, heb ik daar een beter antwoord op dan: zo is het gegroeid.'],
+    [1, 'Ik weet hoeveel maanden ik doorkom als mijn inkomen morgen wegvalt.'],
+    [1, 'Ik weet wat er financieel gebeurt als ik langdurig arbeidsongeschikt raak.'],
+    [1, 'Mijn naasten weten waar alles staat en wat er geregeld is als ik er niet meer ben.'],
+    [1, 'Ik heb doorgerekend of mijn geld meegaat als ik veel ouder word dan ik verwacht.'],
+    [2, 'Er gaat elke maand automatisch een vast bedrag opzij, zonder dat ik daarover hoef na te denken.'],
+    [2, 'Ik weet wat ik de afgelopen maand heb uitgegeven, zonder te hoeven zoeken.'],
+    [2, 'Ik heb een vast moment waarop ik naar mijn geldzaken kijk, niet alleen als er iets misgaat.'],
+    [2, 'Mijn financiële beslissingen neem ik op een gepland moment, niet in reactie op nieuws of een gesprek.'],
+    [3, 'Ik gun mezelf nu al dingen die ik belangrijk vind, in plaats van ze uit te stellen tot later.'],
+    [3, 'Ik weet wat ik wil nalaten of weggeven, en aan wie.'],
+    [3, 'Als mijn vermogen dit jaar tien procent groeit, verandert dat niets aan wat ik van mezelf verwacht.'],
+    [3, 'Ik heb het afgelopen jaar tijd teruggekocht met geld: uitbesteed, minder gewerkt, iets laten doen.']
+  ];
+  var VOLGORDE = [4, 0, 12, 8, 1, 9, 5, 13, 2, 6, 14, 10, 7, 3, 11, 15];
+  var lijst = document.getElementById('scan-lijst');
+  VOLGORDE.forEach(function (i) {
+    var li = document.createElement('li');
+    var opties = [['2', 'Ja'], ['1', 'Deels'], ['0', 'Nee']].map(function (o) {
+      return '<label><input type="radio" name="s' + i + '" value="' + o[0] + '"><span>' + o[1] + '</span></label>';
+    }).join('');
+    li.innerHTML = '<fieldset><legend>' + S[i][1] + '</legend><div class="scan-opties">' + opties + '</div></fieldset>';
+    lijst.appendChild(li);
+  });
+  var form = document.getElementById('scan');
+  function waarde(naam) { var e = form.querySelector('input[name="' + naam + '"]:checked'); return e ? e.value : null; }
+  function teller() {
+    var n = 0;
+    for (var i = 0; i < 16; i++) if (waarde('s' + i) !== null) n++;
+    if (waarde('wens')) n++;
+    if (waarde('vorm')) n++;
+    document.getElementById('scan-teller').textContent = n + ' van 18 beantwoord';
+    document.getElementById('scan-balk').style.width = (n / 18 * 100) + '%';
+  }
+  form.addEventListener('change', teller);
+  function stand(p) { return p >= 7 ? 'staat' : (p >= 4 ? 'wiebelt' : 'knelt'); }
+  var tekst = '';
+  form.addEventListener('submit', function (e) {
+    e.preventDefault();
+    var open = 0;
+    for (var i = 0; i < 16; i++) if (waarde('s' + i) === null) open++;
+    if (open) { document.getElementById('scan-melding').textContent = open === 1 ? 'Er staat nog één stelling open.' : 'Er staan nog ' + open + ' stellingen open.'; return; }
+    document.getElementById('scan-melding').textContent = '';
+    var score = [0, 0, 0, 0];
+    for (var j = 0; j < 16; j++) score[S[j][0]] += Number(waarde('s' + j));
+    var laagst = 0;
+    for (var k = 1; k < 4; k++) if (score[k] < score[laagst]) laagst = k;
+    var totaal = score[0] + score[1] + score[2] + score[3];
+    var p = P[laagst];
+    document.getElementById('h-uit').textContent = 'Je begint bij ' + p.naam + ': ' + p.vraag;
+    document.getElementById('scan-meters').innerHTML = P.map(function (q, i) {
+      return '<div class="scan-meter' + (i === laagst ? ' laagst' : '') + '"><b>' + q.naam + '</b><div class="m" role="img" aria-label="' + q.naam + ': ' + score[i] + ' van 8"><i style="width:' + (score[i] / 8 * 100) + '%"></i></div><span>' + score[i] + ' van 8 · ' + stand(score[i]) + '</span></div>';
+    }).join('');
+    document.getElementById('scan-stap').innerHTML = p.stap;
+    var st = totaal <= 13 ? ['Het staat nog los van elkaar', 'Je hebt losse regelingen, maar nog geen samenhangend geheel. De winst zit in overzicht, niet in optimaliseren.']
+      : totaal <= 23 ? ['De basis staat, de samenhang nog niet', 'Het meeste is er wel. Het klopt alleen nog niet met elkaar.']
+      : ['Het klopt, en dat vraagt onderhoud', 'Een sterke uitgangspositie. Het risico is veroudering: een plan dat drie jaar geleden klopte, klopt nu misschien niet meer.'];
+    document.getElementById('scan-stand-kop').textContent = 'In totaal: ' + totaal + ' van 32. ' + st[0] + '.';
+    document.getElementById('scan-stand').textContent = st[1];
+    var vorm = waarde('vorm'), wens = waarde('wens');
+    var werkblad = '<a class="knop vol" href="#werkblad">Stuur me het 4R-werkblad</a>';
+    var nb = '<a class="knop leeg" href="/nieuwsbrief/">Lees mee met Waarvoor doe je het?</a>';
+    var kennis = function (cls) { return '<a class="knop ' + cls + '" href="/kennismaken/">Plan een kennismaking van 20 minuten</a>'; };
+    var gesprek = '<a class="knop vol" href="/hetgesprek/">Plan Het gesprek</a>';
+    var ctas;
+    if (vorm === 'planner') ctas = gesprek + kennis('leeg');
+    else if (vorm === 'klankbord' || wens === 'besluit') ctas = kennis('vol') + '<a class="knop leeg" href="#werkblad">Stuur me het 4R-werkblad</a>';
+    else ctas = werkblad + nb;
+    document.getElementById('scan-ctas').innerHTML = ctas;
+    tekst = 'Mijn 4R-scan: ' + P.map(function (q, i) { return q.naam + ' ' + score[i] + '/8 (' + stand(score[i]) + ')'; }).join(', ') + '. Totaal ' + totaal + '/32. Ik begin bij ' + p.naam + '.';
+    var uit = document.getElementById('scan-uitkomst');
+    uit.hidden = false;
+    uit.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    uit.focus({ preventScroll: true });
+  });
+  document.getElementById('scan-kopieer').addEventListener('click', function () {
+    var meld = document.getElementById('scan-gekopieerd');
+    try {
+      navigator.clipboard.writeText(tekst).then(function () { meld.textContent = 'Gekopieerd. Plak het in een bericht aan wie je wilt.'; }, function () { meld.textContent = tekst; });
+    } catch (e) { meld.textContent = tekst; }
+  });
+  teller();
+})();
+</script>
