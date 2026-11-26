@@ -228,6 +228,8 @@ function overzicht(edities) {
   const pager = document.getElementById('pager'), nr = document.getElementById('paginanr');
   const ouder = document.getElementById('ouder'), nieuwer = document.getElementById('nieuwer'), geen = document.getElementById('geen');
   let pagina = 1;
+  const start = new URLSearchParams(location.search).get('onderwerp');
+  if (start && [...ond.options].some((o) => o.value === start)) ond.value = start;
   function toon() {
     const q = zoek.value.trim().toLowerCase(), r = ond.value;
     const passend = rijen.filter((li) => (!r || li.dataset.onderwerp === r) && (!q || li.dataset.zoek.includes(q)));
